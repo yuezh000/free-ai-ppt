@@ -1,0 +1,9 @@
+.next/
+out/
+node_modules/
+.DS_Store
+*.log
+.env*
+.vercel
+resume-codex.sh
+.ipynb_checkpoints/
