@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Ruler } from "lucide-react";
 import { Header } from "@/components/header";
+import { languageAlternates } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Presentation Resources & Guides | FreePPT",
   description: "Practical guides for planning, designing, and creating better presentations with PowerPoint and AI.",
-  alternates: { canonical: "/resources" },
+  alternates: { canonical: "/resources", languages: { ...languageAlternates("/resources"), "x-default": "/resources" } },
 };
 
 export default function ResourcesPage() {

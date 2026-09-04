@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Check, Info, Ruler, Sparkles } from "lucide-react";
 import { Header } from "@/components/header";
 import { SITE_URL } from "@/lib/site";
+import { languageAlternates } from "@/lib/i18n";
 
 const canonical = "/blog/powerpoint-slide-size";
 
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   title: "PowerPoint Slide Size: Dimensions, Pixels & How to Change It",
   description: "PowerPoint slide sizes explained: 16:9, 4:3, inches, centimeters, and pixel dimensions. Learn which size to use and how to change it safely.",
   keywords: ["powerpoint slide size", "powerpoint slide dimensions", "powerpoint slide size pixels", "presentation slide size"],
-  alternates: { canonical },
+  alternates: { canonical, languages: { ...languageAlternates(canonical), "x-default": canonical } },
   openGraph: {
     title: "PowerPoint Slide Size: The Complete Dimensions Guide",
     description: "Choose the correct slide size for screens, projectors, print, and social media.",
