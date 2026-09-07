@@ -35,8 +35,8 @@ const jsonLd = [
     headline: "PowerPoint Slide Size: Dimensions, Pixels, and How to Change It",
     description: "A practical guide to PowerPoint slide dimensions for screens, print, and digital publishing.",
     datePublished: "2026-09-04", dateModified: "2026-09-04",
-    author: { "@type": "Organization", name: "FreePPT" },
-    publisher: { "@type": "Organization", name: "FreePPT" },
+    author: { "@type": "Organization", name: "FreeAIPPT" },
+    publisher: { "@type": "Organization", name: "FreeAIPPT" },
     mainEntityOfPage: `${SITE_URL}${canonical}`,
   },
   {
@@ -80,7 +80,7 @@ export default function PowerPointSlideSizePage() {
 
             <section id="custom"><h2>Useful custom slide sizes</h2><p>A PowerPoint file can also be used to design posters, digital signs, social graphics, and printed documents. Enter these dimensions under <b>Design → Slide Size → Custom Slide Size</b>.</p><div className="table-wrap"><table><thead><tr><th>Output</th><th>Recommended size</th><th>Orientation</th></tr></thead><tbody><tr><td>Instagram post</td><td>10 × 10 in</td><td>Square</td></tr><tr><td>Instagram story</td><td>7.5 × 13.333 in</td><td>Portrait 9:16</td></tr><tr><td>LinkedIn carousel</td><td>10 × 10 in</td><td>Square</td></tr><tr><td>A4 handout</td><td>8.27 × 11.69 in</td><td>Portrait</td></tr><tr><td>36 × 24 poster</td><td>36 × 24 in</td><td>Landscape</td></tr></tbody></table></div><p>For professional printing, confirm bleed, safe area, color mode, and export requirements with the printer. PowerPoint is convenient, but it is not a full prepress application.</p></section>
 
-            <section className="article-cta"><span><Sparkles size={15} /> FIRST DECK FREE</span><h2>Start with the right format.</h2><p>Describe your presentation or upload an existing document. FreePPT will prepare an editable PPTX and a shareable HTML version.</p><Link href="/" className="primary-button">Create your presentation <ArrowRight size={17} /></Link></section>
+            <section className="article-cta"><span><Sparkles size={15} /> FIRST DECK FREE</span><h2>Start with the right format.</h2><p>Describe your presentation or upload an existing document. FreeAIPPT will prepare an editable PPTX and a shareable HTML version.</p><Link href="/" className="primary-button">Create your presentation <ArrowRight size={17} /></Link></section>
 
             <section id="faq"><h2>Frequently asked questions</h2><div className="faq-list">{faq.map((item) => <details key={item.q}><summary>{item.q}<span>+</span></summary><p>{item.a}</p></details>)}</div></section>
           </div>

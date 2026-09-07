@@ -14,6 +14,10 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
     const parts = pathname.split("/").filter(Boolean);
     if (parts[0] && isLocale(parts[0])) parts.shift();
     const suffix = parts.length ? `/${parts.join("/")}` : "";
+    if (suffix === "/blog/word-to-ppt-ai" && nextLocale !== "en") {
+      router.push(`/${nextLocale}/resources`);
+      return;
+    }
     router.push(nextLocale === "en" ? suffix || "/" : `/${nextLocale}${suffix}`);
   };
 

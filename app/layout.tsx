@@ -11,7 +11,7 @@ const manrope = Manrope({ subsets: ["latin"], variable: "--font-display" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "FreePPT — AI presentations from anything",
+  title: "FreeAIPPT — AI presentations from anything",
   description: "Turn a prompt or document into a polished presentation. Try your first deck free.",
   alternates: { canonical: "/", languages: { ...languageAlternates(), "x-default": "/" } },
 };

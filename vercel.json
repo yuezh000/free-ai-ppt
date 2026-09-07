@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://freeppt.dev.freecodex.site/api/:path*"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
-# FreePPT 建站计划书
+# FreeAIPPT 建站计划书
 
 ## 1. 产品定位
 
-FreePPT 是一个极简 AI 演示文稿生成工具。用户用一句话描述需求，或上传 Word、PowerPoint、Excel、PDF 和图片等参考材料，系统完成内容整理、结构生成与视觉排版，最终同时交付可编辑的 PPTX 和可分享的 HTML 演示文稿。
+FreeAIPPT 是一个极简 AI 演示文稿生成工具。用户用一句话描述需求，或上传 Word、PowerPoint、Excel、PDF 和图片等参考材料，系统完成内容整理、结构生成与视觉排版，最终同时交付可编辑的 PPTX 和可分享的 HTML 演示文稿。
 
 核心承诺：**第一次免费，无订阅，用一次付一次。**
 
@@ -58,7 +58,7 @@ FreePPT 是一个极简 AI 演示文稿生成工具。用户用一句话描述�
 
 1. **FAQ**：围绕 PPT 制作、尺寸、格式、字体、图片、演讲和导出问题覆盖长尾词；每页直接回答一个问题，并使用 FAQ 结构化数据。
 2. **Blog**：发布 PPT 制作经验、案例拆解和 YouTube 长视频摘要，覆盖行业词、KOL 名称与方法论关键词。
-3. **工具组合**：讲解 ChatGPT、Claude、Gemini、新 AGI 模型或 Agent 与 FreePPT 的组合流程，覆盖新模型和工具趋势词。
+3. **工具组合**：讲解 ChatGPT、Claude、Gemini、新 AGI 模型或 Agent 与 FreeAIPPT 的组合流程，覆盖新模型和工具趋势词。
 4. **Tutorials**：围绕本工具的使用流程、输入格式和具体场景制作教程，重点覆盖 `free`、`free trial` 和场景词。
 5. **Free PPT Templates**：提供可预览、可下载、可编辑的免费 PPT 模板，以高购买/下载意图的模板关键词获取自然流量，并把访问者引导到 AI 生成器进行个性化改写。
 

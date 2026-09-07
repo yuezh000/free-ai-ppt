@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { languageAlternates } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Pricing | FreePPT",
+  title: "Pricing | FreeAIPPT",
   alternates: { canonical: "/pricing", languages: { ...languageAlternates("/pricing"), "x-default": "/pricing" } },
 };
 

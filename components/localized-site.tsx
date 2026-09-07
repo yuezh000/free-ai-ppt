@@ -2,11 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Check, Download, FileInput, FileText, Info, Layers3, LoaderCircle, Plus, Ruler, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, Check, Download, FileInput, Info, Layers3, Ruler, Sparkles } from "lucide-react";
 import { ComingSoon } from "@/components/coming-soon";
 import { Generator } from "@/components/generator";
 import { Header } from "@/components/header";
+import { JobQueue } from "@/components/job-queue";
+import { HomeTemplateSamples } from "@/components/home-template-samples";
 import { localizePath, translations, type Locale } from "@/lib/i18n";
+import { captureConversion, conversionEvents } from "@/lib/analytics";
 
 type PageName = "home" | "pricing" | "queue" | "resources" | "article";
 
@@ -21,17 +24,17 @@ export function LocalizedSite({ locale, page }: { locale: Locale; page: PageName
   if (page === "home") return (
     <main>
       <Header locale={locale} />
-      <section className="hero"><div className="hero-glow" /><div className="hero-copy"><div className="pill"><Sparkles size={14} /> {t.home.badge}</div><h1>{t.home.title1}<br /><em>{t.home.title2}</em></h1><p>{t.home.lead}</p></div><Generator locale={locale} /><div className="trust-row">{t.home.trust.map((item) => <span key={item}><Check size={15} /> {item}</span>)}</div></section>
+      <section className="hero"><div className="hero-glow" /><div className="hero-copy"><div className="pill"><Sparkles size={14} /> {t.home.badge}</div><h1>{t.home.title1}<br /><em>{t.home.title2}</em></h1><p>{t.home.lead}</p></div><Generator locale={locale} /><div className="trust-row">{t.home.trust.map((item) => <span key={item}><Check size={15} /> {item}</span>)}</div></section><HomeTemplateSamples locale={locale}/>
       <section className="steps-section"><span className="eyebrow">{t.home.eyebrow}</span><h2>{t.home.stepsTitle}</h2><div className="steps-grid">{t.home.steps.map((step, index) => { const Icon = [FileInput, Layers3, Download][index]; return <article key={step.title}><span className="step-number">0{index + 1}</span><Icon /><h3>{step.title}</h3><p>{step.text}</p></article>; })}</div></section>
     </main>
   );
 
   if (page === "pricing") return (
-    <main><Header locale={locale} /><section className="pricing-hero"><span className="pill"><Sparkles size={14} /> {t.pricing.badge}</span><h1>{t.pricing.title1}<br /><em>{t.pricing.title2}</em></h1><p>{t.pricing.lead}</p></section><section className="pricing-grid">{t.pricing.plans.map((plan, index) => <article className={`price-card ${index === 1 ? "featured" : ""}`} key={plan.name}>{index === 1 && <span className="popular">{t.pricing.popular}</span>}<h2>{plan.name}</h2><div className="price"><strong>{plan.price}</strong><span>{plan.unit}</span></div><p>{plan.detail}</p><div className="credit-line"><Check size={17} />{plan.credits}</div><ul>{t.pricing.benefits.map((item) => <li key={item}><Check size={15} />{item}</li>)}</ul><button onClick={() => setOpen(true)} className={index === 1 ? "primary-button" : "secondary-button"}>{plan.button}</button></article>)}</section><p className="pricing-note">{t.pricing.note}</p><ComingSoon locale={locale} open={open} onClose={() => setOpen(false)} /></main>
+    <main><Header locale={locale} /><section className="pricing-hero"><span className="pill"><Sparkles size={14} /> {t.pricing.badge}</span><h1>{t.pricing.title1}<br /><em>{t.pricing.title2}</em></h1><p>{t.pricing.lead}</p></section><section className="pricing-grid">{t.pricing.plans.map((plan, index) => <article className={`price-card ${index === 1 ? "featured" : ""}`} key={plan.name}>{index === 1 && <span className="popular">{t.pricing.popular}</span>}<h2>{plan.name}</h2><div className="price"><strong>{plan.price}</strong><span>{plan.unit}</span></div><p>{plan.detail}</p><div className="credit-line"><Check size={17} />{plan.credits}</div><ul>{t.pricing.benefits.map((item) => <li key={item}><Check size={15} />{item}</li>)}</ul><button data-testid={`pricing-plan-${index}-select`} onClick={() => { captureConversion(conversionEvents.pricingPlanSelected, { locale, plan_index: index, plan_name: plan.name }); setOpen(true); }} className={index === 1 ? "primary-button" : "secondary-button"}>{plan.button}</button></article>)}</section><p className="pricing-note">{t.pricing.note}</p><ComingSoon locale={locale} source="pricing" open={open} onClose={() => setOpen(false)} /></main>
   );
 
   if (page === "queue") return (
-    <main><Header locale={locale} /><section className="dashboard"><div className="dashboard-title"><div><span className="eyebrow">{t.queue.eyebrow}</span><h1>{t.queue.title}</h1><p>{t.queue.lead}</p></div><Link href={localizePath(locale)} className="primary-button"><Plus size={17} /> {t.queue.newDeck}</Link></div><div className="queue-card"><div className="queue-item"><span className="deck-icon"><LoaderCircle className="spin" /></span><div className="queue-main"><strong>{t.queue.item1}</strong><span>{t.queue.item1Meta}</span><div className="progress"><i /></div></div><span className="status generating">{t.queue.generating}</span></div><div className="queue-item"><span className="deck-icon"><FileText /></span><div className="queue-main"><strong>{t.queue.item2}</strong><span>{t.queue.item2Meta}</span></div><span className="status ready">{t.queue.ready}</span><div className="download-group"><button onClick={() => setOpen(true)}><Download size={15} /> PPTX</button><button onClick={() => setOpen(true)}><Download size={15} /> HTML</button></div></div></div><div className="coming-banner"><span>{t.queue.demo}</span><p>{t.queue.demoText}</p></div></section><ComingSoon locale={locale} open={open} onClose={() => setOpen(false)} /></main>
+    <main><Header locale={locale}/><JobQueue locale={locale}/></main>
   );
 
   if (page === "resources") return (

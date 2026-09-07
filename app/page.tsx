@@ -1,6 +1,7 @@
 import { Check, Download, FileInput, Layers3, Sparkles } from "lucide-react";
 import { Generator } from "@/components/generator";
 import { Header } from "@/components/header";
+import { HomeTemplateSamples } from "@/components/home-template-samples";
 
 export default function Home() {
   return (
@@ -11,11 +12,12 @@ export default function Home() {
         <div className="hero-copy">
           <div className="pill"><Sparkles size={14} /> YOUR FIRST DECK IS FREE</div>
           <h1>From rough idea to<br /><em>ready-to-present.</em></h1>
-          <p>Tell us what you need or upload what you have. FreePPT turns it into a clear, polished presentation—in minutes.</p>
+          <p>Tell us what you need or upload what you have. FreeAIPPT turns it into a clear, polished presentation—in minutes.</p>
         </div>
         <Generator />
         <div className="trust-row"><span><Check size={15} /> No credit card</span><span><Check size={15} /> Editable PPTX</span><span><Check size={15} /> Shareable HTML</span></div>
       </section>
+      <HomeTemplateSamples />
       <section className="steps-section">
         <span className="eyebrow">THE SIMPLEST WAY TO MAKE A DECK</span>
         <h2>Bring the idea. We&apos;ll build the slides.</h2>

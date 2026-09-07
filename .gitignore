@@ -4,6 +4,11 @@ node_modules/
 .DS_Store
 *.log
 .env*
+!.env.example
+!backend/.env.example
 .vercel
+test-results/
+playwright-report/
+blob-report/
 resume-codex.sh
 .ipynb_checkpoints/
