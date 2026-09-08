@@ -5,13 +5,17 @@ test("template directory exposes twelve focused presentation categories", async 
 
   const categories = page.locator(".template-category-card");
   await expect(categories).toHaveCount(12);
-  await expect(page.getByTestId("template-category-business-plan")).toBeVisible();
+  await expect(page.getByTestId("template-category-business-plan")).toContainText("2 free templates");
   await expect(page.getByTestId("template-category-artificial-intelligence")).toBeVisible();
+  await expect(page.locator(".template-card")).toHaveCount(24);
 
   await page.getByTestId("template-category-marketing").click();
   await expect(page).toHaveURL(/\/templates\/marketing\/?$/);
-  await expect(page.getByRole("heading", { level: 1, name: "Free Marketing Plan PowerPoint template", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Free Marketing Plan PowerPoint templates", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "Free Marketing Plan PowerPoint Template", exact: true })).toBeVisible();
+  await page.getByRole("heading", { level: 3, name: "Free Campaign Marketing Plan PowerPoint Template", exact: true }).getByRole("link").click();
+  await expect(page).toHaveURL(/\/templates\/campaign-marketing-plan-presentation\/?$/);
+  await expect(page.getByTestId("template-campaign-marketing-plan-presentation-download")).toHaveAttribute("href", "/templates/files/campaign-marketing-plan-presentation.pptx");
 });
 
 test("localized template category links preserve the selected locale", async ({ page }) => {
@@ -22,4 +26,5 @@ test("localized template category links preserve the selected locale", async ({ 
   await expect(page).toHaveURL(/\/zh-CN\/templates\/product-roadmap\/?$/);
   await expect(page.getByRole("heading", { name: "产品路线图", exact: true })).toBeVisible();
   await expect(page.getByText("免费产品路线图 PowerPoint 模板", { exact: true })).toBeVisible();
+  await expect(page.getByText("免费季度产品路线图 PowerPoint 模板", { exact: true })).toBeVisible();
 });

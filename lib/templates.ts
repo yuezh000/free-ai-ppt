@@ -1,3 +1,5 @@
+import { dailyTemplates } from "@/lib/templates-daily";
+
 export type TemplateSlide = { eyebrow: string; title: string; body: string; stat?: string };
 
 export type PptTemplate = {
@@ -40,7 +42,7 @@ export const templateCategories: TemplateCategory[] = [
   { slug: "product-roadmap", name: "Product Roadmap", shortName: "Product roadmap", description: "Align teams around product vision, themes, releases, dependencies, measures, and the next milestone.", searchIntent: "free product roadmap PowerPoint template" },
 ];
 
-export const templates: PptTemplate[] = [
+const originalTemplates: PptTemplate[] = [
   {
     slug: "business-plan-presentation",
     name: "Free Business Plan PowerPoint Template",
@@ -318,6 +320,8 @@ export const templates: PptTemplate[] = [
     bestFor: ["Product strategy reviews", "Cross-functional planning", "Leadership updates", "Release planning"],
   },
 ];
+
+export const templates: PptTemplate[] = [...originalTemplates, ...dailyTemplates];
 
 export function getTemplate(slug: string) { return templates.find((template) => template.slug === slug); }
 export function getTemplateCategory(slug: string) { return templateCategories.find((category) => category.slug === slug); }

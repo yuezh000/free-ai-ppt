@@ -78,8 +78,53 @@ const localizedNames: Partial<Record<Locale, Record<string, [string, string]>>> 
   },
 };
 
+const localizedDailyNames: Partial<Record<Locale, Record<string, [string, string]>>> = {
+  "zh-CN": {
+    "vintage-small-business-plan":["免费复古小企业商业计划 PowerPoint 模板","复古小企业商业计划"], "retail-startup-pitch-deck":["免费零售创业融资路演 PPT 模板","零售创业路演"], "modern-company-overview-presentation":["免费现代公司概览 PowerPoint 模板","现代公司概览"],
+    "campaign-marketing-plan-presentation":["免费营销活动计划 PowerPoint 模板","营销活动计划"], "blueprint-project-proposal":["免费蓝图风项目提案 PowerPoint 模板","蓝图风项目提案"], "sales-performance-review-presentation":["免费销售业绩复盘 PowerPoint 模板","销售业绩复盘"],
+    "yellow-lesson-plan-presentation":["免费黄色教学计划 PowerPoint 模板","黄色教学计划"], "green-thesis-defense-presentation":["免费绿色论文答辩 PowerPoint 模板","绿色论文答辩"], "modern-clinical-case-presentation":["免费现代临床病例 PowerPoint 模板","现代临床病例"],
+    "ai-strategy-presentation":["免费 AI 战略 PowerPoint 模板","AI 战略"], "y2k-creative-portfolio":["免费 Y2K 创意作品集 PowerPoint 模板","Y2K 创意作品集"], "quarterly-product-roadmap":["免费季度产品路线图 PowerPoint 模板","季度产品路线图"],
+  },
+  "zh-TW": {
+    "vintage-small-business-plan":["免費復古小型企業商業計畫 PowerPoint 範本","復古小型企業商業計畫"], "retail-startup-pitch-deck":["免費零售新創募資簡報範本","零售新創簡報"], "modern-company-overview-presentation":["免費現代公司概覽 PowerPoint 範本","現代公司概覽"],
+    "campaign-marketing-plan-presentation":["免費行銷活動計畫 PowerPoint 範本","行銷活動計畫"], "blueprint-project-proposal":["免費藍圖風專案提案 PowerPoint 範本","藍圖風專案提案"], "sales-performance-review-presentation":["免費銷售績效檢討 PowerPoint 範本","銷售績效檢討"],
+    "yellow-lesson-plan-presentation":["免費黃色教學計畫 PowerPoint 範本","黃色教學計畫"], "green-thesis-defense-presentation":["免費綠色論文答辯 PowerPoint 範本","綠色論文答辯"], "modern-clinical-case-presentation":["免費現代臨床病例 PowerPoint 範本","現代臨床病例"],
+    "ai-strategy-presentation":["免費 AI 策略 PowerPoint 範本","AI 策略"], "y2k-creative-portfolio":["免費 Y2K 創意作品集 PowerPoint 範本","Y2K 創意作品集"], "quarterly-product-roadmap":["免費季度產品路線圖 PowerPoint 範本","季度產品路線圖"],
+  },
+  ja: {
+    "vintage-small-business-plan":["無料ヴィンテージ小規模事業計画 PowerPoint テンプレート","小規模事業計画"], "retail-startup-pitch-deck":["無料小売スタートアップ向けピッチ資料","小売スタートアップ・ピッチ"], "modern-company-overview-presentation":["無料モダン会社概要 PowerPoint テンプレート","モダン会社概要"],
+    "campaign-marketing-plan-presentation":["無料キャンペーン計画 PowerPoint テンプレート","キャンペーン計画"], "blueprint-project-proposal":["無料ブループリント型プロジェクト提案テンプレート","ブループリント型提案"], "sales-performance-review-presentation":["無料営業実績レビュー PowerPoint テンプレート","営業実績レビュー"],
+    "yellow-lesson-plan-presentation":["無料イエロー授業計画 PowerPoint テンプレート","イエロー授業計画"], "green-thesis-defense-presentation":["無料グリーン論文審査 PowerPoint テンプレート","グリーン論文審査"], "modern-clinical-case-presentation":["無料モダン臨床症例 PowerPoint テンプレート","モダン臨床症例"],
+    "ai-strategy-presentation":["無料 AI 戦略 PowerPoint テンプレート","AI 戦略"], "y2k-creative-portfolio":["無料 Y2K クリエイティブポートフォリオ","Y2K ポートフォリオ"], "quarterly-product-roadmap":["無料四半期プロダクトロードマップ PowerPoint","四半期ロードマップ"],
+  },
+  ko: {
+    "vintage-small-business-plan":["무료 빈티지 소기업 사업계획서 PowerPoint 템플릿","소기업 사업계획서"], "retail-startup-pitch-deck":["무료 리테일 스타트업 피치덱 템플릿","리테일 스타트업 피치덱"], "modern-company-overview-presentation":["무료 모던 회사 개요 PowerPoint 템플릿","모던 회사 개요"],
+    "campaign-marketing-plan-presentation":["무료 캠페인 마케팅 계획 PowerPoint 템플릿","캠페인 마케팅 계획"], "blueprint-project-proposal":["무료 블루프린트 프로젝트 제안 템플릿","블루프린트 프로젝트 제안"], "sales-performance-review-presentation":["무료 영업 성과 리뷰 PowerPoint 템플릿","영업 성과 리뷰"],
+    "yellow-lesson-plan-presentation":["무료 옐로 수업 계획 PowerPoint 템플릿","옐로 수업 계획"], "green-thesis-defense-presentation":["무료 그린 학위 논문 발표 PowerPoint 템플릿","그린 논문 발표"], "modern-clinical-case-presentation":["무료 모던 임상 사례 PowerPoint 템플릿","모던 임상 사례"],
+    "ai-strategy-presentation":["무료 AI 전략 PowerPoint 템플릿","AI 전략"], "y2k-creative-portfolio":["무료 Y2K 크리에이티브 포트폴리오 템플릿","Y2K 포트폴리오"], "quarterly-product-roadmap":["무료 분기별 제품 로드맵 PowerPoint 템플릿","분기별 제품 로드맵"],
+  },
+  fr: {
+    "vintage-small-business-plan":["Modèle PowerPoint gratuit de business plan vintage","Business plan vintage"], "retail-startup-pitch-deck":["Pitch deck gratuit pour startup de commerce","Pitch deck retail"], "modern-company-overview-presentation":["Modèle PowerPoint gratuit de présentation moderne d’entreprise","Présentation moderne d’entreprise"],
+    "campaign-marketing-plan-presentation":["Modèle PowerPoint gratuit de campagne marketing","Campagne marketing"], "blueprint-project-proposal":["Modèle PowerPoint gratuit de proposition de projet blueprint","Proposition blueprint"], "sales-performance-review-presentation":["Modèle PowerPoint gratuit de revue des performances commerciales","Performance commerciale"],
+    "yellow-lesson-plan-presentation":["Modèle PowerPoint jaune gratuit de plan de cours","Plan de cours jaune"], "green-thesis-defense-presentation":["Modèle PowerPoint vert gratuit de soutenance","Soutenance verte"], "modern-clinical-case-presentation":["Modèle PowerPoint gratuit de cas clinique moderne","Cas clinique moderne"],
+    "ai-strategy-presentation":["Modèle PowerPoint gratuit de stratégie IA","Stratégie IA"], "y2k-creative-portfolio":["Modèle PowerPoint gratuit de portfolio créatif Y2K","Portfolio Y2K"], "quarterly-product-roadmap":["Modèle PowerPoint gratuit de feuille de route trimestrielle","Feuille de route trimestrielle"],
+  },
+  es: {
+    "vintage-small-business-plan":["Plantilla PowerPoint gratis de plan de negocio vintage","Plan de negocio vintage"], "retail-startup-pitch-deck":["Pitch deck gratis para startup de retail","Pitch deck de retail"], "modern-company-overview-presentation":["Plantilla PowerPoint gratis de perfil moderno de empresa","Perfil moderno de empresa"],
+    "campaign-marketing-plan-presentation":["Plantilla PowerPoint gratis de campaña de marketing","Campaña de marketing"], "blueprint-project-proposal":["Plantilla PowerPoint gratis de propuesta de proyecto blueprint","Propuesta blueprint"], "sales-performance-review-presentation":["Plantilla PowerPoint gratis de revisión del rendimiento de ventas","Rendimiento de ventas"],
+    "yellow-lesson-plan-presentation":["Plantilla PowerPoint amarilla gratis para plan de clase","Plan de clase amarillo"], "green-thesis-defense-presentation":["Plantilla PowerPoint verde gratis para defensa de tesis","Defensa de tesis verde"], "modern-clinical-case-presentation":["Plantilla PowerPoint gratis de caso clínico moderno","Caso clínico moderno"],
+    "ai-strategy-presentation":["Plantilla PowerPoint gratis de estrategia de IA","Estrategia de IA"], "y2k-creative-portfolio":["Plantilla PowerPoint gratis de portafolio creativo Y2K","Portafolio Y2K"], "quarterly-product-roadmap":["Plantilla PowerPoint gratis de hoja de ruta trimestral","Hoja de ruta trimestral"],
+  },
+  ru: {
+    "vintage-small-business-plan":["Бесплатный винтажный шаблон бизнес-плана PowerPoint","Винтажный бизнес-план"], "retail-startup-pitch-deck":["Бесплатный питч-дек розничного стартапа","Питч-дек retail-стартапа"], "modern-company-overview-presentation":["Бесплатный современный шаблон презентации компании","Современная презентация компании"],
+    "campaign-marketing-plan-presentation":["Бесплатный шаблон маркетинговой кампании PowerPoint","Маркетинговая кампания"], "blueprint-project-proposal":["Бесплатный шаблон проектного предложения blueprint","Проектное предложение blueprint"], "sales-performance-review-presentation":["Бесплатный шаблон обзора эффективности продаж","Эффективность продаж"],
+    "yellow-lesson-plan-presentation":["Бесплатный жёлтый шаблон плана урока PowerPoint","Жёлтый план урока"], "green-thesis-defense-presentation":["Бесплатный зелёный шаблон защиты диссертации","Зелёная защита диссертации"], "modern-clinical-case-presentation":["Бесплатный современный шаблон клинического случая","Современный клинический случай"],
+    "ai-strategy-presentation":["Бесплатный шаблон стратегии ИИ PowerPoint","Стратегия ИИ"], "y2k-creative-portfolio":["Бесплатный шаблон творческого портфолио Y2K","Портфолио Y2K"], "quarterly-product-roadmap":["Бесплатный шаблон квартальной дорожной карты продукта","Квартальная дорожная карта"],
+  },
+};
+
 export function localizedTemplateName(template: PptTemplate, locale: Locale) {
-  const names = localizedNames[locale]?.[template.slug];
+  const names = localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
   return { name: names?.[0] ?? template.name, shortName: names?.[1] ?? template.shortName };
 }
 
