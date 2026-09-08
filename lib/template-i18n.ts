@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/i18n";
-import type { PptTemplate } from "@/lib/templates";
+import type { PptTemplate, TemplateCategory } from "@/lib/templates";
 
 export type TemplateCopy = {
   nav: string; business: string; home: string;
@@ -34,16 +34,57 @@ const copies: Record<Locale, TemplateCopy> = {
 export const templateCopy = (locale: Locale) => copies[locale];
 
 const localizedNames: Partial<Record<Locale, Record<string, [string, string]>>> = {
-  "zh-CN": { "business-plan-presentation":["免费商业计划 PowerPoint 模板","商业计划"], "startup-pitch-deck":["免费创业融资路演 PPT 模板","创业路演"], "company-profile-presentation":["免费公司介绍 PowerPoint 模板","公司介绍"] },
-  "zh-TW": { "business-plan-presentation":["免費商業計畫 PowerPoint 範本","商業計畫"], "startup-pitch-deck":["免費新創募資簡報範本","新創簡報"], "company-profile-presentation":["免費公司介紹 PowerPoint 範本","公司介紹"] },
-  ja: { "business-plan-presentation":["無料ビジネスプラン PowerPoint テンプレート","ビジネスプラン"], "startup-pitch-deck":["無料スタートアップ向けピッチ資料","スタートアップ・ピッチ"], "company-profile-presentation":["無料会社紹介 PowerPoint テンプレート","会社紹介"] },
-  ko: { "business-plan-presentation":["무료 사업계획서 PowerPoint 템플릿","사업계획서"], "startup-pitch-deck":["무료 스타트업 피치덱 템플릿","스타트업 피치덱"], "company-profile-presentation":["무료 회사소개 PowerPoint 템플릿","회사소개"] },
-  fr: { "business-plan-presentation":["Modèle PowerPoint gratuit de business plan","Business plan"], "startup-pitch-deck":["Modèle gratuit de pitch deck startup","Pitch deck startup"], "company-profile-presentation":["Modèle PowerPoint gratuit de présentation d’entreprise","Présentation d’entreprise"] },
-  es: { "business-plan-presentation":["Plantilla PowerPoint gratis de plan de negocio","Plan de negocio"], "startup-pitch-deck":["Plantilla gratis de pitch deck para startups","Pitch deck de startup"], "company-profile-presentation":["Plantilla PowerPoint gratis de perfil de empresa","Perfil de empresa"] },
-  ru: { "business-plan-presentation":["Бесплатный шаблон бизнес-плана PowerPoint","Бизнес-план"], "startup-pitch-deck":["Бесплатный шаблон питч-дека стартапа","Питч-дек стартапа"], "company-profile-presentation":["Бесплатный шаблон презентации компании","О компании"] },
+  "zh-CN": {
+    "business-plan-presentation":["免费商业计划 PowerPoint 模板","商业计划"], "startup-pitch-deck":["免费创业融资路演 PPT 模板","创业路演"], "company-profile-presentation":["免费公司介绍 PowerPoint 模板","公司介绍"],
+    "marketing-plan-presentation":["免费营销计划 PowerPoint 模板","营销计划"], "project-proposal-presentation":["免费项目提案 PowerPoint 模板","项目提案"], "sales-report-presentation":["免费销售报告 PowerPoint 模板","销售报告"],
+    "lesson-plan-presentation":["免费教学课件 PowerPoint 模板","教学课件"], "thesis-defense-presentation":["免费论文答辩 PowerPoint 模板","论文答辩"], "clinical-case-presentation":["免费医疗病例 PowerPoint 模板","医疗病例"],
+    "artificial-intelligence-presentation":["免费人工智能 PowerPoint 模板","人工智能"], "creative-portfolio-presentation":["免费创意作品集 PowerPoint 模板","创意作品集"], "product-roadmap-presentation":["免费产品路线图 PowerPoint 模板","产品路线图"],
+  },
+  "zh-TW": {
+    "business-plan-presentation":["免費商業計畫 PowerPoint 範本","商業計畫"], "startup-pitch-deck":["免費新創募資簡報範本","新創簡報"], "company-profile-presentation":["免費公司介紹 PowerPoint 範本","公司介紹"],
+    "marketing-plan-presentation":["免費行銷計畫 PowerPoint 範本","行銷計畫"], "project-proposal-presentation":["免費專案提案 PowerPoint 範本","專案提案"], "sales-report-presentation":["免費銷售報告 PowerPoint 範本","銷售報告"],
+    "lesson-plan-presentation":["免費教學課件 PowerPoint 範本","教學課件"], "thesis-defense-presentation":["免費論文答辯 PowerPoint 範本","論文答辯"], "clinical-case-presentation":["免費臨床病例 PowerPoint 範本","臨床病例"],
+    "artificial-intelligence-presentation":["免費人工智慧 PowerPoint 範本","人工智慧"], "creative-portfolio-presentation":["免費創意作品集 PowerPoint 範本","創意作品集"], "product-roadmap-presentation":["免費產品路線圖 PowerPoint 範本","產品路線圖"],
+  },
+  ja: {
+    "business-plan-presentation":["無料ビジネスプラン PowerPoint テンプレート","ビジネスプラン"], "startup-pitch-deck":["無料スタートアップ向けピッチ資料","スタートアップ・ピッチ"], "company-profile-presentation":["無料会社紹介 PowerPoint テンプレート","会社紹介"],
+    "marketing-plan-presentation":["無料マーケティング計画 PowerPoint テンプレート","マーケティング計画"], "project-proposal-presentation":["無料プロジェクト提案 PowerPoint テンプレート","プロジェクト提案"], "sales-report-presentation":["無料営業レポート PowerPoint テンプレート","営業レポート"],
+    "lesson-plan-presentation":["無料授業計画 PowerPoint テンプレート","授業計画"], "thesis-defense-presentation":["無料論文審査 PowerPoint テンプレート","論文審査"], "clinical-case-presentation":["無料臨床症例 PowerPoint テンプレート","臨床症例"],
+    "artificial-intelligence-presentation":["無料 AI PowerPoint テンプレート","AI・テクノロジー"], "creative-portfolio-presentation":["無料クリエイティブポートフォリオ","ポートフォリオ"], "product-roadmap-presentation":["無料プロダクトロードマップ PowerPoint","製品ロードマップ"],
+  },
+  ko: {
+    "business-plan-presentation":["무료 사업계획서 PowerPoint 템플릿","사업계획서"], "startup-pitch-deck":["무료 스타트업 피치덱 템플릿","스타트업 피치덱"], "company-profile-presentation":["무료 회사소개 PowerPoint 템플릿","회사소개"],
+    "marketing-plan-presentation":["무료 마케팅 계획 PowerPoint 템플릿","마케팅 계획"], "project-proposal-presentation":["무료 프로젝트 제안 PowerPoint 템플릿","프로젝트 제안"], "sales-report-presentation":["무료 영업 보고서 PowerPoint 템플릿","영업 보고서"],
+    "lesson-plan-presentation":["무료 수업 계획 PowerPoint 템플릿","수업 계획"], "thesis-defense-presentation":["무료 학위 논문 발표 PowerPoint 템플릿","논문 발표"], "clinical-case-presentation":["무료 임상 사례 PowerPoint 템플릿","임상 사례"],
+    "artificial-intelligence-presentation":["무료 인공지능 PowerPoint 템플릿","인공지능"], "creative-portfolio-presentation":["무료 크리에이티브 포트폴리오 템플릿","포트폴리오"], "product-roadmap-presentation":["무료 제품 로드맵 PowerPoint 템플릿","제품 로드맵"],
+  },
+  fr: {
+    "business-plan-presentation":["Modèle PowerPoint gratuit de business plan","Business plan"], "startup-pitch-deck":["Modèle gratuit de pitch deck startup","Pitch deck startup"], "company-profile-presentation":["Modèle PowerPoint gratuit de présentation d’entreprise","Présentation d’entreprise"],
+    "marketing-plan-presentation":["Modèle PowerPoint gratuit de plan marketing","Plan marketing"], "project-proposal-presentation":["Modèle PowerPoint gratuit de proposition de projet","Proposition de projet"], "sales-report-presentation":["Modèle PowerPoint gratuit de rapport commercial","Rapport commercial"],
+    "lesson-plan-presentation":["Modèle PowerPoint gratuit de plan de cours","Plan de cours"], "thesis-defense-presentation":["Modèle PowerPoint gratuit de soutenance","Soutenance de thèse"], "clinical-case-presentation":["Modèle PowerPoint gratuit de cas clinique","Cas clinique"],
+    "artificial-intelligence-presentation":["Modèle PowerPoint gratuit sur l’intelligence artificielle","Intelligence artificielle"], "creative-portfolio-presentation":["Modèle PowerPoint gratuit de portfolio créatif","Portfolio créatif"], "product-roadmap-presentation":["Modèle PowerPoint gratuit de feuille de route produit","Feuille de route produit"],
+  },
+  es: {
+    "business-plan-presentation":["Plantilla PowerPoint gratis de plan de negocio","Plan de negocio"], "startup-pitch-deck":["Plantilla gratis de pitch deck para startups","Pitch deck de startup"], "company-profile-presentation":["Plantilla PowerPoint gratis de perfil de empresa","Perfil de empresa"],
+    "marketing-plan-presentation":["Plantilla PowerPoint gratis de plan de marketing","Plan de marketing"], "project-proposal-presentation":["Plantilla PowerPoint gratis de propuesta de proyecto","Propuesta de proyecto"], "sales-report-presentation":["Plantilla PowerPoint gratis de informe de ventas","Informe de ventas"],
+    "lesson-plan-presentation":["Plantilla PowerPoint gratis de plan de clase","Plan de clase"], "thesis-defense-presentation":["Plantilla PowerPoint gratis para defensa de tesis","Defensa de tesis"], "clinical-case-presentation":["Plantilla PowerPoint gratis de caso clínico","Caso clínico"],
+    "artificial-intelligence-presentation":["Plantilla PowerPoint gratis de inteligencia artificial","Inteligencia artificial"], "creative-portfolio-presentation":["Plantilla PowerPoint gratis de portafolio creativo","Portafolio creativo"], "product-roadmap-presentation":["Plantilla PowerPoint gratis de hoja de ruta de producto","Hoja de ruta de producto"],
+  },
+  ru: {
+    "business-plan-presentation":["Бесплатный шаблон бизнес-плана PowerPoint","Бизнес-план"], "startup-pitch-deck":["Бесплатный шаблон питч-дека стартапа","Питч-дек стартапа"], "company-profile-presentation":["Бесплатный шаблон презентации компании","О компании"],
+    "marketing-plan-presentation":["Бесплатный шаблон маркетингового плана PowerPoint","Маркетинговый план"], "project-proposal-presentation":["Бесплатный шаблон проектного предложения PowerPoint","Проектное предложение"], "sales-report-presentation":["Бесплатный шаблон отчёта о продажах PowerPoint","Отчёт о продажах"],
+    "lesson-plan-presentation":["Бесплатный шаблон плана урока PowerPoint","План урока"], "thesis-defense-presentation":["Бесплатный шаблон защиты диссертации PowerPoint","Защита диссертации"], "clinical-case-presentation":["Бесплатный шаблон клинического случая PowerPoint","Клинический случай"],
+    "artificial-intelligence-presentation":["Бесплатный шаблон PowerPoint об искусственном интеллекте","Искусственный интеллект"], "creative-portfolio-presentation":["Бесплатный шаблон творческого портфолио PowerPoint","Творческое портфолио"], "product-roadmap-presentation":["Бесплатный шаблон дорожной карты продукта PowerPoint","Дорожная карта продукта"],
+  },
 };
 
 export function localizedTemplateName(template: PptTemplate, locale: Locale) {
   const names = localizedNames[locale]?.[template.slug];
   return { name: names?.[0] ?? template.name, shortName: names?.[1] ?? template.shortName };
+}
+
+export function localizedCategoryName(category: TemplateCategory, locale: Locale) {
+  const templateSlug = `${category.slug}-presentation`;
+  const exceptions: Record<string, string> = { "business-plan": "business-plan-presentation", "pitch-deck": "startup-pitch-deck", "company-profile": "company-profile-presentation", education: "lesson-plan-presentation", medical: "clinical-case-presentation", portfolio: "creative-portfolio-presentation" };
+  return localizedNames[locale]?.[exceptions[category.slug] ?? templateSlug]?.[1] ?? category.name;
 }
