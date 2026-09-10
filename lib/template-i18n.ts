@@ -123,8 +123,53 @@ const localizedDailyNames: Partial<Record<Locale, Record<string, [string, string
   },
 };
 
+const localized20260910Names: Partial<Record<Locale, Record<string, [string, string]>>> = {
+  "zh-CN": {
+    "restaurant-launch-business-plan":["免费餐厅开业商业计划 PowerPoint 模板","餐厅开业商业计划"], "deep-tech-startup-pitch-deck":["免费硬科技创业融资路演 PPT 模板","硬科技创业路演"], "retro-company-profile-presentation":["免费复古公司介绍 PowerPoint 模板","复古公司介绍"],
+    "event-marketing-plan-presentation":["免费活动营销计划 PowerPoint 模板","活动营销计划"], "road-construction-project-proposal":["免费道路建设项目提案 PowerPoint 模板","道路建设项目提案"], "weekly-sales-report-presentation":["免费每周销售报告 PowerPoint 模板","每周销售报告"],
+    "grammar-lesson-plan-presentation":["免费语法课程计划 PowerPoint 模板","语法课程计划"], "monochrome-thesis-defense-presentation":["免费黑白论文答辩 PowerPoint 模板","黑白论文答辩"], "patient-recovery-clinical-case":["免费患者康复临床病例 PowerPoint 模板","患者康复临床病例"],
+    "ai-governance-presentation":["免费 AI 治理 PowerPoint 模板","AI 治理"], "architecture-portfolio-presentation":["免费建筑作品集 PowerPoint 模板","建筑作品集"], "release-train-product-roadmap":["免费发布列车产品路线图 PowerPoint 模板","发布列车产品路线图"],
+  },
+  "zh-TW": {
+    "restaurant-launch-business-plan":["免費餐廳開業商業計畫 PowerPoint 範本","餐廳開業商業計畫"], "deep-tech-startup-pitch-deck":["免費硬科技新創募資簡報範本","硬科技新創簡報"], "retro-company-profile-presentation":["免費復古公司介紹 PowerPoint 範本","復古公司介紹"],
+    "event-marketing-plan-presentation":["免費活動行銷計畫 PowerPoint 範本","活動行銷計畫"], "road-construction-project-proposal":["免費道路建設專案提案 PowerPoint 範本","道路建設專案提案"], "weekly-sales-report-presentation":["免費每週銷售報告 PowerPoint 範本","每週銷售報告"],
+    "grammar-lesson-plan-presentation":["免費文法課程計畫 PowerPoint 範本","文法課程計畫"], "monochrome-thesis-defense-presentation":["免費黑白論文答辯 PowerPoint 範本","黑白論文答辯"], "patient-recovery-clinical-case":["免費病患康復臨床病例 PowerPoint 範本","病患康復臨床病例"],
+    "ai-governance-presentation":["免費 AI 治理 PowerPoint 範本","AI 治理"], "architecture-portfolio-presentation":["免費建築作品集 PowerPoint 範本","建築作品集"], "release-train-product-roadmap":["免費發布列車產品路線圖 PowerPoint 範本","發布列車產品路線圖"],
+  },
+  ja: {
+    "restaurant-launch-business-plan":["無料レストラン開業事業計画 PowerPoint テンプレート","レストラン開業事業計画"], "deep-tech-startup-pitch-deck":["無料ディープテック・スタートアップ向けピッチ資料","ディープテック・ピッチ"], "retro-company-profile-presentation":["無料レトロ会社概要 PowerPoint テンプレート","レトロ会社概要"],
+    "event-marketing-plan-presentation":["無料イベントマーケティング計画 PowerPoint テンプレート","イベントマーケティング計画"], "road-construction-project-proposal":["無料道路建設プロジェクト提案 PowerPoint テンプレート","道路建設プロジェクト提案"], "weekly-sales-report-presentation":["無料週間営業レポート PowerPoint テンプレート","週間営業レポート"],
+    "grammar-lesson-plan-presentation":["無料文法授業計画 PowerPoint テンプレート","文法授業計画"], "monochrome-thesis-defense-presentation":["無料モノクロ論文審査 PowerPoint テンプレート","モノクロ論文審査"], "patient-recovery-clinical-case":["無料患者回復臨床症例 PowerPoint テンプレート","患者回復臨床症例"],
+    "ai-governance-presentation":["無料 AI ガバナンス PowerPoint テンプレート","AI ガバナンス"], "architecture-portfolio-presentation":["無料建築ポートフォリオ PowerPoint テンプレート","建築ポートフォリオ"], "release-train-product-roadmap":["無料リリーストレイン製品ロードマップ PowerPoint","リリーストレイン・ロードマップ"],
+  },
+  ko: {
+    "restaurant-launch-business-plan":["무료 레스토랑 오픈 사업계획서 PowerPoint 템플릿","레스토랑 오픈 사업계획서"], "deep-tech-startup-pitch-deck":["무료 딥테크 스타트업 피치덱 템플릿","딥테크 스타트업 피치덱"], "retro-company-profile-presentation":["무료 레트로 회사 소개 PowerPoint 템플릿","레트로 회사 소개"],
+    "event-marketing-plan-presentation":["무료 이벤트 마케팅 계획 PowerPoint 템플릿","이벤트 마케팅 계획"], "road-construction-project-proposal":["무료 도로 건설 프로젝트 제안 PowerPoint 템플릿","도로 건설 프로젝트 제안"], "weekly-sales-report-presentation":["무료 주간 영업 보고서 PowerPoint 템플릿","주간 영업 보고서"],
+    "grammar-lesson-plan-presentation":["무료 문법 수업 계획 PowerPoint 템플릿","문법 수업 계획"], "monochrome-thesis-defense-presentation":["무료 모노크롬 학위 논문 발표 PowerPoint 템플릿","모노크롬 논문 발표"], "patient-recovery-clinical-case":["무료 환자 회복 임상 사례 PowerPoint 템플릿","환자 회복 임상 사례"],
+    "ai-governance-presentation":["무료 AI 거버넌스 PowerPoint 템플릿","AI 거버넌스"], "architecture-portfolio-presentation":["무료 건축 포트폴리오 PowerPoint 템플릿","건축 포트폴리오"], "release-train-product-roadmap":["무료 릴리스 트레인 제품 로드맵 PowerPoint 템플릿","릴리스 트레인 로드맵"],
+  },
+  fr: {
+    "restaurant-launch-business-plan":["Modèle PowerPoint gratuit de business plan pour ouverture de restaurant","Business plan de restaurant"], "deep-tech-startup-pitch-deck":["Pitch deck gratuit pour startup deep tech","Pitch deck deep tech"], "retro-company-profile-presentation":["Modèle PowerPoint gratuit de présentation d’entreprise rétro","Présentation d’entreprise rétro"],
+    "event-marketing-plan-presentation":["Modèle PowerPoint gratuit de plan marketing événementiel","Plan marketing événementiel"], "road-construction-project-proposal":["Modèle PowerPoint gratuit de proposition de construction routière","Proposition de construction routière"], "weekly-sales-report-presentation":["Modèle PowerPoint gratuit de rapport commercial hebdomadaire","Rapport commercial hebdomadaire"],
+    "grammar-lesson-plan-presentation":["Modèle PowerPoint gratuit de cours de grammaire","Cours de grammaire"], "monochrome-thesis-defense-presentation":["Modèle PowerPoint monochrome gratuit de soutenance","Soutenance monochrome"], "patient-recovery-clinical-case":["Modèle PowerPoint gratuit de cas clinique de récupération","Cas clinique de récupération"],
+    "ai-governance-presentation":["Modèle PowerPoint gratuit de gouvernance de l’IA","Gouvernance de l’IA"], "architecture-portfolio-presentation":["Modèle PowerPoint gratuit de portfolio d’architecture","Portfolio d’architecture"], "release-train-product-roadmap":["Modèle PowerPoint gratuit de feuille de route des versions","Feuille de route des versions"],
+  },
+  es: {
+    "restaurant-launch-business-plan":["Plantilla PowerPoint gratis de plan de negocio para abrir un restaurante","Plan de negocio de restaurante"], "deep-tech-startup-pitch-deck":["Pitch deck gratis para startup deep tech","Pitch deck deep tech"], "retro-company-profile-presentation":["Plantilla PowerPoint gratis de perfil de empresa retro","Perfil de empresa retro"],
+    "event-marketing-plan-presentation":["Plantilla PowerPoint gratis de plan de marketing de eventos","Plan de marketing de eventos"], "road-construction-project-proposal":["Plantilla PowerPoint gratis de propuesta de construcción vial","Propuesta de construcción vial"], "weekly-sales-report-presentation":["Plantilla PowerPoint gratis de informe semanal de ventas","Informe semanal de ventas"],
+    "grammar-lesson-plan-presentation":["Plantilla PowerPoint gratis de plan de clase de gramática","Clase de gramática"], "monochrome-thesis-defense-presentation":["Plantilla PowerPoint monocroma gratis para defensa de tesis","Defensa de tesis monocroma"], "patient-recovery-clinical-case":["Plantilla PowerPoint gratis de caso clínico de recuperación","Caso clínico de recuperación"],
+    "ai-governance-presentation":["Plantilla PowerPoint gratis de gobernanza de IA","Gobernanza de IA"], "architecture-portfolio-presentation":["Plantilla PowerPoint gratis de portafolio de arquitectura","Portafolio de arquitectura"], "release-train-product-roadmap":["Plantilla PowerPoint gratis de hoja de ruta de lanzamientos","Hoja de ruta de lanzamientos"],
+  },
+  ru: {
+    "restaurant-launch-business-plan":["Бесплатный шаблон бизнес-плана открытия ресторана PowerPoint","Бизнес-план ресторана"], "deep-tech-startup-pitch-deck":["Бесплатный питч-дек deep tech стартапа","Питч-дек deep tech"], "retro-company-profile-presentation":["Бесплатный ретро-шаблон презентации компании","Ретро-презентация компании"],
+    "event-marketing-plan-presentation":["Бесплатный шаблон плана событийного маркетинга PowerPoint","План событийного маркетинга"], "road-construction-project-proposal":["Бесплатный шаблон предложения дорожного строительства PowerPoint","Предложение дорожного строительства"], "weekly-sales-report-presentation":["Бесплатный шаблон еженедельного отчёта о продажах PowerPoint","Еженедельный отчёт о продажах"],
+    "grammar-lesson-plan-presentation":["Бесплатный шаблон урока грамматики PowerPoint","Урок грамматики"], "monochrome-thesis-defense-presentation":["Бесплатный монохромный шаблон защиты диссертации PowerPoint","Монохромная защита диссертации"], "patient-recovery-clinical-case":["Бесплатный шаблон клинического случая восстановления пациента","Клинический случай восстановления"],
+    "ai-governance-presentation":["Бесплатный шаблон управления ИИ PowerPoint","Управление ИИ"], "architecture-portfolio-presentation":["Бесплатный шаблон архитектурного портфолио PowerPoint","Архитектурное портфолио"], "release-train-product-roadmap":["Бесплатный шаблон дорожной карты релизов PowerPoint","Дорожная карта релизов"],
+  },
+};
+
 export function localizedTemplateName(template: PptTemplate, locale: Locale) {
-  const names = localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
+  const names = localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
   return { name: names?.[0] ?? template.name, shortName: names?.[1] ?? template.shortName };
 }
 

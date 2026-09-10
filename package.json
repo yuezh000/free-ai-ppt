@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "templates:build": "node scripts/generate-templates.mjs && node scripts/generate-daily-templates.mjs",
+    "templates:build": "node scripts/generate-templates.mjs && node scripts/generate-daily-templates.mjs && node scripts/generate-templates-2026-09-10.mjs",
     "test:ui-tags": "node scripts/check-ui-testids.mjs",
     "test:ui": "npm run test:ui-tags && playwright test",
     "start": "next start",
