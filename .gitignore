@@ -11,4 +11,5 @@ test-results/
 playwright-report/
 blob-report/
 resume-codex.sh
+resume.sh
 .ipynb_checkpoints/
