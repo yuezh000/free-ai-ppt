@@ -20,6 +20,7 @@ test("template directory exposes twelve focused presentation categories", async 
 
 test("localized template category links preserve the selected locale", async ({ page }) => {
   await page.goto("/zh-CN/templates");
+  await expect(page.locator("html")).toHaveAttribute("lang", "zh-CN");
   await expect(page.locator(".template-category-card")).toHaveCount(12);
 
   await page.getByTestId("template-category-product-roadmap").click();
@@ -31,5 +32,12 @@ test("localized template category links preserve the selected locale", async ({ 
 
   await page.getByRole("heading", { level: 3, name: "免费发布列车产品路线图 PowerPoint 模板", exact: true }).getByRole("link").click();
   await expect(page).toHaveURL(/\/zh-CN\/templates\/release-train-product-roadmap\/?$/);
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /免费下载/);
+  await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute("content", "zh_CN");
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
+  await expect(page.locator('link[rel="alternate"][hreflang="zh-CN"]')).toHaveAttribute("href", "https://freeaippt.space/zh-CN/templates/release-train-product-roadmap");
+  await expect(page.getByText("由 FreeAIPPT 设计并审核", { exact: true })).toBeVisible();
+  await expect(page.getByTestId("template-release-train-product-roadmap-provenance")).toContainText("原创设计，制作过程透明");
+  await expect(page.getByRole("heading", { name: "常见问题", exact: true })).toBeVisible();
   await expect(page.getByTestId("template-release-train-product-roadmap-download")).toHaveAttribute("href", "/templates/files/release-train-product-roadmap.pptx");
 });

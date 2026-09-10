@@ -6,6 +6,8 @@ import { TemplateCard } from "@/components/template-card";
 import { TemplateCategoryGrid } from "@/components/template-category-grid";
 import { TemplateGallery } from "@/components/template-gallery";
 import { localizePath, type Locale } from "@/lib/i18n";
+import { templateSeoCopy } from "@/lib/seo-i18n";
+import { SITE_URL } from "@/lib/site";
 import { localizedCategoryName, localizedTemplateName, templateCopy } from "@/lib/template-i18n";
 import { getTemplate, getTemplateCategory, templates } from "@/lib/templates";
 
@@ -22,6 +24,7 @@ const directoryCopy: Record<Locale, { types: string; typeTitle: string; typeLead
 
 export function LocalizedTemplates({ locale, slug }: { locale: Locale; slug: string[] }) {
   const t = templateCopy(locale);
+  const seo = templateSeoCopy(locale);
   const directory = directoryCopy[locale];
   const path = slug.join("/");
   if (path === "templates") return <main><Header locale={locale} />
@@ -36,7 +39,27 @@ export function LocalizedTemplates({ locale, slug }: { locale: Locale; slug: str
   if (category) {
     const categoryName = localizedCategoryName(category, locale);
     const categoryTemplates = templates.filter((item) => item.categorySlug === category.slug);
-    return <main><Header locale={locale} /><section className="category-hero"><nav className="breadcrumbs"><Link href={localizePath(locale)}>{t.home}</Link><span>/</span><Link href={localizePath(locale, "/templates")}>{t.nav}</Link><span>/</span><span>{categoryName}</span></nav><span className="article-kicker"><LayoutTemplate size={14} /> {categoryName}</span><h1>{categoryName}<br /><em>PowerPoint</em></h1><p>{category.description}</p></section><section className="template-library"><div className="template-library-head"><div><span className="eyebrow">{directory.count(categoryTemplates.length)}</span><h2>{categoryName}</h2></div></div><div className="template-grid">{categoryTemplates.map((item) => <TemplateCard template={item} locale={locale} key={item.slug} />)}</div></section></main>;
+    const description = seo.categoryDescription(categoryName);
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: seo.categoryTitle(categoryName),
+      description,
+      inLanguage: locale,
+      url: `${SITE_URL}${localizePath(locale, `/templates/${category.slug}`)}`,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: categoryTemplates.length,
+        itemListElement: categoryTemplates.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `${SITE_URL}${localizePath(locale, `/templates/${item.slug}`)}`,
+          name: localizedTemplateName(item, locale).name,
+        })),
+      },
+    };
+    return <main><Header locale={locale} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /><section className="category-hero"><nav className="breadcrumbs"><Link href={localizePath(locale)}>{t.home}</Link><span>/</span><Link href={localizePath(locale, "/templates")}>{t.nav}</Link><span>/</span><span>{categoryName}</span></nav><span className="article-kicker"><LayoutTemplate size={14} /> {categoryName}</span><h1>{categoryName}<br /><em>PowerPoint</em></h1><p>{description}</p></section><section className="template-library"><div className="template-library-head"><div><span className="eyebrow">{directory.count(categoryTemplates.length)}</span><h2>{categoryName}</h2></div></div><div className="template-grid">{categoryTemplates.map((item) => <TemplateCard template={item} locale={locale} key={item.slug} />)}</div></section></main>;
   }
 
   const template = path.startsWith("templates/") ? getTemplate(slug[1]) : undefined;
@@ -44,5 +67,35 @@ export function LocalizedTemplates({ locale, slug }: { locale: Locale; slug: str
   const name = localizedTemplateName(template, locale);
   const related = templates.filter((item) => item.slug !== template.slug).slice(0, 2);
   const categoryName = localizedCategoryName(getTemplateCategory(template.categorySlug)!, locale);
-  return <main><Header locale={locale} /><article className="template-detail"><nav className="breadcrumbs"><Link href={localizePath(locale)}>{t.home}</Link><span>/</span><Link href={localizePath(locale, "/templates")}>{t.nav}</Link><span>/</span><Link href={localizePath(locale, `/templates/${template.categorySlug}`)}>{categoryName}</Link><span>/</span><span>{name.shortName}</span></nav><header className="template-detail-head"><div><span className="article-kicker"><LayoutTemplate size={14} /> {t.freeEditable}</span><h1>{name.name}</h1><p>{template.description}</p><div className="template-tags">{template.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div><TemplateActions slug={template.slug} locale={locale} /></header><section><div className="section-heading"><span>{t.preview}</span><h2>{t.previewTitle}</h2><p>{t.previewLead}</p></div><TemplateGallery template={template} locale={locale} /></section><section className="template-info-grid"><div><span className="eyebrow">{t.about}</span><h2>{t.aboutTitle}</h2><p>{template.longDescription}</p><h3>{t.bestFor}</h3><ul>{template.bestFor.map((item) => <li key={item}><Check />{item}</li>)}</ul></div><aside><h3>{t.details}</h3><dl><div><dt>{t.slides.split(" · ")[0]}</dt><dd>8</dd></div><div><dt>{t.format}</dt><dd>PPTX</dd></div><div><dt>{t.ratio}</dt><dd>16:9</dd></div><div><dt>{t.language}</dt><dd>English</dd></div><div><dt>{t.fonts}</dt><dd>Aptos</dd></div><div><dt>{t.license}</dt><dd>{t.freeUse}</dd></div></dl><a href="/templates/LICENSE.txt" target="_blank"><ShieldCheck /> {t.readLicense}</a></aside></section><section className="included-section"><span className="eyebrow">{t.included}</span><h2>{t.includedTitle}</h2><div>{template.included.map((item, index) => <span key={item}><b>{String(index + 1).padStart(2, "0")}</b>{item}</span>)}</div></section><section className="download-band"><FileDown /><div><h2>{t.ready}</h2><p>{t.readyLead}</p></div><TemplateActions slug={template.slug} locale={locale} placement="footer" /></section><section><div className="section-heading"><span>{t.more}</span><h2>{t.related}</h2></div><div className="template-grid related">{related.map((item) => <TemplateCard template={item} locale={locale} key={item.slug} />)}</div></section></article></main>;
+  const description = seo.templateDescription(name.shortName);
+  const faq = seo.faq(name.shortName);
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name: name.name,
+      description,
+      creator: { "@id": `${SITE_URL}/#organization` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+      isAccessibleForFree: true,
+      inLanguage: "en",
+      mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}${localizePath(locale, `/templates/${template.slug}`)}`, inLanguage: locale },
+      url: `${SITE_URL}${localizePath(locale, `/templates/${template.slug}`)}`,
+      license: `${SITE_URL}/templates/LICENSE.txt`,
+      encoding: { "@type": "MediaObject", contentUrl: `${SITE_URL}/templates/files/${template.slug}.pptx`, encodingFormat: "application/vnd.openxmlformats-officedocument.presentationml.presentation" },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: t.home, item: `${SITE_URL}${localizePath(locale)}` },
+        { "@type": "ListItem", position: 2, name: t.nav, item: `${SITE_URL}${localizePath(locale, "/templates")}` },
+        { "@type": "ListItem", position: 3, name: categoryName, item: `${SITE_URL}${localizePath(locale, `/templates/${template.categorySlug}`)}` },
+        { "@type": "ListItem", position: 4, name: name.shortName, item: `${SITE_URL}${localizePath(locale, `/templates/${template.slug}`)}` },
+      ],
+    },
+    { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: locale, mainEntity: faq.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })) },
+  ];
+  return <main><Header locale={locale} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /><article className="template-detail"><nav className="breadcrumbs"><Link href={localizePath(locale)}>{t.home}</Link><span>/</span><Link href={localizePath(locale, "/templates")}>{t.nav}</Link><span>/</span><Link href={localizePath(locale, `/templates/${template.categorySlug}`)}>{categoryName}</Link><span>/</span><span>{name.shortName}</span></nav><header className="template-detail-head"><div><span className="article-kicker"><LayoutTemplate size={14} /> {t.freeEditable}</span><h1>{name.name}</h1><p>{description}</p><p className="template-byline">{seo.byline}</p><div className="template-tags">{seo.tags(categoryName).map((tag) => <span key={tag}>{tag}</span>)}</div></div><TemplateActions slug={template.slug} locale={locale} /></header><section><div className="section-heading"><span>{t.preview}</span><h2>{t.previewTitle}</h2><p>{t.previewLead}</p></div><TemplateGallery template={template} locale={locale} /></section><section className="template-info-grid"><div><span className="eyebrow">{t.about}</span><h2>{t.aboutTitle}</h2><p>{seo.templateAbout(name.shortName, categoryName)}</p><h3>{t.bestFor}</h3><ul>{seo.bestFor(categoryName).map((item) => <li key={item}><Check />{item}</li>)}</ul></div><aside><h3>{t.details}</h3><dl><div><dt>{t.slides.split(" · ")[0]}</dt><dd>8</dd></div><div><dt>{t.format}</dt><dd>PPTX</dd></div><div><dt>{t.ratio}</dt><dd>16:9</dd></div><div><dt>{t.language}</dt><dd>{seo.english}</dd></div><div><dt>{t.fonts}</dt><dd>Aptos</dd></div><div><dt>{t.license}</dt><dd>{t.freeUse}</dd></div></dl><a href="/templates/LICENSE.txt" target="_blank"><ShieldCheck /> {t.readLicense}</a></aside></section><section className="template-provenance" data-testid={`template-${template.slug}-provenance`}><ShieldCheck /><div><span className="eyebrow">FreeAIPPT</span><h2>{seo.trustTitle}</h2><p>{seo.trustBody}</p></div></section><section className="included-section"><span className="eyebrow">{t.included}</span><h2>{t.includedTitle}</h2><div>{seo.included.map((item, index) => <span key={item}><b>{String(index + 1).padStart(2, "0")}</b>{item}</span>)}</div></section><section className="download-band"><FileDown /><div><h2>{t.ready}</h2><p>{t.readyLead}</p></div><TemplateActions slug={template.slug} locale={locale} placement="footer" /></section><section><div className="section-heading"><span>{t.more}</span><h2>{t.related}</h2></div><div className="template-grid related">{related.map((item) => <TemplateCard template={item} locale={locale} key={item.slug} />)}</div></section><section id="faq"><div className="section-heading"><span>FAQ</span><h2>{seo.faqTitle}</h2></div><div className="faq-list">{faq.map((item) => <details key={item.q}><summary>{item.q}<span>+</span></summary><p>{item.a}</p></details>)}</div></section></article></main>;
 }

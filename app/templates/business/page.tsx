@@ -3,13 +3,20 @@ import Link from "next/link";
 import { LayoutTemplate } from "lucide-react";
 import { Header } from "@/components/header";
 import { TemplateCard } from "@/components/template-card";
+import { languageAlternates } from "@/lib/i18n";
+import { SITE_URL } from "@/lib/site";
 import { templates } from "@/lib/templates";
 
 export const metadata: Metadata = {
   title: "Free Business PowerPoint Templates: Editable PPTX | FreeAIPPT",
   description: "Download free business PowerPoint templates for plans, startup pitches, and company profiles. Professionally structured, fully editable, and ready for 16:9 screens.",
   keywords: ["free business powerpoint templates", "business ppt templates free download", "professional powerpoint templates free", "business presentation templates"],
-  alternates: { canonical: "/templates/business" },
+  authors: [{ name: "FreeAIPPT", url: SITE_URL }],
+  creator: "FreeAIPPT",
+  publisher: "FreeAIPPT",
+  alternates: { canonical: "/templates/business", languages: { ...languageAlternates("/templates/business"), "x-default": "/templates/business" } },
+  openGraph: { title: "Free Business PowerPoint Templates", description: "Original, editable business presentation templates with no sign-up required.", type: "website", url: "/templates/business", siteName: "FreeAIPPT", locale: "en_US" },
+  twitter: { card: "summary", title: "Free Business PowerPoint Templates", description: "Original, editable business presentation templates with no sign-up required." },
 };
 
 export default function BusinessTemplatesPage() {

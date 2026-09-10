@@ -3,11 +3,17 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, FileText, LayoutTemplate, Ruler } from "lucide-react";
 import { Header } from "@/components/header";
 import { languageAlternates } from "@/lib/i18n";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Presentation Resources & Guides | FreeAIPPT",
   description: "Practical guides for planning, designing, and creating better presentations with PowerPoint and AI.",
+  authors: [{ name: "FreeAIPPT", url: SITE_URL }],
+  creator: "FreeAIPPT",
+  publisher: "FreeAIPPT",
   alternates: { canonical: "/resources", languages: { ...languageAlternates("/resources"), "x-default": "/resources" } },
+  openGraph: { title: "Presentation Resources & Guides | FreeAIPPT", description: "Practical, reviewed guides for planning and creating better presentations with PowerPoint and AI.", type: "website", url: "/resources", siteName: "FreeAIPPT", locale: "en_US" },
+  twitter: { card: "summary", title: "Presentation Resources & Guides | FreeAIPPT", description: "Practical, reviewed guides for planning and creating better presentations with PowerPoint and AI." },
 };
 
 export default function ResourcesPage() {

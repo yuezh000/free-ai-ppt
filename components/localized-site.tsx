@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Check, Download, FileInput, Info, Layers3, Ruler, Sparkles } from "lucide-react";
 import { ComingSoon } from "@/components/coming-soon";
@@ -16,10 +16,6 @@ type PageName = "home" | "pricing" | "queue" | "resources" | "article";
 export function LocalizedSite({ locale, page }: { locale: Locale; page: PageName }) {
   const t = translations[locale];
   const [open, setOpen] = useState(false);
-  useEffect(() => {
-    document.documentElement.lang = locale;
-    localStorage.setItem("freeppt-locale", locale);
-  }, [locale]);
 
   if (page === "home") return (
     <main>

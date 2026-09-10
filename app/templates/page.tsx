@@ -4,13 +4,20 @@ import { ArrowRight, Check, LayoutTemplate, Sparkles } from "lucide-react";
 import { Header } from "@/components/header";
 import { TemplateCard } from "@/components/template-card";
 import { TemplateCategoryGrid } from "@/components/template-category-grid";
+import { languageAlternates } from "@/lib/i18n";
+import { SITE_URL } from "@/lib/site";
 import { templates } from "@/lib/templates";
 
 export const metadata: Metadata = {
   title: "Free PowerPoint Templates: Editable PPT Designs | FreeAIPPT",
   description: "Download free, editable PowerPoint templates for business plans, startup pitch decks, company profiles, proposals, and more. No sign-up required.",
   keywords: ["free ppt templates", "free powerpoint templates", "presentation templates free", "editable ppt templates", "ppt templates free download"],
-  alternates: { canonical: "/templates" },
+  authors: [{ name: "FreeAIPPT", url: SITE_URL }],
+  creator: "FreeAIPPT",
+  publisher: "FreeAIPPT",
+  alternates: { canonical: "/templates", languages: { ...languageAlternates("/templates"), "x-default": "/templates" } },
+  openGraph: { title: "Free PowerPoint Templates: Editable PPT Designs", description: "Download original, editable PowerPoint templates with no sign-up required.", type: "website", url: "/templates", siteName: "FreeAIPPT", locale: "en_US", images: [{ url: "/templates/previews/business-plan-presentation/01.jpg", width: 1600, height: 900, alt: "FreeAIPPT editable PowerPoint templates" }] },
+  twitter: { card: "summary_large_image", title: "Free PowerPoint Templates: Editable PPT Designs", description: "Download original, editable PowerPoint templates with no sign-up required.", images: ["/templates/previews/business-plan-presentation/01.jpg"] },
 };
 
 export default function TemplatesPage() {

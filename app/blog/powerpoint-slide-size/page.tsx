@@ -11,15 +11,21 @@ export const metadata: Metadata = {
   title: "PowerPoint Slide Size: Dimensions, Pixels & How to Change It",
   description: "PowerPoint slide sizes explained: 16:9, 4:3, inches, centimeters, and pixel dimensions. Learn which size to use and how to change it safely.",
   keywords: ["powerpoint slide size", "powerpoint slide dimensions", "powerpoint slide size pixels", "presentation slide size"],
+  authors: [{ name: "FreeAIPPT", url: SITE_URL }],
+  creator: "FreeAIPPT",
+  publisher: "FreeAIPPT",
   alternates: { canonical, languages: { ...languageAlternates(canonical), "x-default": canonical } },
   openGraph: {
     title: "PowerPoint Slide Size: The Complete Dimensions Guide",
     description: "Choose the correct slide size for screens, projectors, print, and social media.",
     type: "article",
     url: canonical,
+    siteName: "FreeAIPPT",
+    locale: "en_US",
     publishedTime: "2026-09-04T00:00:00Z",
     modifiedTime: "2026-09-04T00:00:00Z",
   },
+  twitter: { card: "summary", title: "PowerPoint Slide Size: The Complete Dimensions Guide", description: "Choose the correct slide size for screens, projectors, print, and social media." },
 };
 
 const faq = [
@@ -35,8 +41,8 @@ const jsonLd = [
     headline: "PowerPoint Slide Size: Dimensions, Pixels, and How to Change It",
     description: "A practical guide to PowerPoint slide dimensions for screens, print, and digital publishing.",
     datePublished: "2026-09-04", dateModified: "2026-09-04",
-    author: { "@type": "Organization", name: "FreeAIPPT" },
-    publisher: { "@type": "Organization", name: "FreeAIPPT" },
+    author: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: `${SITE_URL}${canonical}`,
   },
   {
