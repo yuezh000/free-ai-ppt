@@ -168,8 +168,53 @@ const localized20260910Names: Partial<Record<Locale, Record<string, [string, str
   },
 };
 
+const localized20260910Round2Names: Partial<Record<Locale, Record<string, [string, string]>>> = {
+  "zh-CN": {
+    "circular-fashion-business-plan":["免费循环时尚商业计划 PowerPoint 模板","循环时尚商业计划"], "fintech-control-room-pitch-deck":["免费金融科技创业融资路演 PPT 模板","金融科技控制室路演"], "structural-grid-company-profile":["免费建筑公司介绍 PowerPoint 模板","结构网格公司介绍"],
+    "digital-channel-launch-plan":["免费数字营销发布计划 PowerPoint 模板","数字渠道发布计划"], "engineering-systems-project-proposal":["免费工程系统项目提案 PowerPoint 模板","工程系统提案"], "quarterly-sales-review-presentation":["免费季度销售复盘 PowerPoint 模板","季度销售复盘"],
+    "constellation-lesson-plan-presentation":["免费星座课程计划 PowerPoint 模板","星座课程计划"], "evidence-coding-thesis-defense":["免费定性研究论文答辩 PowerPoint 模板","证据编码论文答辩"], "clinical-decision-board-case":["免费临床决策病例 PowerPoint 模板","临床决策病例"],
+    "cyber-resilience-technology-brief":["免费网络韧性技术 PowerPoint 模板","网络韧性技术简报"], "fashion-pattern-portfolio":["免费时装设计作品集 PowerPoint 模板","时装纸样作品集"], "dependency-calendar-product-roadmap":["免费依赖日历产品路线图 PowerPoint 模板","依赖日历路线图"],
+  },
+  "zh-TW": {
+    "circular-fashion-business-plan":["免費循環時尚商業計畫 PowerPoint 範本","循環時尚商業計畫"], "fintech-control-room-pitch-deck":["免費金融科技新創募資簡報範本","金融科技控制室簡報"], "structural-grid-company-profile":["免費營造公司介紹 PowerPoint 範本","結構網格公司介紹"],
+    "digital-channel-launch-plan":["免費數位行銷發布計畫 PowerPoint 範本","數位管道發布計畫"], "engineering-systems-project-proposal":["免費工程系統專案提案 PowerPoint 範本","工程系統提案"], "quarterly-sales-review-presentation":["免費季度銷售回顧 PowerPoint 範本","季度銷售回顧"],
+    "constellation-lesson-plan-presentation":["免費星座課程計畫 PowerPoint 範本","星座課程計畫"], "evidence-coding-thesis-defense":["免費質性研究論文答辯 PowerPoint 範本","證據編碼論文答辯"], "clinical-decision-board-case":["免費臨床決策病例 PowerPoint 範本","臨床決策病例"],
+    "cyber-resilience-technology-brief":["免費網路韌性技術 PowerPoint 範本","網路韌性技術簡報"], "fashion-pattern-portfolio":["免費時裝設計作品集 PowerPoint 範本","時裝紙樣作品集"], "dependency-calendar-product-roadmap":["免費依賴日曆產品路線圖 PowerPoint 範本","依賴日曆路線圖"],
+  },
+  ja: {
+    "circular-fashion-business-plan":["無料循環型ファッション事業計画 PowerPoint テンプレート","循環型ファッション事業計画"], "fintech-control-room-pitch-deck":["無料 FinTech スタートアップ・ピッチデッキ","FinTech コントロールルーム"], "structural-grid-company-profile":["無料建設会社概要 PowerPoint テンプレート","構造グリッド会社概要"],
+    "digital-channel-launch-plan":["無料デジタルマーケティング発表計画 PowerPoint","デジタルチャネル発表計画"], "engineering-systems-project-proposal":["無料エンジニアリングシステム提案 PowerPoint","エンジニアリングシステム提案"], "quarterly-sales-review-presentation":["無料四半期営業レビュー PowerPoint テンプレート","四半期営業レビュー"],
+    "constellation-lesson-plan-presentation":["無料星座授業計画 PowerPoint テンプレート","星座授業計画"], "evidence-coding-thesis-defense":["無料質的研究論文審査 PowerPoint テンプレート","エビデンスコーディング論文審査"], "clinical-decision-board-case":["無料臨床意思決定症例 PowerPoint テンプレート","臨床意思決定症例"],
+    "cyber-resilience-technology-brief":["無料サイバーレジリエンス技術 PowerPoint","サイバーレジリエンス技術概要"], "fashion-pattern-portfolio":["無料ファッションデザイン・ポートフォリオ PowerPoint","ファッションパターン・ポートフォリオ"], "dependency-calendar-product-roadmap":["無料依存関係カレンダー製品ロードマップ","依存関係カレンダー"],
+  },
+  ko: {
+    "circular-fashion-business-plan":["무료 순환 패션 사업계획서 PowerPoint 템플릿","순환 패션 사업계획서"], "fintech-control-room-pitch-deck":["무료 핀테크 스타트업 피치덱 템플릿","핀테크 컨트롤룸 피치덱"], "structural-grid-company-profile":["무료 건설 회사 소개 PowerPoint 템플릿","구조 그리드 회사 소개"],
+    "digital-channel-launch-plan":["무료 디지털 마케팅 출시 계획 PowerPoint 템플릿","디지털 채널 출시 계획"], "engineering-systems-project-proposal":["무료 엔지니어링 시스템 프로젝트 제안 템플릿","엔지니어링 시스템 제안"], "quarterly-sales-review-presentation":["무료 분기별 영업 리뷰 PowerPoint 템플릿","분기별 영업 리뷰"],
+    "constellation-lesson-plan-presentation":["무료 별자리 수업 계획 PowerPoint 템플릿","별자리 수업 계획"], "evidence-coding-thesis-defense":["무료 질적 연구 학위 논문 발표 PowerPoint 템플릿","근거 코딩 논문 발표"], "clinical-decision-board-case":["무료 임상 의사결정 사례 PowerPoint 템플릿","임상 의사결정 사례"],
+    "cyber-resilience-technology-brief":["무료 사이버 회복탄력성 기술 PowerPoint 템플릿","사이버 회복탄력성 브리프"], "fashion-pattern-portfolio":["무료 패션 디자인 포트폴리오 PowerPoint 템플릿","패션 패턴 포트폴리오"], "dependency-calendar-product-roadmap":["무료 종속성 캘린더 제품 로드맵 PowerPoint","종속성 캘린더 로드맵"],
+  },
+  fr: {
+    "circular-fashion-business-plan":["Modèle PowerPoint gratuit de business plan de mode circulaire","Business plan de mode circulaire"], "fintech-control-room-pitch-deck":["Pitch deck gratuit pour startup FinTech","Pitch deck FinTech control room"], "structural-grid-company-profile":["Modèle PowerPoint gratuit de profil d’entreprise de construction","Profil d’entreprise structurel"],
+    "digital-channel-launch-plan":["Modèle PowerPoint gratuit de lancement marketing numérique","Plan de lancement digital"], "engineering-systems-project-proposal":["Modèle PowerPoint gratuit de proposition de système d’ingénierie","Proposition de système d’ingénierie"], "quarterly-sales-review-presentation":["Modèle PowerPoint gratuit de revue commerciale trimestrielle","Revue commerciale trimestrielle"],
+    "constellation-lesson-plan-presentation":["Modèle PowerPoint gratuit de cours sur les constellations","Cours sur les constellations"], "evidence-coding-thesis-defense":["Modèle PowerPoint gratuit de soutenance de recherche qualitative","Soutenance de codage des preuves"], "clinical-decision-board-case":["Modèle PowerPoint gratuit de cas de décision clinique","Cas de décision clinique"],
+    "cyber-resilience-technology-brief":["Modèle PowerPoint gratuit de cyber-résilience","Brief technologique de cyber-résilience"], "fashion-pattern-portfolio":["Modèle PowerPoint gratuit de portfolio de mode","Portfolio de patronage de mode"], "dependency-calendar-product-roadmap":["Modèle PowerPoint gratuit de feuille de route des dépendances","Feuille de route des dépendances"],
+  },
+  es: {
+    "circular-fashion-business-plan":["Plantilla PowerPoint gratis de plan de negocio de moda circular","Plan de negocio de moda circular"], "fintech-control-room-pitch-deck":["Pitch deck gratis para startup FinTech","Pitch deck FinTech control room"], "structural-grid-company-profile":["Plantilla PowerPoint gratis de perfil de empresa constructora","Perfil de empresa estructural"],
+    "digital-channel-launch-plan":["Plantilla PowerPoint gratis de lanzamiento de marketing digital","Plan de lanzamiento digital"], "engineering-systems-project-proposal":["Plantilla PowerPoint gratis de propuesta de sistemas de ingeniería","Propuesta de sistemas de ingeniería"], "quarterly-sales-review-presentation":["Plantilla PowerPoint gratis de revisión trimestral de ventas","Revisión trimestral de ventas"],
+    "constellation-lesson-plan-presentation":["Plantilla PowerPoint gratis de clase sobre constelaciones","Clase sobre constelaciones"], "evidence-coding-thesis-defense":["Plantilla PowerPoint gratis de defensa de investigación cualitativa","Defensa de codificación de evidencias"], "clinical-decision-board-case":["Plantilla PowerPoint gratis de caso de decisión clínica","Caso de decisión clínica"],
+    "cyber-resilience-technology-brief":["Plantilla PowerPoint gratis de ciberresiliencia","Brief tecnológico de ciberresiliencia"], "fashion-pattern-portfolio":["Plantilla PowerPoint gratis de portafolio de moda","Portafolio de patronaje de moda"], "dependency-calendar-product-roadmap":["Plantilla PowerPoint gratis de hoja de ruta de dependencias","Hoja de ruta de dependencias"],
+  },
+  ru: {
+    "circular-fashion-business-plan":["Бесплатный шаблон бизнес-плана циркулярной моды PowerPoint","Бизнес-план циркулярной моды"], "fintech-control-room-pitch-deck":["Бесплатный питч-дек FinTech-стартапа","Питч-дек FinTech control room"], "structural-grid-company-profile":["Бесплатный шаблон презентации строительной компании","Профиль строительной компании"],
+    "digital-channel-launch-plan":["Бесплатный шаблон плана запуска цифрового маркетинга","План запуска цифровых каналов"], "engineering-systems-project-proposal":["Бесплатный шаблон предложения инженерной системы","Предложение инженерной системы"], "quarterly-sales-review-presentation":["Бесплатный шаблон квартального обзора продаж","Квартальный обзор продаж"],
+    "constellation-lesson-plan-presentation":["Бесплатный шаблон урока о созвездиях PowerPoint","Урок о созвездиях"], "evidence-coding-thesis-defense":["Бесплатный шаблон защиты качественного исследования","Защита кодирования доказательств"], "clinical-decision-board-case":["Бесплатный шаблон клинического случая принятия решений","Клинический случай решений"],
+    "cyber-resilience-technology-brief":["Бесплатный шаблон презентации о киберустойчивости","Обзор киберустойчивости"], "fashion-pattern-portfolio":["Бесплатный шаблон портфолио дизайна одежды","Портфолио модных выкроек"], "dependency-calendar-product-roadmap":["Бесплатный шаблон календарной дорожной карты зависимостей","Календарь зависимостей"],
+  },
+};
+
 export function localizedTemplateName(template: PptTemplate, locale: Locale) {
-  const names = localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
+  const names = localized20260910Round2Names[locale]?.[template.slug] ?? localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
   return { name: names?.[0] ?? template.name, shortName: names?.[1] ?? template.shortName };
 }
 
