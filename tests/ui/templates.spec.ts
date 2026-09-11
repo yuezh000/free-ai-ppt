@@ -5,17 +5,17 @@ test("template directory exposes twelve focused presentation categories", async 
 
   const categories = page.locator(".template-category-card");
   await expect(categories).toHaveCount(12);
-  await expect(page.getByTestId("template-category-business-plan")).toContainText("4 free templates");
+  await expect(page.getByTestId("template-category-business-plan")).toContainText("5 free templates");
   await expect(page.getByTestId("template-category-artificial-intelligence")).toBeVisible();
-  await expect(page.locator(".template-card")).toHaveCount(48);
+  await expect(page.locator(".template-card")).toHaveCount(60);
 
   await page.getByTestId("template-category-marketing").click();
   await expect(page).toHaveURL(/\/templates\/marketing\/?$/);
   await expect(page.getByRole("heading", { level: 1, name: "Free Marketing Plan PowerPoint templates", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "Free Marketing Plan PowerPoint Template", exact: true })).toBeVisible();
-  await page.getByRole("heading", { level: 3, name: "Free Digital Marketing Launch Plan PowerPoint Template", exact: true }).getByRole("link").click();
-  await expect(page).toHaveURL(/\/templates\/digital-channel-launch-plan\/?$/);
-  await expect(page.getByTestId("template-digital-channel-launch-plan-download")).toHaveAttribute("href", "/templates/files/digital-channel-launch-plan.pptx");
+  await page.getByRole("heading", { level: 3, name: "Free Real Estate Marketing Plan PowerPoint Template", exact: true }).getByRole("link").click();
+  await expect(page).toHaveURL(/\/templates\/real-estate-listing-marketing-plan\/?$/);
+  await expect(page.getByTestId("template-real-estate-listing-marketing-plan-download")).toHaveAttribute("href", "/templates/files/real-estate-listing-marketing-plan.pptx");
 });
 
 test("localized template category links preserve the selected locale", async ({ page }) => {
@@ -30,15 +30,16 @@ test("localized template category links preserve the selected locale", async ({ 
   await expect(page.getByText("免费季度产品路线图 PowerPoint 模板", { exact: true })).toBeVisible();
   await expect(page.getByText("免费发布列车产品路线图 PowerPoint 模板", { exact: true })).toBeVisible();
   await expect(page.getByText("免费依赖日历产品路线图 PowerPoint 模板", { exact: true })).toBeVisible();
+  await expect(page.getByText("免费技术产品路线图 PowerPoint 模板", { exact: true })).toBeVisible();
 
-  await page.getByRole("heading", { level: 3, name: "免费依赖日历产品路线图 PowerPoint 模板", exact: true }).getByRole("link").click();
-  await expect(page).toHaveURL(/\/zh-CN\/templates\/dependency-calendar-product-roadmap\/?$/);
+  await page.getByRole("heading", { level: 3, name: "免费技术产品路线图 PowerPoint 模板", exact: true }).getByRole("link").click();
+  await expect(page).toHaveURL(/\/zh-CN\/templates\/platform-modernization-product-roadmap\/?$/);
   await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /免费下载/);
   await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute("content", "zh_CN");
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
-  await expect(page.locator('link[rel="alternate"][hreflang="zh-CN"]')).toHaveAttribute("href", "https://freeaippt.space/zh-CN/templates/dependency-calendar-product-roadmap");
+  await expect(page.locator('link[rel="alternate"][hreflang="zh-CN"]')).toHaveAttribute("href", "https://freeaippt.space/zh-CN/templates/platform-modernization-product-roadmap");
   await expect(page.getByText("由 FreeAIPPT 设计并审核", { exact: true })).toBeVisible();
-  await expect(page.getByTestId("template-dependency-calendar-product-roadmap-provenance")).toContainText("原创设计，制作过程透明");
+  await expect(page.getByTestId("template-platform-modernization-product-roadmap-provenance")).toContainText("原创设计，制作过程透明");
   await expect(page.getByRole("heading", { name: "常见问题", exact: true })).toBeVisible();
-  await expect(page.getByTestId("template-dependency-calendar-product-roadmap-download")).toHaveAttribute("href", "/templates/files/dependency-calendar-product-roadmap.pptx");
+  await expect(page.getByTestId("template-platform-modernization-product-roadmap-download")).toHaveAttribute("href", "/templates/files/platform-modernization-product-roadmap.pptx");
 });
