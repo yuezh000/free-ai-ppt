@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { locales, localizePath } from "@/lib/i18n";
 import { templateCategories, templates } from "@/lib/templates";
+import { getResourcePageStats } from "@/lib/resource-page-stats";
 
 export const dynamic = "force-static";
 
@@ -28,5 +29,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...templateCategories.map((category) => ({ url: `${base}${localizePath(locale, `/templates/${category.slug}`)}`, lastModified: new Date("2026-09-08"), changeFrequency: "weekly" as const, priority: 0.8 })),
     ...templates.map((template) => ({ url: `${base}${localizePath(locale, `/templates/${template.slug}`)}`, lastModified: new Date("2026-09-08"), changeFrequency: "monthly" as const, priority: 0.8 })),
   ]);
-  return [...english, ...localized];
+  const entries = [...english, ...localized];
+  const { sitemapUrls } = getResourcePageStats();
+  if (entries.length !== sitemapUrls) {
+    throw new Error(`Sitemap inventory mismatch: generated ${entries.length}, expected ${sitemapUrls}`);
+  }
+  return entries;
 }
