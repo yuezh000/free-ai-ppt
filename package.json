@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "postbuild": "node scripts/fix-localized-html-lang.mjs && node scripts/check-localized-seo.mjs",
-    "templates:build": "node scripts/generate-templates.mjs && node scripts/generate-daily-templates.mjs && node scripts/generate-templates-2026-09-10.mjs && node scripts/generate-templates-2026-09-10-round-2.mjs && node scripts/generate-templates-2026-09-11.mjs",
+    "templates:build": "node scripts/generate-templates.mjs && node scripts/generate-daily-templates.mjs && node scripts/generate-templates-2026-09-10.mjs && node scripts/generate-templates-2026-09-10-round-2.mjs && node scripts/generate-templates-2026-09-11.mjs && node scripts/generate-templates-2026-09-11-round-2.mjs",
     "test:ui-tags": "node scripts/check-ui-testids.mjs",
     "test:ui": "npm run test:ui-tags && playwright test",
     "start": "next start",

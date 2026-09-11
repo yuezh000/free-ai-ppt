@@ -127,3 +127,129 @@
 - Abstract signals observed: red professional technology palette, IT and software context, structured roadmap density, and corporate planning tone.
 - Explicitly excluded: all infrastructure icons, diagrams, timelines, charts, red styling, wording, fonts, and page arrangements.
 - Original visual system: dark-slate service-stack layers with orange migration waves, aqua dependency windows, cream readiness gates, and evidence-led review markers.
+
+## Second run
+
+- Research date: 2026-09-11 (UTC).
+- Every page below was opened again during this run and showed a free template or free-use entry plus PowerPoint support or a documented PPTX export path.
+- No reference file, preview, screenshot, photograph, illustration, icon, font, chart, or decorative element was downloaded. The new decks were designed independently from blank canvases.
+
+## 13. Precision Agriculture Business Plan
+
+- Category: Business Plan
+- FreeAIPPT slug: `precision-agriculture-business-plan`
+- Reference page: Minimalistic Agriculture Business Plan Presentation
+- Reference URL: <https://www.slidescarnival.com/template/agriculture-business-plan/31260>
+- Abstract signals observed: green and yellow agricultural color family, restrained information density, optimistic business tone, and an agritech planning context.
+- Explicitly excluded: all farm imagery, illustrations, icons, typography, charts, copy, page order, and slide compositions.
+- Original visual system: a soil, crop-green, and harvest-yellow field ledger with plot cells, sensor rows, season markers, and evidence gates made from native shapes.
+
+## 14. Regenerative Food Marketplace Pitch Deck
+
+- Category: Startup Pitch Deck
+- FreeAIPPT slug: `regenerative-food-marketplace-pitch-deck`
+- Reference page: Modern Organic Food Pitch Deck
+- Reference URL: <https://www.slidescarnival.com/template/organic-food-pitch-deck/31323>
+- Abstract signals observed: fresh green and white family, bold founder-facing tone, moderate information density, and an organic-food startup context.
+- Explicitly excluded: all food photos, illustrations, icons, fonts, copy, layouts, charts, and resource-page elements.
+- Original visual system: a pine, tomato, oat, and harvest-yellow batch ticket with produce stamps, provenance rows, and fulfillment checkpoints.
+
+## 15. Mobile Kitchen Company Profile
+
+- Category: Company Profile
+- FreeAIPPT slug: `mobile-kitchen-company-profile`
+- Reference page: Animated Fast Food Truck Company Profile Presentation
+- Reference URL: <https://www.slidescarnival.com/template/fast-food-truck-company-profile/148170>
+- Abstract signals observed: green and cream hospitality palette, energetic company-introduction tone, illustrated feel, and mobile-food context.
+- Explicitly excluded: all truck and food illustrations, photos, animation, icons, copy, fonts, charts, and recognizable layouts.
+- Original visual system: a petrol, mustard, cream, and coral service window with striped awnings, receipt rails, order stations, and route badges.
+
+## 16. Artisan Bakery Marketing Plan
+
+- Category: Marketing Plan
+- FreeAIPPT slug: `artisan-bakery-marketing-plan`
+- Reference page: Cute Bakery Brand Marketing Plan Presentation
+- Reference URL: <https://www.slidescarnival.com/template/bakery-brand-marketing-plan/31575>
+- Abstract signals observed: approachable pink, orange, and white palette, lively campaign tone, and a local bakery brand context.
+- Explicitly excluded: all bakery graphics, product images, illustrations, fonts, resource elements, copy, charts, animation, and slide layouts.
+- Original visual system: a berry, apricot, and flour-cream proofing board with dough circles, batch timers, order tickets, and experiment markers.
+
+## 17. Neighborhood Produce Market Proposal
+
+- Category: Project Proposal
+- FreeAIPPT slug: `neighborhood-produce-market-proposal`
+- Reference page: Modern Minimal Fruits & Vegetable Retail Store Project Proposal Presentation
+- Reference URL: <https://www.slidescarnival.com/template/fruits-vegetable-retail-store-project-proposal/148153>
+- Abstract signals observed: vibrant purple and orange family, compact modern retail tone, and project-proposal information density.
+- Explicitly excluded: all produce photos, collages, illustrations, icons, fonts, copy, diagrams, color placement, and page arrangements.
+- Original visual system: an aubergine, citrus, and leaf-green market stall with crate cells, accessible aisle paths, quality checkpoints, and price tabs.
+
+## 18. Consultative Sales Strategy Report
+
+- Category: Sales Report
+- FreeAIPPT slug: `consultative-sales-strategy-report`
+- Reference page: Sales Strategy for Business Presentation
+- Reference URL: <https://slidesgo.com/theme/sales-strategy-for-business>
+- Abstract signals observed: dark-blue professional palette, minimalist formal tone, chart-ready density, and business sales-planning context.
+- Explicitly excluded: all reference graphs, tables, timelines, icons, gradients, wording, sample data, typography, and compositions.
+- Original visual system: a midnight, copper, and mint deal room with evidence folders, qualification seals, stage rails, and customer-confirmed gates.
+
+## 19. Water Cycle Science Lesson
+
+- Category: Lesson Plan
+- FreeAIPPT slug: `water-cycle-science-lesson`
+- Reference page: Science Subject for Elementary - 3rd Grade: The Water Cycle Presentation
+- Reference URL: <https://slidesgo.com/theme/science-subject-for-elementary-3rd-grade-the-water-cycle>
+- Abstract signals observed: blue classroom palette, cheerful explanatory tone, accessible science density, and an elementary water-cycle context.
+- Explicitly excluded: all water-cycle illustrations, characters, icons, diagrams, facts in source wording, fonts, activities, and layouts.
+- Original visual system: a deep-blue hydrology lab with reservoir gauges, phase-change nodes, dotted observation paths, and cause-and-effect cards.
+
+## 20. Adaptive Reuse Architecture Thesis Defense
+
+- Category: Thesis Defense
+- FreeAIPPT slug: `adaptive-reuse-architecture-thesis-defense`
+- Reference page: Architecture Final Project Presentation
+- Reference URL: <https://slidesgo.com/theme/architecture-final-project>
+- Abstract signals observed: light-blue and white palette, minimalist academic tone, linear hierarchy, and architecture-defense context.
+- Explicitly excluded: all waves, architecture illustrations, icons, drawings, images, fonts, research wording, charts, and layouts.
+- Original visual system: a blueprint-blue, graphite, and coral review desk with drawing grids, section cuts, redlines, revision stamps, and pin-up notes.
+
+## 21. Cardiac Rehabilitation Clinical Case
+
+- Category: Clinical Case
+- FreeAIPPT slug: `cardiac-rehabilitation-clinical-case`
+- Reference page: Heart Clinical Case Presentation
+- Reference URL: <https://slidesgo.com/theme/heart-clinical-case>
+- Abstract signals observed: white medical background, red accents, geometric clarity, formal case-report density, and a cardiology context.
+- Explicitly excluded: all heart and anatomy illustrations, medical icons, claims, photos, treatment language, tables, fonts, and slide arrangements.
+- Original visual system: an oxblood, navy, and cool-white telemetry rounds board with rhythm ticks, observation bands, decision gates, and explicit uncertainty labels. All case data is fictional and education-only.
+
+## 22. Machine Learning Model Evaluation
+
+- Category: AI & Technology
+- FreeAIPPT slug: `machine-learning-model-evaluation`
+- Reference page: Machine Learning Infographics
+- Reference URL: <https://slidesgo.com/theme/machine-learning-infographics>
+- Abstract signals observed: light technical palette, infographic-style density, explanatory tone, and a machine-learning education context.
+- Explicitly excluded: all neural-network diagrams, algorithms, icons, infographic structures, example text, colors in arrangement, fonts, and page layouts.
+- Original visual system: an ultraviolet, cyan, and charcoal evaluation console with editable metric cells, confidence bars, segment checks, and release thresholds.
+
+## 23. Independent Musician Portfolio
+
+- Category: Creative Portfolio
+- FreeAIPPT slug: `independent-musician-portfolio`
+- Reference page: Musician's Portfolio Beige Minimal Business Portfolio Presentation
+- Reference URL: <https://www.slidescarnival.com/template/musicians-portfolio/28399>
+- Abstract signals observed: relaxed beige and black family, minimal portfolio pacing, refined professional tone, and a musician career context.
+- Explicitly excluded: all photos, album art, illustrations, audio, icons, typefaces, example content, resource elements, and page layouts.
+- Original visual system: an aubergine, warm-beige, coral, and mint studio session with waveform bars, track cards, take numbers, and set-list markers.
+
+## 24. Product Launch Timeline Roadmap
+
+- Category: Product Roadmap
+- FreeAIPPT slug: `product-launch-timeline-roadmap`
+- Reference page: Product Timeline Presentation
+- Reference URL: <https://www.slidescarnival.com/template/product-timeline/19733>
+- Abstract signals observed: professional product-planning tone, milestone-oriented rhythm, flexible information density, and a start-to-launch context.
+- Explicitly excluded: all reference timelines, photography, illustrations, icons, fonts, copy, color combinations, chart styles, and page arrangements.
+- Original visual system: a deep-plum launch control board with electric-blue countdown rails, signal-yellow readiness windows, mission gates, and go-or-hold controls.
