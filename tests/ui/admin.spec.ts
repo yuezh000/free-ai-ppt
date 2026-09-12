@@ -15,6 +15,7 @@ test("administrator sees mocked tasks and trial candidates",async({page})=>{
   await expect(page.getByText("startup-pitch-deck",{exact:true})).toBeVisible();
   await expect(page.getByText("Task submission · ON",{exact:true})).toBeVisible();
   await expect(page.getByTestId("admin-resource-primary")).toContainText("89");
+  await expect(page.getByText("Indexable resource urls",{exact:true})).toBeVisible();
   await expect(page.getByTestId("admin-resource-indexed")).toContainText("705");
   await expect(page.getByTestId("admin-resource-templates")).toContainText("72");
   await expect(page.getByTestId("admin-resource-categories")).toContainText("12");

@@ -41,7 +41,7 @@ export function AdminDashboard({resourceStats}:{resourceStats:ResourcePageStats}
     <section className="admin-panel admin-resource-panel" data-testid="admin-resource-stats"><div className="admin-panel-title"><div><span className="eyebrow">SEO CONTENT</span><h2>Resource page inventory</h2></div><span>Build-time count</span></div>
       <div className="admin-resource-stats">
         <article data-testid="admin-resource-primary"><FileText/><span>Primary resource pages</span><strong>{resourceStats.primaryResourcePages}</strong><small>Canonical English pages</small></article>
-        <article data-testid="admin-resource-indexed"><Globe2/><span>Indexed resource URLs</span><strong>{resourceStats.indexedResourceUrls}</strong><small>Across {resourceStats.languageCount} languages</small></article>
+        <article data-testid="admin-resource-indexed"><Globe2/><span>Indexable resource urls</span><strong>{resourceStats.indexedResourceUrls}</strong><small>Across {resourceStats.languageCount} languages</small></article>
         <article data-testid="admin-resource-templates"><Layers3/><span>Original templates</span><strong>{resourceStats.templateCount}</strong><small>Editable PPTX resources</small></article>
         <article data-testid="admin-resource-categories"><Tags/><span>Template categories</span><strong>{resourceStats.categoryCount}</strong><small>Focused search intents</small></article>
         <article data-testid="admin-resource-guides"><BookOpen/><span>Published guides</span><strong>{resourceStats.guideCount}</strong><small>Plus the resource hub</small></article>
