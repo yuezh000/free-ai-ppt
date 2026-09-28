@@ -3,6 +3,7 @@ import { templates20260910 } from "@/lib/templates-2026-09-10";
 import { templates20260910Round2 } from "@/lib/templates-2026-09-10-round-2";
 import { templates20260911 } from "@/lib/templates-2026-09-11";
 import { templates20260911Round2 } from "@/lib/templates-2026-09-11-round-2";
+import { templates20260928 } from "@/lib/templates-2026-09-28";
 
 export type TemplateSlide = { eyebrow: string; title: string; body: string; stat?: string };
 
@@ -325,7 +326,7 @@ const originalTemplates: PptTemplate[] = [
   },
 ];
 
-export const templates: PptTemplate[] = [...originalTemplates, ...dailyTemplates, ...templates20260910, ...templates20260910Round2, ...templates20260911, ...templates20260911Round2];
+export const templates: PptTemplate[] = [...originalTemplates, ...dailyTemplates, ...templates20260910, ...templates20260910Round2, ...templates20260911, ...templates20260911Round2, ...templates20260928];
 
 export function getTemplate(slug: string) { return templates.find((template) => template.slug === slug); }
 export function getTemplateCategory(slug: string) { return templateCategories.find((category) => category.slug === slug); }

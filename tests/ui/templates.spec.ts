@@ -5,9 +5,9 @@ test("template directory exposes twelve focused presentation categories", async 
 
   const categories = page.locator(".template-category-card");
   await expect(categories).toHaveCount(12);
-  await expect(page.getByTestId("template-category-business-plan")).toContainText("6 free templates");
+  await expect(page.getByTestId("template-category-business-plan")).toContainText("7 free templates");
   await expect(page.getByTestId("template-category-artificial-intelligence")).toBeVisible();
-  await expect(page.locator(".template-card")).toHaveCount(72);
+  await expect(page.locator(".template-card")).toHaveCount(84);
 
   await page.getByTestId("template-category-marketing").click();
   await expect(page).toHaveURL(/\/templates\/marketing\/?$/);
