@@ -72,3 +72,25 @@ test("disabled task submission falls back to mocked trial registration",async({p
   await page.getByTestId("coming-soon-waitlist-submit").click();
   await expect(page.getByText("You're on the list. We'll be in touch!")).toBeVisible();
 });
+
+test("completed task exposes a PPTX download and an HTML viewer",async({page})=>{
+  let htmlAuthorized=false;
+  await page.addInitScript(()=>{
+    HTMLAnchorElement.prototype.click=function(){
+      (window as typeof window&{__lastOutputLink?:{href:string;target:string;download:string}}).__lastOutputLink={href:this.href,target:this.target,download:this.download};
+    };
+  });
+  await page.route("**/api/v1/jobs",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({jobs:[{id:"job-ready",prompt:"Create a completed deck",status:"completed",ready_at:"2099-01-01T00:00:00Z",attempts:1,error:null,created_at:"2099-01-01T00:00:00Z",updated_at:"2099-01-01T00:00:00Z",completed_at:"2099-01-01T00:05:00Z",input_count:0,template_slug:null,downloads:[{kind:"pptx",url:"/api/v1/jobs/job-ready/downloads/pptx"},{kind:"html",url:"/api/v1/jobs/job-ready/downloads/html"}]}]})}));
+  await page.route("**/api/v1/jobs/job-ready/downloads/html",route=>{
+    htmlAuthorized=route.request().headers().authorization==="Bearer mock-session-token";
+    return route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({url:"https://blob.test/freeaippt-job-ready.html"})});
+  });
+  await page.route("https://blob.test/freeaippt-job-ready.html",route=>route.fulfill({status:200,contentType:"text/html",body:"<!doctype html><html><body>Presentation</body></html>"}));
+  await page.goto("/queue");
+  await expect(page.getByTestId("queue-job-ready-download-pptx")).toHaveText(/Download PPTX/);
+  await expect(page.getByTestId("queue-job-ready-view-html")).toHaveText(/View HTML/);
+  await page.getByTestId("queue-job-ready-view-html").click();
+  expect(htmlAuthorized).toBe(true);
+  const opened=await page.evaluate(()=>(window as typeof window&{__lastOutputLink?:{href:string;target:string;download:string}}).__lastOutputLink);
+  expect(opened).toEqual({href:"https://blob.test/freeaippt-job-ready.html",target:"_blank",download:""});
+});

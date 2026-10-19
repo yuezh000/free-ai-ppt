@@ -101,6 +101,8 @@ fn build_router(state: AppState) -> anyhow::Result<Router> {
             "/api/v1/agent/jobs/{id}/outputs/{kind}/authorize",
             post(authorize_output_upload),
         )
+        .route("/api/v1/agent/jobs/{id}/upstream", post(register_upstream))
+        .route("/api/v1/agent/jobs/{id}/heartbeat", post(heartbeat_job))
         .route("/api/v1/agent/jobs/{id}/complete", post(complete_job))
         .route("/api/v1/agent/jobs/{id}/fail", post(fail_job))
         .layer(DefaultBodyLimit::max(1_048_576))
@@ -629,7 +631,9 @@ async fn authorize_input_upload(
     .fetch_one(&state.db)
     .await?;
     if active_inputs >= 8 {
-        return Err(ApiError::conflict("a job can contain at most 8 attachments"));
+        return Err(ApiError::conflict(
+            "a job can contain at most 8 attachments",
+        ));
     }
     if input.size_bytes <= 0 || input.size_bytes > state.config.max_upload_bytes as i64 {
         return Err(ApiError::bad_request("invalid file size"));
@@ -869,6 +873,98 @@ async fn download_input(
     Ok(Json(TemporaryDownload { url, expires_at }))
 }
 
+async fn register_upstream(
+    State(state): State<AppState>,
+    Path(id): Path<String>,
+    headers: HeaderMap,
+    Json(input): Json<RegisterUpstream>,
+) -> Result<Json<ApiMessage>, ApiError> {
+    require_agent(&headers, &state)?;
+    let job = sqlx::query_as::<_, Job>("SELECT * FROM jobs WHERE id=?")
+        .bind(&id)
+        .fetch_optional(&state.db)
+        .await?
+        .ok_or_else(ApiError::not_found)?;
+    require_claim(&headers, &job)?;
+    if job.status != "processing" {
+        return Err(ApiError::conflict("job is not processing"));
+    }
+    let provider = validated_upstream_value("provider", &input.provider, 32)?;
+    let workflow_id = validated_upstream_value("workflow_id", &input.workflow_id, 128)?;
+    let task_id = validated_upstream_value("task_id", &input.task_id, 128)?;
+    if job
+        .upstream_workflow_id
+        .as_deref()
+        .is_some_and(|value| value != workflow_id)
+    {
+        return Err(ApiError::conflict(
+            "job already has a different upstream workflow",
+        ));
+    }
+    let now = Utc::now().to_rfc3339();
+    sqlx::query("UPDATE jobs SET upstream_provider=?,upstream_workflow_id=?,upstream_task_id=?,upstream_status='pending',updated_at=? WHERE id=?")
+        .bind(provider)
+        .bind(workflow_id)
+        .bind(task_id)
+        .bind(now)
+        .bind(id)
+        .execute(&state.db)
+        .await?;
+    Ok(Json(ApiMessage {
+        message: "upstream workflow registered".into(),
+    }))
+}
+
+async fn heartbeat_job(
+    State(state): State<AppState>,
+    Path(id): Path<String>,
+    headers: HeaderMap,
+    Json(input): Json<HeartbeatJob>,
+) -> Result<Json<LeaseRenewed>, ApiError> {
+    require_agent(&headers, &state)?;
+    let job = sqlx::query_as::<_, Job>("SELECT * FROM jobs WHERE id=?")
+        .bind(&id)
+        .fetch_optional(&state.db)
+        .await?
+        .ok_or_else(ApiError::not_found)?;
+    require_claim(&headers, &job)?;
+    if job.status != "processing" {
+        return Err(ApiError::conflict("job is not processing"));
+    }
+    let upstream_status = input
+        .upstream_status
+        .as_deref()
+        .map(|value| validated_upstream_value("upstream_status", value, 64))
+        .transpose()?;
+    let now = Utc::now().to_rfc3339();
+    let lease_until = (Utc::now() + Duration::seconds(state.config.lease_seconds)).to_rfc3339();
+    sqlx::query("UPDATE jobs SET lease_until=?,upstream_status=COALESCE(?,upstream_status),updated_at=? WHERE id=?")
+        .bind(&lease_until)
+        .bind(upstream_status)
+        .bind(now)
+        .bind(id)
+        .execute(&state.db)
+        .await?;
+    Ok(Json(LeaseRenewed { lease_until }))
+}
+
+fn validated_upstream_value<'a>(
+    name: &str,
+    value: &'a str,
+    max: usize,
+) -> Result<&'a str, ApiError> {
+    let value = value.trim();
+    if value.is_empty()
+        || value.len() > max
+        || !value.chars().all(|character| {
+            character.is_ascii_alphanumeric() || matches!(character, '-' | '_' | '.')
+        })
+    {
+        return Err(ApiError::bad_request(format!("invalid {name}")));
+    }
+    Ok(value)
+}
+
 async fn authorize_output_upload(
     State(state): State<AppState>,
     Path((id, kind)): Path<(String, String)>,
@@ -1048,7 +1144,10 @@ async fn download_output(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use axum::{body::{Body, to_bytes}, http::Request};
+    use axum::{
+        body::{Body, to_bytes},
+        http::Request,
+    };
     use serde_json::{Value, json};
     use sqlx::SqlitePool;
     use std::net::{IpAddr, Ipv4Addr, SocketAddr};
@@ -1221,7 +1320,63 @@ mod tests {
         assert_eq!(claim["job"]["id"], id);
         assert_eq!(claim["job"]["status"], "processing");
         assert_eq!(claim["job"]["template_slug"], "startup-pitch-deck");
-        assert!(claim["claim_token"].as_str().unwrap().len() >= 32);
+        let claim_token = claim["claim_token"].as_str().unwrap();
+        assert!(claim_token.len() >= 32);
+
+        let upstream = app
+            .clone()
+            .oneshot(
+                Request::builder()
+                    .method("POST")
+                    .uri(format!("/api/v1/agent/jobs/{id}/upstream"))
+                    .header(header::AUTHORIZATION, "Bearer test-agent-token")
+                    .header("x-claim-token", claim_token)
+                    .header(header::CONTENT_TYPE, "application/json")
+                    .body(Body::from(
+                        json!({
+                            "provider":"wispaper",
+                            "workflow_id":"workflow-1",
+                            "task_id":"task-1"
+                        })
+                        .to_string(),
+                    ))
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(upstream.status(), StatusCode::OK);
+
+        let heartbeat = app
+            .oneshot(
+                Request::builder()
+                    .method("POST")
+                    .uri(format!("/api/v1/agent/jobs/{id}/heartbeat"))
+                    .header(header::AUTHORIZATION, "Bearer test-agent-token")
+                    .header("x-claim-token", claim_token)
+                    .header(header::CONTENT_TYPE, "application/json")
+                    .body(Body::from(json!({"upstream_status":"running"}).to_string()))
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(heartbeat.status(), StatusCode::OK);
+        assert!(json_body(heartbeat).await["lease_until"].is_string());
+        let upstream_status: (String, String, String, String) = sqlx::query_as(
+            "SELECT upstream_provider,upstream_workflow_id,upstream_task_id,upstream_status FROM jobs WHERE id=?",
+        )
+        .bind(id)
+        .fetch_one(&db)
+        .await
+        .unwrap();
+        assert_eq!(
+            upstream_status,
+            (
+                "wispaper".into(),
+                "workflow-1".into(),
+                "task-1".into(),
+                "running".into()
+            )
+        );
     }
 
     #[tokio::test]

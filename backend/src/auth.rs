@@ -35,10 +35,10 @@ pub async fn require_job(headers: &HeaderMap, state: &AppState, id: &str) -> Res
         .fetch_optional(&state.db)
         .await?
         .ok_or_else(ApiError::not_found)?;
-    if let Some(token) = headers.get("x-job-token").and_then(|v| v.to_str().ok()) {
-        if token_hash(token) == job.public_token_hash {
-            return Ok(job);
-        }
+    if let Some(token) = headers.get("x-job-token").and_then(|v| v.to_str().ok())
+        && token_hash(token) == job.public_token_hash
+    {
+        return Ok(job);
     }
     let user = require_user(headers, state).await?;
     if job.user_id.as_deref() == Some(user.id.as_str()) {

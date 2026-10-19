@@ -21,6 +21,10 @@ pub struct Job {
     pub completed_at: Option<String>,
     pub user_id: Option<String>,
     pub template_slug: Option<String>,
+    pub upstream_provider: Option<String>,
+    pub upstream_workflow_id: Option<String>,
+    pub upstream_task_id: Option<String>,
+    pub upstream_status: Option<String>,
 }
 
 #[derive(Debug, Clone, FromRow, Serialize)]
@@ -180,6 +184,24 @@ pub struct FailJob {
     pub error: String,
     #[serde(default)]
     pub retryable: bool,
+}
+
+#[derive(Deserialize)]
+pub struct RegisterUpstream {
+    pub provider: String,
+    pub workflow_id: String,
+    pub task_id: String,
+}
+
+#[derive(Deserialize)]
+pub struct HeartbeatJob {
+    #[serde(default)]
+    pub upstream_status: Option<String>,
+}
+
+#[derive(Serialize)]
+pub struct LeaseRenewed {
+    pub lease_until: String,
 }
 
 #[derive(Serialize)]

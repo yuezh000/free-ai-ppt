@@ -1,0 +1,21 @@
+[Unit]
+Description=FreeAIPPT WisPaper generation worker
+After=network-online.target freeppt-api.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=freeppt
+Group=freeppt
+EnvironmentFile=/etc/freeppt-wispaper-worker.env
+ExecStart=/opt/freeppt/bin/freeppt-wispaper-worker
+Restart=always
+RestartSec=10
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

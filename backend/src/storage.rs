@@ -382,7 +382,11 @@ mod tests {
             upload = upload.header(name, value);
         }
         let response = upload.body("hello").send().await.unwrap();
-        assert!(response.status().is_success(), "upload returned {}", response.status());
+        assert!(
+            response.status().is_success(),
+            "upload returned {}",
+            response.status()
+        );
         let blob_url = response.json::<serde_json::Value>().await.unwrap()["url"]
             .as_str()
             .unwrap()
@@ -406,6 +410,10 @@ mod tests {
             .send()
             .await
             .unwrap();
-        assert!(response.status().is_success(), "cleanup returned {}", response.status());
+        assert!(
+            response.status().is_success(),
+            "cleanup returned {}",
+            response.status()
+        );
     }
 }
