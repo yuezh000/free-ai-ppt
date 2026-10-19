@@ -14,7 +14,6 @@ EOF
 exec /usr/bin/flock --nonblock "${runtime_dir}/freeaippt-daily-templates.lock" \
   /home/yue/.local/bin/codex exec \
   --approve-for-me \
-  --sandbox workspace-write \
   --add-dir "${runtime_dir}" \
   --config 'sandbox_workspace_write.network_access=true' \
   --cd "${project_root}" \
