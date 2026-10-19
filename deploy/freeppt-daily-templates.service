@@ -1,0 +1,16 @@
+[Unit]
+Description=Create and publish the daily FreeAIPPT template batch
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=yue
+Group=yue
+WorkingDirectory=/home/yue/private/freeppt
+Environment=CODEX_HOME=/home/yue/.codex
+Environment=PATH=/home/yue/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/home/yue/private/freeppt/scripts/run-daily-template-agent.sh
+Nice=10
+IOSchedulingClass=idle
+TimeoutStartSec=6h

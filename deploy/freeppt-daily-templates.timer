@@ -1,0 +1,10 @@
+[Unit]
+Description=Run the FreeAIPPT template workflow every night
+
+[Timer]
+OnCalendar=*-*-* 03:00:00 Asia/Shanghai
+Persistent=true
+Unit=freeppt-daily-templates.service
+
+[Install]
+WantedBy=timers.target

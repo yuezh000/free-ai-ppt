@@ -5,9 +5,10 @@ test("template directory exposes twelve focused presentation categories", async 
 
   const categories = page.locator(".template-category-card");
   await expect(categories).toHaveCount(12);
-  await expect(page.getByTestId("template-category-business-plan")).toContainText("7 free templates");
+  await expect(page.getByTestId("template-category-business-plan")).toContainText("8 free templates");
   await expect(page.getByTestId("template-category-artificial-intelligence")).toBeVisible();
-  await expect(page.locator(".template-card")).toHaveCount(84);
+  await expect(page.locator(".template-card")).toHaveCount(96);
+  await expect(page.getByRole("heading", { level: 3, name: "Free Subscription Unit Economics Business Plan PowerPoint Template", exact: true })).toBeVisible();
 
   await page.getByTestId("template-category-marketing").click();
   await expect(page).toHaveURL(/\/templates\/marketing\/?$/);
@@ -16,6 +17,13 @@ test("template directory exposes twelve focused presentation categories", async 
   await page.getByRole("heading", { level: 3, name: "Free Bakery Marketing Plan PowerPoint Template", exact: true }).getByRole("link").click();
   await expect(page).toHaveURL(/\/templates\/artisan-bakery-marketing-plan\/?$/);
   await expect(page.getByTestId("template-artisan-bakery-marketing-plan-download")).toHaveAttribute("href", "/templates/files/artisan-bakery-marketing-plan.pptx");
+});
+
+test("new original template exposes its detail page and editable PPTX download", async ({ page }) => {
+  await page.goto("/templates/opportunity-horizon-product-roadmap");
+  await expect(page.getByRole("heading", { level: 1, name: "Free Opportunity Horizon Product Roadmap PowerPoint Template", exact: true })).toBeVisible();
+  await expect(page.getByTestId("template-opportunity-horizon-product-roadmap-download")).toHaveAttribute("href", "/templates/files/opportunity-horizon-product-roadmap.pptx");
+  await expect(page.getByTestId("template-opportunity-horizon-product-roadmap-customize")).toHaveAttribute("href", /template=opportunity-horizon-product-roadmap/);
 });
 
 test("localized template category links preserve the selected locale", async ({ page }) => {
@@ -32,6 +40,7 @@ test("localized template category links preserve the selected locale", async ({ 
   await expect(page.getByText("免费依赖日历产品路线图 PowerPoint 模板", { exact: true })).toBeVisible();
   await expect(page.getByText("免费技术产品路线图 PowerPoint 模板", { exact: true })).toBeVisible();
   await expect(page.getByText("免费产品发布路线图 PowerPoint 模板", { exact: true })).toBeVisible();
+  await expect(page.getByText("Free Opportunity Horizon Product Roadmap PowerPoint Template", { exact: true })).toBeVisible();
 
   await page.getByRole("heading", { level: 3, name: "免费产品发布路线图 PowerPoint 模板", exact: true }).getByRole("link").click();
   await expect(page).toHaveURL(/\/zh-CN\/templates\/product-launch-timeline-roadmap\/?$/);
@@ -43,4 +52,9 @@ test("localized template category links preserve the selected locale", async ({ 
   await expect(page.getByTestId("template-product-launch-timeline-roadmap-provenance")).toContainText("原创设计，制作过程透明");
   await expect(page.getByRole("heading", { name: "常见问题", exact: true })).toBeVisible();
   await expect(page.getByTestId("template-product-launch-timeline-roadmap-download")).toHaveAttribute("href", "/templates/files/product-launch-timeline-roadmap.pptx");
+
+  await page.goto("/zh-CN/templates/opportunity-horizon-product-roadmap");
+  await expect(page.locator("html")).toHaveAttribute("lang", "zh-CN");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://freeaippt.space/zh-CN/templates/opportunity-horizon-product-roadmap");
+  await expect(page.getByTestId("template-opportunity-horizon-product-roadmap-download")).toHaveAttribute("href", "/templates/files/opportunity-horizon-product-roadmap.pptx");
 });
