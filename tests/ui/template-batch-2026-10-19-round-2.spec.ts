@@ -4,7 +4,7 @@ import seeds from "../../lib/template-seeds-2026-10-19-round-2.json";
 for (const deck of seeds) {
   test(`${deck.shortName}: category card, gallery, SEO and editable download`, async ({ page, request }) => {
     await page.goto(`/templates/${deck.categorySlug}`);
-    await expect(page.locator(".template-card")).toHaveCount(9);
+    await expect(page.locator(".template-card")).toHaveCount(10);
     await page.getByRole("heading", { level: 3, name: deck.name, exact: true }).getByRole("link").click();
     await expect(page).toHaveURL(new RegExp(`/templates/${deck.slug}/?$`));
     await expect(page.getByRole("heading", { level: 1, name: deck.name, exact: true })).toBeVisible();
@@ -45,10 +45,10 @@ test("current batch preserves Chinese navigation, naming and template selection"
 test("catalog totals retain every category and a bounded homepage sample", async ({ page }) => {
   await page.goto("/templates");
   for (const slug of ["business-plan", "pitch-deck", "company-profile", "marketing", "project-proposal", "education", "thesis-defense", "medical", "artificial-intelligence", "portfolio", "product-roadmap"]) {
-    await expect(page.getByTestId(`template-category-${slug}`)).toContainText("9 free templates");
+    await expect(page.getByTestId(`template-category-${slug}`)).toContainText("10 free templates");
   }
-  await expect(page.getByTestId("template-category-sales-report")).toContainText("8 free templates");
-  await expect(page.locator(".template-card")).toHaveCount(107);
+  await expect(page.getByTestId("template-category-sales-report")).toContainText("9 free templates");
+  await expect(page.locator(".template-card")).toHaveCount(119);
   await page.goto("/");
   await expect(page.locator(".home-template-grid article")).toHaveCount(3);
 });

@@ -1,3 +1,4 @@
+import { templates20261020 } from "@/lib/templates-2026-10-20";
 import { dailyTemplates } from "@/lib/templates-daily";
 import { templates20260910 } from "@/lib/templates-2026-09-10";
 import { templates20260910Round2 } from "@/lib/templates-2026-09-10-round-2";
@@ -328,7 +329,7 @@ const originalTemplates: PptTemplate[] = [
   },
 ];
 
-export const templates: PptTemplate[] = [...originalTemplates, ...dailyTemplates, ...templates20260910, ...templates20260910Round2, ...templates20260911, ...templates20260911Round2, ...templates20260928, ...templates20261019, ...templates20261019Round2];
+export const templates: PptTemplate[] = [...originalTemplates, ...dailyTemplates, ...templates20260910, ...templates20260910Round2, ...templates20260911, ...templates20260911Round2, ...templates20260928, ...templates20261019, ...templates20261019Round2, ...templates20261020];
 
 export function getTemplate(slug: string) { return templates.find((template) => template.slug === slug); }
 export function getTemplateCategory(slug: string) { return templateCategories.find((category) => category.slug === slug); }

@@ -509,8 +509,361 @@ const localized20261019Round2Names: Partial<Record<Locale, Record<string, [strin
   },
 };
 
+const localized20261020Names: Partial<Record<Locale, Record<string, [string, string]>>> = {
+  "zh-CN": {
+    "coworking-occupancy-business-plan": [
+      "免费联合办公入驻率商业计划 PowerPoint 模板",
+      "联合办公入驻率商业计划"
+    ],
+    "water-reuse-startup-pitch": [
+      "免费水回用创业路演 PowerPoint 模板",
+      "水回用创业路演"
+    ],
+    "experience-studio-company-profile": [
+      "免费体验设计工作室公司介绍 PowerPoint 模板",
+      "体验设计工作室公司介绍"
+    ],
+    "podcast-discovery-marketing-plan": [
+      "免费播客发现营销计划 PowerPoint 模板",
+      "播客发现营销计划"
+    ],
+    "school-solar-feasibility-proposal": [
+      "免费学校太阳能可行性提案 PowerPoint 模板",
+      "学校太阳能可行性提案"
+    ],
+    "channel-partner-sell-through-report": [
+      "免费渠道伙伴终端销售报告 PowerPoint 模板",
+      "渠道伙伴终端销售报告"
+    ],
+    "evidence-led-classroom-debate": [
+      "免费循证课堂辩论 PowerPoint 模板",
+      "循证课堂辩论"
+    ],
+    "comparative-religion-thesis-defense": [
+      "免费比较宗教学论文答辩 PowerPoint 模板",
+      "比较宗教学论文答辩"
+    ],
+    "sleep-assessment-clinical-case": [
+      "免费睡眠评估临床病例 PowerPoint 模板",
+      "睡眠评估临床病例"
+    ],
+    "edge-inference-deployment-brief": [
+      "免费边缘推理部署简报 PowerPoint 模板",
+      "边缘推理部署简报"
+    ],
+    "motion-storyboard-portfolio": [
+      "免费动态设计分镜作品集 PowerPoint 模板",
+      "动态设计分镜作品集"
+    ],
+    "accessibility-improvement-product-roadmap": [
+      "免费无障碍改进产品路线图 PowerPoint 模板",
+      "无障碍改进产品路线图"
+    ]
+  },
+  "zh-TW": {
+    "coworking-occupancy-business-plan": [
+      "免費共同工作空間進駐率商業計畫 PowerPoint 範本",
+      "共同工作空間進駐率商業計畫"
+    ],
+    "water-reuse-startup-pitch": [
+      "免費水回用新創簡報 PowerPoint 範本",
+      "水回用新創簡報"
+    ],
+    "experience-studio-company-profile": [
+      "免費體驗設計工作室公司介紹 PowerPoint 範本",
+      "體驗設計工作室公司介紹"
+    ],
+    "podcast-discovery-marketing-plan": [
+      "免費播客探索行銷計畫 PowerPoint 範本",
+      "播客探索行銷計畫"
+    ],
+    "school-solar-feasibility-proposal": [
+      "免費學校太陽能可行性提案 PowerPoint 範本",
+      "學校太陽能可行性提案"
+    ],
+    "channel-partner-sell-through-report": [
+      "免費通路夥伴終端銷售報告 PowerPoint 範本",
+      "通路夥伴終端銷售報告"
+    ],
+    "evidence-led-classroom-debate": [
+      "免費循證課堂辯論 PowerPoint 範本",
+      "循證課堂辯論"
+    ],
+    "comparative-religion-thesis-defense": [
+      "免費比較宗教學論文答辯 PowerPoint 範本",
+      "比較宗教學論文答辯"
+    ],
+    "sleep-assessment-clinical-case": [
+      "免費睡眠評估臨床病例 PowerPoint 範本",
+      "睡眠評估臨床病例"
+    ],
+    "edge-inference-deployment-brief": [
+      "免費邊緣推論部署簡報 PowerPoint 範本",
+      "邊緣推論部署簡報"
+    ],
+    "motion-storyboard-portfolio": [
+      "免費動態設計分鏡作品集 PowerPoint 範本",
+      "動態設計分鏡作品集"
+    ],
+    "accessibility-improvement-product-roadmap": [
+      "免費無障礙改善產品路線圖 PowerPoint 範本",
+      "無障礙改善產品路線圖"
+    ]
+  },
+  "ja": {
+    "coworking-occupancy-business-plan": [
+      "コワーキング稼働率の事業計画 無料 PowerPoint テンプレート",
+      "コワーキング稼働率の事業計画"
+    ],
+    "water-reuse-startup-pitch": [
+      "水再利用スタートアップのピッチ 無料 PowerPoint テンプレート",
+      "水再利用スタートアップのピッチ"
+    ],
+    "experience-studio-company-profile": [
+      "体験設計スタジオの会社紹介 無料 PowerPoint テンプレート",
+      "体験設計スタジオの会社紹介"
+    ],
+    "podcast-discovery-marketing-plan": [
+      "ポッドキャスト発見マーケティング計画 無料 PowerPoint テンプレート",
+      "ポッドキャスト発見マーケティング計画"
+    ],
+    "school-solar-feasibility-proposal": [
+      "学校太陽光発電の実現可能性提案 無料 PowerPoint テンプレート",
+      "学校太陽光発電の実現可能性提案"
+    ],
+    "channel-partner-sell-through-report": [
+      "販売パートナー実売レポート 無料 PowerPoint テンプレート",
+      "販売パートナー実売レポート"
+    ],
+    "evidence-led-classroom-debate": [
+      "根拠に基づく教室ディベート 無料 PowerPoint テンプレート",
+      "根拠に基づく教室ディベート"
+    ],
+    "comparative-religion-thesis-defense": [
+      "比較宗教学の論文発表 無料 PowerPoint テンプレート",
+      "比較宗教学の論文発表"
+    ],
+    "sleep-assessment-clinical-case": [
+      "睡眠評価の臨床症例 無料 PowerPoint テンプレート",
+      "睡眠評価の臨床症例"
+    ],
+    "edge-inference-deployment-brief": [
+      "エッジ推論の導入概要 無料 PowerPoint テンプレート",
+      "エッジ推論の導入概要"
+    ],
+    "motion-storyboard-portfolio": [
+      "モーションデザインの絵コンテ作品集 無料 PowerPoint テンプレート",
+      "モーションデザインの絵コンテ作品集"
+    ],
+    "accessibility-improvement-product-roadmap": [
+      "アクセシビリティ改善ロードマップ 無料 PowerPoint テンプレート",
+      "アクセシビリティ改善ロードマップ"
+    ]
+  },
+  "ko": {
+    "coworking-occupancy-business-plan": [
+      "무료 코워킹 입주율 사업계획 PowerPoint 템플릿",
+      "코워킹 입주율 사업계획"
+    ],
+    "water-reuse-startup-pitch": [
+      "무료 물 재이용 스타트업 피치 PowerPoint 템플릿",
+      "물 재이용 스타트업 피치"
+    ],
+    "experience-studio-company-profile": [
+      "무료 경험 디자인 스튜디오 회사소개 PowerPoint 템플릿",
+      "경험 디자인 스튜디오 회사소개"
+    ],
+    "podcast-discovery-marketing-plan": [
+      "무료 팟캐스트 발견 마케팅 계획 PowerPoint 템플릿",
+      "팟캐스트 발견 마케팅 계획"
+    ],
+    "school-solar-feasibility-proposal": [
+      "무료 학교 태양광 타당성 제안 PowerPoint 템플릿",
+      "학교 태양광 타당성 제안"
+    ],
+    "channel-partner-sell-through-report": [
+      "무료 채널 파트너 실판매 보고서 PowerPoint 템플릿",
+      "채널 파트너 실판매 보고서"
+    ],
+    "evidence-led-classroom-debate": [
+      "무료 근거 중심 교실 토론 PowerPoint 템플릿",
+      "근거 중심 교실 토론"
+    ],
+    "comparative-religion-thesis-defense": [
+      "무료 비교종교학 논문 발표 PowerPoint 템플릿",
+      "비교종교학 논문 발표"
+    ],
+    "sleep-assessment-clinical-case": [
+      "무료 수면 평가 임상 사례 PowerPoint 템플릿",
+      "수면 평가 임상 사례"
+    ],
+    "edge-inference-deployment-brief": [
+      "무료 엣지 추론 배포 개요 PowerPoint 템플릿",
+      "엣지 추론 배포 개요"
+    ],
+    "motion-storyboard-portfolio": [
+      "무료 모션 디자인 스토리보드 포트폴리오 PowerPoint 템플릿",
+      "모션 디자인 스토리보드 포트폴리오"
+    ],
+    "accessibility-improvement-product-roadmap": [
+      "무료 접근성 개선 제품 로드맵 PowerPoint 템플릿",
+      "접근성 개선 제품 로드맵"
+    ]
+  },
+  "fr": {
+    "coworking-occupancy-business-plan": [
+      "Modèle PowerPoint gratuit : Plan d’entreprise et occupation d’un espace de coworking",
+      "Plan d’entreprise et occupation d’un espace de coworking"
+    ],
+    "water-reuse-startup-pitch": [
+      "Modèle PowerPoint gratuit : Pitch de startup de réutilisation de l’eau",
+      "Pitch de startup de réutilisation de l’eau"
+    ],
+    "experience-studio-company-profile": [
+      "Modèle PowerPoint gratuit : Profil de studio de conception d’expériences",
+      "Profil de studio de conception d’expériences"
+    ],
+    "podcast-discovery-marketing-plan": [
+      "Modèle PowerPoint gratuit : Plan marketing de découverte de podcast",
+      "Plan marketing de découverte de podcast"
+    ],
+    "school-solar-feasibility-proposal": [
+      "Modèle PowerPoint gratuit : Étude de faisabilité solaire pour une école",
+      "Étude de faisabilité solaire pour une école"
+    ],
+    "channel-partner-sell-through-report": [
+      "Modèle PowerPoint gratuit : Rapport de ventes finales des partenaires",
+      "Rapport de ventes finales des partenaires"
+    ],
+    "evidence-led-classroom-debate": [
+      "Modèle PowerPoint gratuit : Débat en classe fondé sur des preuves",
+      "Débat en classe fondé sur des preuves"
+    ],
+    "comparative-religion-thesis-defense": [
+      "Modèle PowerPoint gratuit : Soutenance en religion comparée",
+      "Soutenance en religion comparée"
+    ],
+    "sleep-assessment-clinical-case": [
+      "Modèle PowerPoint gratuit : Cas clinique d’évaluation du sommeil",
+      "Cas clinique d’évaluation du sommeil"
+    ],
+    "edge-inference-deployment-brief": [
+      "Modèle PowerPoint gratuit : Présentation du déploiement d’inférence en périphérie",
+      "Présentation du déploiement d’inférence en périphérie"
+    ],
+    "motion-storyboard-portfolio": [
+      "Modèle PowerPoint gratuit : Portfolio de storyboard en motion design",
+      "Portfolio de storyboard en motion design"
+    ],
+    "accessibility-improvement-product-roadmap": [
+      "Modèle PowerPoint gratuit : Feuille de route d’amélioration de l’accessibilité",
+      "Feuille de route d’amélioration de l’accessibilité"
+    ]
+  },
+  "es": {
+    "coworking-occupancy-business-plan": [
+      "Plantilla PowerPoint gratis: Plan de negocio y ocupación de coworking",
+      "Plan de negocio y ocupación de coworking"
+    ],
+    "water-reuse-startup-pitch": [
+      "Plantilla PowerPoint gratis: Pitch de startup de reutilización de agua",
+      "Pitch de startup de reutilización de agua"
+    ],
+    "experience-studio-company-profile": [
+      "Plantilla PowerPoint gratis: Perfil de estudio de diseño de experiencias",
+      "Perfil de estudio de diseño de experiencias"
+    ],
+    "podcast-discovery-marketing-plan": [
+      "Plantilla PowerPoint gratis: Plan de marketing para descubrir un pódcast",
+      "Plan de marketing para descubrir un pódcast"
+    ],
+    "school-solar-feasibility-proposal": [
+      "Plantilla PowerPoint gratis: Propuesta de viabilidad solar escolar",
+      "Propuesta de viabilidad solar escolar"
+    ],
+    "channel-partner-sell-through-report": [
+      "Plantilla PowerPoint gratis: Informe de ventas finales de socios de canal",
+      "Informe de ventas finales de socios de canal"
+    ],
+    "evidence-led-classroom-debate": [
+      "Plantilla PowerPoint gratis: Debate en clase basado en evidencias",
+      "Debate en clase basado en evidencias"
+    ],
+    "comparative-religion-thesis-defense": [
+      "Plantilla PowerPoint gratis: Defensa de tesis en religión comparada",
+      "Defensa de tesis en religión comparada"
+    ],
+    "sleep-assessment-clinical-case": [
+      "Plantilla PowerPoint gratis: Caso clínico de evaluación del sueño",
+      "Caso clínico de evaluación del sueño"
+    ],
+    "edge-inference-deployment-brief": [
+      "Plantilla PowerPoint gratis: Presentación de despliegue de inferencia en el borde",
+      "Presentación de despliegue de inferencia en el borde"
+    ],
+    "motion-storyboard-portfolio": [
+      "Plantilla PowerPoint gratis: Portafolio de guion gráfico de diseño en movimiento",
+      "Portafolio de guion gráfico de diseño en movimiento"
+    ],
+    "accessibility-improvement-product-roadmap": [
+      "Plantilla PowerPoint gratis: Hoja de ruta de mejora de accesibilidad",
+      "Hoja de ruta de mejora de accesibilidad"
+    ]
+  },
+  "ru": {
+    "coworking-occupancy-business-plan": [
+      "Бесплатный шаблон PowerPoint: Бизнес-план загрузки коворкинга",
+      "Бизнес-план загрузки коворкинга"
+    ],
+    "water-reuse-startup-pitch": [
+      "Бесплатный шаблон PowerPoint: Питч стартапа повторного использования воды",
+      "Питч стартапа повторного использования воды"
+    ],
+    "experience-studio-company-profile": [
+      "Бесплатный шаблон PowerPoint: Профиль студии проектирования впечатлений",
+      "Профиль студии проектирования впечатлений"
+    ],
+    "podcast-discovery-marketing-plan": [
+      "Бесплатный шаблон PowerPoint: Маркетинговый план продвижения подкаста",
+      "Маркетинговый план продвижения подкаста"
+    ],
+    "school-solar-feasibility-proposal": [
+      "Бесплатный шаблон PowerPoint: Предложение по оценке солнечной энергетики школы",
+      "Предложение по оценке солнечной энергетики школы"
+    ],
+    "channel-partner-sell-through-report": [
+      "Бесплатный шаблон PowerPoint: Отчёт о конечных продажах партнёров",
+      "Отчёт о конечных продажах партнёров"
+    ],
+    "evidence-led-classroom-debate": [
+      "Бесплатный шаблон PowerPoint: Учебные дебаты на основе доказательств",
+      "Учебные дебаты на основе доказательств"
+    ],
+    "comparative-religion-thesis-defense": [
+      "Бесплатный шаблон PowerPoint: Защита диссертации по сравнительному религиоведению",
+      "Защита диссертации по сравнительному религиоведению"
+    ],
+    "sleep-assessment-clinical-case": [
+      "Бесплатный шаблон PowerPoint: Клинический случай оценки сна",
+      "Клинический случай оценки сна"
+    ],
+    "edge-inference-deployment-brief": [
+      "Бесплатный шаблон PowerPoint: Обзор развёртывания периферийного инференса",
+      "Обзор развёртывания периферийного инференса"
+    ],
+    "motion-storyboard-portfolio": [
+      "Бесплатный шаблон PowerPoint: Портфолио раскадровки моушн-дизайна",
+      "Портфолио раскадровки моушн-дизайна"
+    ],
+    "accessibility-improvement-product-roadmap": [
+      "Бесплатный шаблон PowerPoint: Дорожная карта улучшения доступности",
+      "Дорожная карта улучшения доступности"
+    ]
+  }
+};
+
 export function localizedTemplateName(template: PptTemplate, locale: Locale) {
-  const names = localized20261019Round2Names[locale]?.[template.slug] ?? localized20260911Round2Names[locale]?.[template.slug] ?? localized20260911Names[locale]?.[template.slug] ?? localized20260910Round2Names[locale]?.[template.slug] ?? localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
+  const names = localized20261020Names[locale]?.[template.slug] ?? localized20261019Round2Names[locale]?.[template.slug] ?? localized20260911Round2Names[locale]?.[template.slug] ?? localized20260911Names[locale]?.[template.slug] ?? localized20260910Round2Names[locale]?.[template.slug] ?? localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
   return { name: names?.[0] ?? template.name, shortName: names?.[1] ?? template.shortName };
 }
 
