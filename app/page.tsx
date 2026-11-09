@@ -10,7 +10,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-glow" />
         <div className="hero-copy">
-          <div className="pill"><Sparkles size={14} /> YOUR FIRST DECK IS FREE</div>
+          <div className="pill"><Sparkles size={14} /> YOUR FIRST 10 SLIDES ARE FREE</div>
           <h1>From rough idea to<br /><em>ready-to-present.</em></h1>
           <p>Tell us what you need or upload what you have. FreeAIPPT turns it into a clear, polished presentation—in minutes.</p>
         </div>

@@ -2,6 +2,7 @@ mod auth;
 mod config;
 mod error;
 mod models;
+mod slides;
 mod state;
 mod storage;
 
@@ -21,6 +22,7 @@ use chrono::{Duration, Utc};
 use config::Config;
 use error::ApiError;
 use models::*;
+use slides::{FREE_SLIDES_PER_ACCOUNT, MAX_SLIDES_PER_JOB, infer_slide_count};
 use rand::RngCore;
 use serde_json::json;
 use sqlx::{Row, sqlite::SqlitePoolOptions};
@@ -485,6 +487,15 @@ async fn create_job(
             "prompt must contain 1-20000 characters",
         ));
     }
+    let requested_slides = infer_slide_count(prompt);
+    if !(1..=MAX_SLIDES_PER_JOB).contains(&requested_slides) {
+        return Err(ApiError::bad_request("requested slide count must be between 1 and 100"));
+    }
+    let used_slides: i64 = sqlx::query_scalar("SELECT COALESCE(SUM(requested_slides),0) FROM jobs WHERE user_id=? AND ready_at IS NOT NULL AND status!='failed'")
+        .bind(&user.id).fetch_one(&state.db).await?;
+    if used_slides + requested_slides > FREE_SLIDES_PER_ACCOUNT {
+        return Err(ApiError::payment_required(format!("{} free slides remain; payments are coming soon", (FREE_SLIDES_PER_ACCOUNT-used_slides).max(0))));
+    }
     let template_slug = input
         .template_slug
         .as_deref()
@@ -498,13 +509,14 @@ async fn create_job(
     let id = Uuid::new_v4().to_string();
     let token = random_token();
     let now = Utc::now().to_rfc3339();
-    sqlx::query("INSERT INTO jobs (id,public_token_hash,prompt,status,created_at,updated_at,user_id,template_slug) VALUES (?,?,?,?,?,?,?,?)")
-        .bind(&id).bind(token_hash(&token)).bind(prompt).bind("pending").bind(&now).bind(&now).bind(&user.id).bind(template_slug).execute(&state.db).await?;
+    sqlx::query("INSERT INTO jobs (id,public_token_hash,prompt,status,created_at,updated_at,user_id,template_slug,requested_slides) VALUES (?,?,?,?,?,?,?,?,?)")
+        .bind(&id).bind(token_hash(&token)).bind(prompt).bind("pending").bind(&now).bind(&now).bind(&user.id).bind(template_slug).bind(requested_slides).execute(&state.db).await?;
     Ok((
         StatusCode::CREATED,
         Json(CreatedJob {
             id: id.clone(),
             status: "pending".into(),
+            requested_slides,
             job_token: token,
             upload_url: format!(
                 "{}/api/v1/jobs/{id}/files/authorize",
@@ -556,6 +568,7 @@ async fn public_job(state: &AppState, job: Job) -> Result<PublicJob, ApiError> {
         completed_at: job.completed_at,
         input_count,
         template_slug: job.template_slug,
+        requested_slides: job.requested_slides,
         downloads,
     })
 }
@@ -786,12 +799,17 @@ async fn submit_job(
         return Err(ApiError::conflict("job has already been submitted"));
     }
     let now = Utc::now().to_rfc3339();
-    sqlx::query("UPDATE jobs SET ready_at=?,updated_at=? WHERE id=?")
+    let changed = sqlx::query("UPDATE jobs SET ready_at=?,updated_at=? WHERE id=? AND ready_at IS NULL AND (SELECT COALESCE(SUM(requested_slides),0) FROM jobs WHERE user_id=? AND ready_at IS NOT NULL AND status!='failed') + requested_slides <= ?")
         .bind(&now)
         .bind(&now)
         .bind(&id)
+        .bind(&job.user_id)
+        .bind(FREE_SLIDES_PER_ACCOUNT)
         .execute(&state.db)
-        .await?;
+        .await?.rows_affected();
+    if changed != 1 {
+        return Err(ApiError::payment_required("free slide allowance exhausted; payments are coming soon"));
+    }
     Ok(Json(ApiMessage {
         message: "job queued".into(),
     }))
@@ -1377,6 +1395,38 @@ mod tests {
                 "running".into()
             )
         );
+    }
+
+    #[tokio::test]
+    async fn free_pages_are_reserved_per_account_and_failed_jobs_release_them() {
+        let (app, db) = test_app().await;
+        add_user(&db, "metered-user", "metered@example.com", "metered-token").await;
+        let first = app.clone().oneshot(post_auth("/api/v1/jobs", json!({"prompt":"Create a 6-slide overview"}), "metered-token")).await.unwrap();
+        assert_eq!(first.status(), StatusCode::CREATED);
+        let first = json_body(first).await;
+        let first_id = first["id"].as_str().unwrap();
+        let first_submit = app.clone().oneshot(Request::builder().method("POST")
+            .uri(format!("/api/v1/jobs/{first_id}/submit"))
+            .header("x-job-token", first["job_token"].as_str().unwrap())
+            .body(Body::empty()).unwrap()).await.unwrap();
+        assert_eq!(first_submit.status(), StatusCode::OK);
+
+        let too_many = app.clone().oneshot(post_auth("/api/v1/jobs", json!({"prompt":"Create a 5-page report"}), "metered-token")).await.unwrap();
+        assert_eq!(too_many.status(), StatusCode::PAYMENT_REQUIRED);
+        let second = app.clone().oneshot(post_auth("/api/v1/jobs", json!({"prompt":"Create a 4-page report"}), "metered-token")).await.unwrap();
+        assert_eq!(second.status(), StatusCode::CREATED);
+        let second = json_body(second).await;
+        let second_submit = app.clone().oneshot(Request::builder().method("POST")
+            .uri(format!("/api/v1/jobs/{}/submit", second["id"].as_str().unwrap()))
+            .header("x-job-token", second["job_token"].as_str().unwrap())
+            .body(Body::empty()).unwrap()).await.unwrap();
+        assert_eq!(second_submit.status(), StatusCode::OK);
+        let used: i64 = sqlx::query_scalar("SELECT SUM(requested_slides) FROM jobs WHERE user_id='metered-user' AND ready_at IS NOT NULL AND status!='failed'").fetch_one(&db).await.unwrap();
+        assert_eq!(used, 10);
+
+        sqlx::query("UPDATE jobs SET status='failed' WHERE id=?").bind(first_id).execute(&db).await.unwrap();
+        let reused = app.oneshot(post_auth("/api/v1/jobs", json!({"prompt":"Create a 6-slide overview"}), "metered-token")).await.unwrap();
+        assert_eq!(reused.status(), StatusCode::CREATED);
     }
 
     #[tokio::test]

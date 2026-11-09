@@ -5,9 +5,12 @@ import Link from "next/link";
 import { AlertCircle, Download, ExternalLink, FileText, LoaderCircle, LogIn, Plus, RefreshCw } from "lucide-react";
 import { openAuthDialog, readAuthSession } from "@/lib/client-auth";
 import { localizePath, translations, type Locale } from "@/lib/i18n";
+import { captureConversion, conversionEvents } from "@/lib/analytics";
 
 type DownloadLink = { kind:string; url:string };
-type Job = { id:string; prompt:string; status:"pending"|"processing"|"completed"|"failed"; ready_at:string|null; attempts:number; error:string|null; created_at:string; updated_at:string; completed_at:string|null; input_count:number; template_slug:string|null; downloads:DownloadLink[] };
+type Job = { id:string; prompt:string; status:"pending"|"processing"|"completed"|"failed"; ready_at:string|null; attempts:number; error:string|null; created_at:string; updated_at:string; completed_at:string|null; input_count:number; template_slug:string|null; requested_slides?:number; downloads:DownloadLink[] };
+
+const slidesLabel: Record<Locale,string> = {en:"slides","zh-CN":"页","zh-TW":"頁",ja:"枚",ko:"장",fr:"diapositives",es:"diapositivas",ru:"слайдов"};
 
 const copy: Record<Locale,{signIn:string;empty:string;queued:string;draft:string;processing:string;completed:string;failed:string;files:string;template:string;refresh:string;loadError:string;viewHtml:string;downloadPptx:string}> = {
   en:{signIn:"Sign in to see your presentation queue.",empty:"No tasks yet. Describe a presentation to create your first one.",queued:"Queued",draft:"Uploading",processing:"Generating",completed:"Completed",failed:"Failed",files:"attachments",template:"Template",refresh:"Refresh",loadError:"Could not load your tasks.",viewHtml:"View HTML",downloadPptx:"Download PPTX"},
@@ -37,9 +40,17 @@ export function JobQueue({ locale = "en" }: { locale?: Locale }) {
       if(response.status===401){setSignedOut(true);throw new Error(c.signIn);}
       const data=await response.json().catch(()=>({}));
       if(!response.ok)throw new Error(typeof data.error==="string"?data.error:c.loadError);
-      setJobs(Array.isArray(data.jobs)?data.jobs:[]);
+      const nextJobs: Job[] = Array.isArray(data.jobs)?data.jobs:[];
+      for (const job of nextJobs) {
+        if (job.status!=="completed" && job.status!=="failed") continue;
+        const key=`freeppt-analytics-${job.id}-${job.status}`;
+        let firstObservation=true;
+        try { firstObservation=sessionStorage.getItem(key)!=="1"; if(firstObservation)sessionStorage.setItem(key,"1"); } catch { /* Analytics must not block the queue. */ }
+        if(firstObservation)captureConversion(job.status==="completed"?conversionEvents.taskCompleted:conversionEvents.taskFailed,{job_id:job.id,slide_count:job.requested_slides,attempts:job.attempts,input_count:job.input_count,template:job.template_slug,locale});
+      }
+      setJobs(nextJobs);
     }catch(cause){setError(cause instanceof Error?cause.message:c.loadError);}finally{setLoading(false);}
-  },[c.loadError,c.signIn]);
+  },[c.loadError,c.signIn,locale]);
   useEffect(()=>{void load();const timer=window.setInterval(()=>void load(),10000);return()=>window.clearInterval(timer);},[load]);
 
   const openOutput=async(job:Job,link:DownloadLink)=>{
@@ -50,6 +61,7 @@ export function JobQueue({ locale = "en" }: { locale?: Locale }) {
       if(!response.ok)throw new Error(c.loadError);
       const data=await response.json().catch(()=>({})) as {url?:string};
       if(!data.url)throw new Error(c.loadError);
+      captureConversion(conversionEvents.outputOpened,{job_id:job.id,format:link.kind,slide_count:job.requested_slides,template:job.template_slug,locale});
       const anchor=document.createElement("a");
       anchor.href=data.url;anchor.rel="noopener noreferrer";
       if(link.kind==="html"){anchor.target="_blank";}else{anchor.download=`freeaippt-${job.id}.${link.kind}`;}
@@ -58,7 +70,7 @@ export function JobQueue({ locale = "en" }: { locale?: Locale }) {
   };
 
   return <section className="dashboard"><div className="dashboard-title"><div><span className="eyebrow">{t.eyebrow}</span><h1>{t.title}</h1><p>{t.lead}</p></div><div className="dashboard-actions"><button data-testid="queue-refresh" className="secondary-button" onClick={()=>void load()}><RefreshCw size={16}/>{c.refresh}</button><Link data-testid="queue-new-deck" href={localizePath(locale)} className="primary-button"><Plus size={17}/>{t.newDeck}</Link></div></div>
-    {loading?<div className="queue-state"><LoaderCircle className="spin"/><p>{c.loadError.replace("Could not", "Loading")}</p></div>:signedOut?<div className="queue-state"><LogIn/><p>{c.signIn}</p><button data-testid="queue-sign-in" className="primary-button" onClick={openAuthDialog}>{translations[locale].nav.signIn}</button></div>:jobs.length===0?<div className="queue-state"><FileText/><p>{c.empty}</p></div>:<div className="queue-card">{jobs.map(job=><div className="queue-item" key={job.id}><span className="deck-icon">{job.status==="processing"?<LoaderCircle className="spin"/>:job.status==="failed"?<AlertCircle/>:<FileText/>}</span><div className="queue-main"><strong>{job.prompt}</strong><span>{new Date(job.created_at).toLocaleString(locale)} · {job.input_count} {c.files}{job.template_slug?` · ${c.template}: ${job.template_slug}`:""}</span>{job.error&&<span className="queue-error">{job.error}</span>}</div><span className={`status ${job.status==="completed"?"ready":job.status==="failed"?"failed":"generating"}`}>{statusText(job,c)}</span>{job.downloads.length>0&&<div className="download-group">{job.downloads.map(link=><button data-testid={`queue-${job.id}-${link.kind==="html"?"view":"download"}-${link.kind}`} key={link.kind} onClick={()=>void openOutput(job,link)}>{link.kind==="html"?<ExternalLink size={15}/>:<Download size={15}/>} {link.kind==="html"?c.viewHtml:c.downloadPptx}</button>)}</div>}</div>)}</div>}
+    {loading?<div className="queue-state"><LoaderCircle className="spin"/><p>{c.loadError.replace("Could not", "Loading")}</p></div>:signedOut?<div className="queue-state"><LogIn/><p>{c.signIn}</p><button data-testid="queue-sign-in" className="primary-button" onClick={openAuthDialog}>{translations[locale].nav.signIn}</button></div>:jobs.length===0?<div className="queue-state"><FileText/><p>{c.empty}</p></div>:<div className="queue-card">{jobs.map(job=><div className="queue-item" key={job.id}><span className="deck-icon">{job.status==="processing"?<LoaderCircle className="spin"/>:job.status==="failed"?<AlertCircle/>:<FileText/>}</span><div className="queue-main"><strong>{job.prompt}</strong><span>{new Date(job.created_at).toLocaleString(locale)} · {job.input_count} {c.files}{job.requested_slides?` · ${job.requested_slides} ${slidesLabel[locale]}`:""}{job.template_slug?` · ${c.template}: ${job.template_slug}`:""}</span>{job.error&&<span className="queue-error">{job.error}</span>}</div><span className={`status ${job.status==="completed"?"ready":job.status==="failed"?"failed":"generating"}`}>{statusText(job,c)}</span>{job.downloads.length>0&&<div className="download-group">{job.downloads.map(link=><button data-testid={`queue-${job.id}-${link.kind==="html"?"view":"download"}-${link.kind}`} key={link.kind} onClick={()=>void openOutput(job,link)}>{link.kind==="html"?<ExternalLink size={15}/>:<Download size={15}/>} {link.kind==="html"?c.viewHtml:c.downloadPptx}</button>)}</div>}</div>)}</div>}
     {error&&<p className="auth-error queue-page-error" role="alert">{error}</p>}
   </section>;
 }

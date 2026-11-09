@@ -58,6 +58,24 @@ test("plus menu selects a template and homepage CTA carries it into the generato
   await expect(page.locator(".selected-template").getByText("Startup Pitch Deck",{exact:true})).toBeVisible();
 });
 
+for (const viewport of [{width:1280,height:700},{width:390,height:640}]) {
+  test(`template picker scrolls to the last item at ${viewport.width}px`,async({page})=>{
+    await page.setViewportSize(viewport);
+    await page.goto("/");
+    await page.getByTestId("generator-tools-toggle").click();
+    await page.getByTestId("generator-template-open").click();
+    const list=page.getByTestId("generator-template-list");
+    await expect(list).toBeVisible();
+    expect(await list.evaluate(element=>element.scrollHeight>element.clientHeight)).toBe(true);
+    const last=list.locator("button").last();
+    await last.scrollIntoViewIfNeeded();
+    await expect(last).toBeInViewport();
+    await last.click();
+    await expect(page.getByRole("dialog",{name:"Choose a presentation style"})).toHaveCount(0);
+    await expect(page.locator(".selected-template")).toBeVisible();
+  });
+}
+
 test("disabled task submission falls back to mocked trial registration",async({page})=>{
   await page.route("**/api/v1/features",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({task_submission:false,waitlist:true})}));
   await page.route("**/api/v1/waitlist",async route=>{
@@ -71,6 +89,34 @@ test("disabled task submission falls back to mocked trial registration",async({p
   await page.getByRole("dialog").getByLabel("Email").fill("candidate@example.com");
   await page.getByTestId("coming-soon-waitlist-submit").click();
   await expect(page.getByText("You're on the list. We'll be in touch!")).toBeVisible();
+});
+
+test("page allowance error is shown without creating a queue item",async({page})=>{
+  await page.route("**/api/v1/features",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({task_submission:true,waitlist:false})}));
+  await page.route("**/api/v1/jobs",route=>route.fulfill({status:402,contentType:"application/json",body:JSON.stringify({error:"0 free slides remain; payments are coming soon"})}));
+  await page.goto("/");
+  await page.getByLabel("Presentation brief").fill("Create a 10-slide pitch deck");
+  await page.getByTestId("generator-submit").click();
+  await expect(page.getByRole("status")).toContainText("0 free slides remain");
+  await expect(page).toHaveURL(/\/$/);
+});
+
+test("Chinese page allowance error stays localized",async({page})=>{
+  await page.route("**/api/v1/features",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({task_submission:true,waitlist:false})}));
+  await page.route("**/api/v1/jobs",route=>route.fulfill({status:402,contentType:"application/json",body:JSON.stringify({error:"4 free slides remain; payments are coming soon"})}));
+  await page.goto("/zh-CN");
+  await page.getByLabel("演示文稿需求").fill("制作六页产品报告");
+  await page.getByTestId("generator-submit").click();
+  await expect(page.getByRole("status")).toContainText("剩余 4 页免费额度");
+});
+
+test("pricing uses pages and free entry reaches the generator",async({page})=>{
+  await page.goto("/pricing");
+  await expect(page.getByText("100 slides · Save 20%",{exact:true})).toBeVisible();
+  await expect(page.getByText("250 slides · Save 40%",{exact:true})).toBeVisible();
+  await page.getByTestId("pricing-plan-0-select").click();
+  await expect(page).toHaveURL(/\/#generator$/);
+  await expect(page.getByLabel("Presentation brief")).toBeVisible();
 });
 
 test("completed task exposes a PPTX download and an HTML viewer",async({page})=>{

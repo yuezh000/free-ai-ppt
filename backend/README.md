@@ -12,6 +12,13 @@ The Rust API stores authentication, generation tasks, attachment metadata, and t
 - A PPT agent uses the same pattern through `POST /api/v1/agent/jobs/:id/outputs/:kind/authorize` and completes the job with JSON metadata.
 - The WisPaper worker polls the queue, creates or resumes an upstream Universal Agent workflow, renews the job lease, and uploads both final artifacts directly to Blob.
 
+## Page allowance
+
+- Each account receives 10 free generated slides in total. Historical jobs created before the page allowance migration do not consume it.
+- The API infers a requested slide count from an explicit count in the brief (for example, `6 slides` or `六页`). Without an explicit count, a short brief gets 6 slides, a medium brief 8, and a long brief 10. The worker asks WisPaper for exactly that many slides in both output formats.
+- Pages are reserved when a job enters the queue. A failed job releases its reservation. A second submission is checked atomically so concurrent requests cannot exceed the free allowance.
+- Paid page credits are not available until payments launch. The API returns HTTP 402 when the remaining free allowance is insufficient. Pricing is $1 per 10 pages, $8 per 100 pages (20% off), or $15 per 250 pages (40% off).
+
 `BLOB_READ_WRITE_TOKEN` is server-only. Never expose it to the frontend or an agent. The returned upload/download URLs are restricted to one pathname and one operation.
 
 ## Feature flags

@@ -21,6 +21,7 @@ pub struct Job {
     pub completed_at: Option<String>,
     pub user_id: Option<String>,
     pub template_slug: Option<String>,
+    pub requested_slides: i64,
     pub upstream_provider: Option<String>,
     pub upstream_workflow_id: Option<String>,
     pub upstream_task_id: Option<String>,
@@ -52,6 +53,7 @@ pub struct CreateJob {
 pub struct CreatedJob {
     pub id: String,
     pub status: String,
+    pub requested_slides: i64,
     pub job_token: String,
     pub upload_url: String,
     pub submit_url: String,
@@ -116,6 +118,7 @@ pub struct PublicJob {
     pub completed_at: Option<String>,
     pub input_count: i64,
     pub template_slug: Option<String>,
+    pub requested_slides: i64,
     pub downloads: Vec<DownloadLink>,
 }
 

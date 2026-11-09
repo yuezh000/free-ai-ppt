@@ -34,14 +34,14 @@ const passwordText: Record<Locale,{ password:string; passwordLogin:string; useCo
 };
 
 const signupText: Record<Locale,{ signUp:string; title:string; lead:string; haveAccount:string; needAccount:string }> = {
-  en:{signUp:"Sign up",title:"Create your FreeAIPPT account",lead:"Sign up with your email. Your first presentation is free.",haveAccount:"Already have an account? Sign in",needAccount:"New to FreeAIPPT? Sign up"},
-  "zh-CN":{signUp:"注册",title:"创建 FreeAIPPT 账号",lead:"使用邮箱注册，首次生成 PPT 免费。",haveAccount:"已有账号？登录",needAccount:"还没有账号？注册"},
-  "zh-TW":{signUp:"註冊",title:"建立 FreeAIPPT 帳號",lead:"使用電子郵件註冊，首次生成簡報免費。",haveAccount:"已有帳號？登入",needAccount:"還沒有帳號？註冊"},
-  ja:{signUp:"新規登録",title:"FreeAIPPTアカウントを作成",lead:"メールで登録すると、最初のプレゼンテーションは無料です。",haveAccount:"アカウントをお持ちですか？ログイン",needAccount:"初めてですか？新規登録"},
-  ko:{signUp:"가입",title:"FreeAIPPT 계정 만들기",lead:"이메일로 가입하면 첫 프레젠테이션이 무료입니다.",haveAccount:"계정이 있나요? 로그인",needAccount:"처음이신가요? 가입"},
-  fr:{signUp:"S’inscrire",title:"Créez votre compte FreeAIPPT",lead:"Inscrivez-vous par e-mail. Votre première présentation est gratuite.",haveAccount:"Déjà inscrit ? Se connecter",needAccount:"Nouveau sur FreeAIPPT ? S’inscrire"},
-  es:{signUp:"Registrarse",title:"Crea tu cuenta de FreeAIPPT",lead:"Regístrate con tu correo. Tu primera presentación es gratis.",haveAccount:"¿Ya tienes cuenta? Inicia sesión",needAccount:"¿Eres nuevo? Regístrate"},
-  ru:{signUp:"Регистрация",title:"Создайте аккаунт FreeAIPPT",lead:"Зарегистрируйтесь по email. Первая презентация бесплатна.",haveAccount:"Уже есть аккаунт? Войти",needAccount:"Впервые в FreeAIPPT? Регистрация"},
+  en:{signUp:"Sign up",title:"Create your FreeAIPPT account",lead:"Sign up with your email. Your first 10 slides are free.",haveAccount:"Already have an account? Sign in",needAccount:"New to FreeAIPPT? Sign up"},
+  "zh-CN":{signUp:"注册",title:"创建 FreeAIPPT 账号",lead:"使用邮箱注册，前 10 页 PPT 免费。",haveAccount:"已有账号？登录",needAccount:"还没有账号？注册"},
+  "zh-TW":{signUp:"註冊",title:"建立 FreeAIPPT 帳號",lead:"使用電子郵件註冊，前 10 頁簡報免費。",haveAccount:"已有帳號？登入",needAccount:"還沒有帳號？註冊"},
+  ja:{signUp:"新規登録",title:"FreeAIPPTアカウントを作成",lead:"メールで登録すると、最初の10枚は無料です。",haveAccount:"アカウントをお持ちですか？ログイン",needAccount:"初めてですか？新規登録"},
+  ko:{signUp:"가입",title:"FreeAIPPT 계정 만들기",lead:"이메일로 가입하면 첫 10장이 무료입니다.",haveAccount:"계정이 있나요? 로그인",needAccount:"처음이신가요? 가입"},
+  fr:{signUp:"S’inscrire",title:"Créez votre compte FreeAIPPT",lead:"Inscrivez-vous par e-mail. Vos 10 premières diapositives sont gratuites.",haveAccount:"Déjà inscrit ? Se connecter",needAccount:"Nouveau sur FreeAIPPT ? S’inscrire"},
+  es:{signUp:"Registrarse",title:"Crea tu cuenta de FreeAIPPT",lead:"Regístrate con tu correo. Tus primeras 10 diapositivas son gratis.",haveAccount:"¿Ya tienes cuenta? Inicia sesión",needAccount:"¿Eres nuevo? Regístrate"},
+  ru:{signUp:"Регистрация",title:"Создайте аккаунт FreeAIPPT",lead:"Зарегистрируйтесь по email. Первые 10 слайдов бесплатны.",haveAccount:"Уже есть аккаунт? Войти",needAccount:"Впервые в FreeAIPPT? Регистрация"},
 };
 
 const menuText: Record<Locale,{ account:string; admin:string }> = {

@@ -24,6 +24,9 @@ impl ApiError {
     pub fn conflict(message: impl Into<String>) -> Self {
         Self(StatusCode::CONFLICT, message.into())
     }
+    pub fn payment_required(message: impl Into<String>) -> Self {
+        Self(StatusCode::PAYMENT_REQUIRED, message.into())
+    }
     pub fn unavailable(message: impl Into<String>) -> Self {
         Self(StatusCode::SERVICE_UNAVAILABLE, message.into())
     }

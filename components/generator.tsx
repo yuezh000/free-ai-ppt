@@ -2,6 +2,7 @@
 
 import { ChangeEvent, DragEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { ArrowUp, Check, FileArchive, FileImage, FileSpreadsheet, FileText, LayoutTemplate, Paperclip, Plus, X } from "lucide-react";
 import { ComingSoon } from "./coming-soon";
@@ -15,7 +16,18 @@ import { localizedTemplateName } from "@/lib/template-i18n";
 const extensions = ["DOCX", "PPTX", "XLSX", "PDF", "PNG", "JPG"];
 const maxFileBytes = 25 * 1024 * 1024;
 
-type CreatedJob = { id: string; job_token: string };
+const quotaMessage: Record<Locale,(remaining:number)=>string> = {
+  en:remaining=>`${remaining} free slides remain. Reduce the requested slide count or wait for payments to launch.`,
+  "zh-CN":remaining=>`剩余 ${remaining} 页免费额度。请减少需求中的页数，或等待支付功能上线。`,
+  "zh-TW":remaining=>`剩餘 ${remaining} 頁免費額度。請減少需求中的頁數，或等待付款功能上線。`,
+  ja:remaining=>`無料枠は残り${remaining}枚です。依頼の枚数を減らすか、決済機能の公開をお待ちください。`,
+  ko:remaining=>`무료 슬라이드가 ${remaining}장 남았습니다. 요청 장수를 줄이거나 결제 기능을 기다려 주세요.`,
+  fr:remaining=>`Il reste ${remaining} diapositives gratuites. Réduisez le nombre demandé ou attendez l'ouverture des paiements.`,
+  es:remaining=>`Quedan ${remaining} diapositivas gratis. Reduce el número solicitado o espera a que se habiliten los pagos.`,
+  ru:remaining=>`Осталось ${remaining} бесплатных слайдов. Уменьшите число слайдов или дождитесь запуска оплаты.`,
+};
+
+type CreatedJob = { id: string; job_token: string; requested_slides?: number };
 type UploadAuthorization = { reservation_id:string; upload_url:string; method:string; headers:Record<string,string> };
 type BlobPutResult = { url:string };
 
@@ -87,6 +99,8 @@ export function Generator({ locale = "en" }: { locale?: Locale }) {
   const submit = async () => {
     if (busy) return;
     setError(""); setMessage("");
+    let stage = "feature_check";
+    let jobId: string | undefined;
     try {
       const features = await getFeatureFlags();
       if (!features.task_submission) {
@@ -97,9 +111,13 @@ export function Generator({ locale = "en" }: { locale?: Locale }) {
       if (!session) { setError(c.signIn); openAuthDialog(); return; }
       setBusy(true); setMessage(c.submitting);
       captureConversion(conversionEvents.generationRequested, { input_source: prompt.trim() && files.length ? "prompt_and_attachment" : files.length ? "attachment" : "prompt", file_count: files.length, locale });
+      stage = "create_job";
       const create = await fetch("/api/v1/jobs", { method:"POST", headers:{"Authorization":`Bearer ${session.token}`,"Content-Type":"application/json"}, body:JSON.stringify({ prompt:prompt.trim() || c.attachmentPrompt, template_slug:selectedTemplate?.slug ?? null }) });
       const created = await create.json().catch(() => ({})) as CreatedJob & { error?:string };
+      if (create.status===402) throw new Error(quotaMessage[locale](Number.parseInt(created.error?.match(/^\d+/)?.[0] ?? "0",10)));
       if (!create.ok) throw new Error(created.error || c.failed);
+      jobId = created.id;
+      stage = "upload_attachments";
       for (const file of files) {
         const authorize = await fetch(`/api/v1/jobs/${created.id}/files/authorize`, {
           method:"POST",
@@ -121,12 +139,14 @@ export function Generator({ locale = "en" }: { locale?: Locale }) {
         });
         if (!register.ok) { const data=await register.json().catch(()=>({})); throw new Error(typeof data.error === "string" ? data.error : c.failed); }
       }
+      stage = "queue_job";
       const queued = await fetch(`/api/v1/jobs/${created.id}/submit`, { method:"POST", headers:{"x-job-token":created.job_token} });
-      if (!queued.ok) { const data=await queued.json().catch(()=>({})); throw new Error(typeof data.error === "string" ? data.error : c.failed); }
-      captureConversion(conversionEvents.taskSubmitted, { file_count:files.length, locale });
+      if (!queued.ok) { const data=await queued.json().catch(()=>({})); throw new Error(queued.status===402?quotaMessage[locale](0):typeof data.error === "string" ? data.error : c.failed); }
+      captureConversion(conversionEvents.taskSubmitted, { job_id:created.id, slide_count:created.requested_slides, file_count:files.length, template:selectedTemplate?.slug ?? null, locale });
       setMessage(c.queued);
       router.push(localizePath(locale, "/queue"));
     } catch (cause) {
+      captureConversion(conversionEvents.taskSubmissionFailed, { job_id:jobId, stage, file_count:files.length, template:selectedTemplate?.slug ?? null, locale });
       setMessage(""); setError(cause instanceof Error ? cause.message : c.failed);
     } finally { setBusy(false); }
   };
@@ -151,7 +171,7 @@ export function Generator({ locale = "en" }: { locale?: Locale }) {
       {(message || error) && <p className={error ? "generator-feedback error" : "generator-feedback"} role="status">{error || message}</p>}
       <div className="format-row">{extensions.map((item) => <span key={item}>{item}</span>)}<span className="limit">{t.limit}</span></div>
       <ComingSoon open={modal} onClose={() => setModal(false)} locale={locale} source="generator" />
-      {templateOpen&&<div className="modal-backdrop" onMouseDown={()=>setTemplateOpen(false)}><section className="modal template-picker" onMouseDown={event=>event.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="template-picker-title"><button data-testid="generator-template-close" className="modal-close" onClick={()=>setTemplateOpen(false)} aria-label={translations[locale].modal.close}><X size={18}/></button><span className="eyebrow"><LayoutTemplate size={14}/>{c.chooseTemplate}</span><h2 id="template-picker-title">{c.templateTitle}</h2><p>{c.templateLead}</p><div className="template-picker-grid">{templates.map(template=><button data-testid={`generator-template-${template.slug}`} key={template.slug} className={selectedTemplate?.slug===template.slug?"selected":""} onClick={()=>chooseTemplate(template)}><Image src={`/templates/previews/${template.slug}/01.jpg`} alt="" width={320} height={180}/><span>{localizedTemplateName(template,locale).shortName}</span>{selectedTemplate?.slug===template.slug&&<Check size={17}/>}</button>)}</div></section></div>}
+      {templateOpen&&createPortal(<div className="modal-backdrop" onMouseDown={()=>setTemplateOpen(false)}><section className="modal template-picker" onMouseDown={event=>event.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="template-picker-title"><button data-testid="generator-template-close" className="modal-close" onClick={()=>setTemplateOpen(false)} aria-label={translations[locale].modal.close}><X size={18}/></button><span className="eyebrow"><LayoutTemplate size={14}/>{c.chooseTemplate}</span><h2 id="template-picker-title">{c.templateTitle}</h2><p>{c.templateLead}</p><div className="template-picker-grid" data-testid="generator-template-list">{templates.map(template=><button data-testid={`generator-template-${template.slug}`} key={template.slug} className={selectedTemplate?.slug===template.slug?"selected":""} onClick={()=>chooseTemplate(template)}><Image src={`/templates/previews/${template.slug}/01.jpg`} alt="" width={320} height={180}/><span>{localizedTemplateName(template,locale).shortName}</span>{selectedTemplate?.slug===template.slug&&<Check size={17}/>}</button>)}</div></section></div>,document.body)}
     </>
   );
 }

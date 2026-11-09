@@ -23,6 +23,7 @@ pub struct ClaimedJob {
 pub struct Job {
     pub id: String,
     pub prompt: String,
+    pub requested_slides: i64,
     pub template_slug: Option<String>,
     pub upstream_provider: Option<String>,
     pub upstream_workflow_id: Option<String>,

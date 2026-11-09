@@ -12,15 +12,15 @@ const manrope = Manrope({ subsets: ["latin"], variable: "--font-display" });
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "FreeAIPPT — AI presentations from anything",
-  description: "Turn a prompt or document into a polished presentation. Try your first deck free.",
+  description: "Turn a prompt or document into a polished presentation. Your first 10 slides are free.",
   applicationName: "FreeAIPPT",
   authors: [{ name: "FreeAIPPT", url: SITE_URL }],
   creator: "FreeAIPPT",
   publisher: "FreeAIPPT",
   alternates: { canonical: "/", languages: { ...languageAlternates(), "x-default": "/" } },
   robots: { index: true, follow: true },
-  openGraph: { title: "FreeAIPPT — AI presentations from anything", description: "Turn a prompt or document into a polished presentation. Try your first deck free.", type: "website", url: "/", siteName: "FreeAIPPT", locale: "en_US" },
-  twitter: { card: "summary", title: "FreeAIPPT — AI presentations from anything", description: "Turn a prompt or document into a polished presentation. Try your first deck free." },
+  openGraph: { title: "FreeAIPPT — AI presentations from anything", description: "Turn a prompt or document into a polished presentation. Your first 10 slides are free.", type: "website", url: "/", siteName: "FreeAIPPT", locale: "en_US" },
+  twitter: { card: "summary", title: "FreeAIPPT — AI presentations from anything", description: "Turn a prompt or document into a polished presentation. Your first 10 slides are free." },
 };
 
 const siteJsonLd = [

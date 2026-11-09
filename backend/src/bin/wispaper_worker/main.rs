@@ -321,8 +321,8 @@ fn generation_prompt(claimed: &ClaimedJob) -> String {
         })
         .unwrap_or_else(|| "Create an original visual system suited to the request.".into());
     format!(
-        "You are the dedicated FreeAIPPT presentation generation agent. Work autonomously and do not ask follow-up questions.\n\nUser request:\n{}\n\n{}\nTreat every other attachment as source material supplied by the user. Do not invent factual claims; label sample figures as illustrative placeholders.\n\nCreate exactly two final downloadable artifacts:\n1. {pptx_name} — an editable 16:9 PowerPoint presentation with 8–12 concise slides, native editable text and shapes, system fonts, coherent hierarchy, and no broken or clipped content.\n2. {html_name} — a self-contained HTML presentation containing the same slides, embedded CSS, keyboard navigation, responsive 16:9 rendering, and no external assets.\n\nValidate that both files open successfully. The final response must expose both artifacts as downloadable files and must not substitute PDF, Markdown, or a textual outline.",
-        claimed.job.prompt, template
+        "You are the dedicated FreeAIPPT presentation generation agent. Work autonomously and do not ask follow-up questions.\n\nUser request:\n{}\n\n{}\nTreat every other attachment as source material supplied by the user. Do not invent factual claims; label sample figures as illustrative placeholders.\n\nThe page limit is exactly {} slides. This limit is part of the user's page allowance and overrides any different page count in the brief or attachments. Do not add a title slide or appendix beyond the limit.\n\nCreate exactly two final downloadable artifacts:\n1. {pptx_name} — an editable 16:9 PowerPoint presentation with exactly {} concise slides, native editable text and shapes, system fonts, coherent hierarchy, and no broken or clipped content.\n2. {html_name} — a self-contained HTML presentation containing exactly the same {} slides, embedded CSS, keyboard navigation, responsive 16:9 rendering, and no external assets.\n\nValidate that both files open successfully and that both contain the required slide count. The final response must expose both artifacts as downloadable files and must not substitute PDF, Markdown, or a textual outline.",
+        claimed.job.prompt, template, claimed.job.requested_slides, claimed.job.requested_slides, claimed.job.requested_slides
     )
 }
 
@@ -346,6 +346,7 @@ mod tests {
             job: Job {
                 id: "job-1".into(),
                 prompt: "Create a launch presentation".into(),
+                requested_slides: 6,
                 template_slug: Some("startup-pitch-deck".into()),
                 upstream_provider: None,
                 upstream_workflow_id: None,
@@ -358,5 +359,6 @@ mod tests {
         assert!(prompt.contains("freeaippt-job-1.pptx"));
         assert!(prompt.contains("freeaippt-job-1.html"));
         assert!(prompt.contains("startup-pitch-deck.pptx"));
+        assert!(prompt.contains("exactly 6 slides"));
     }
 }

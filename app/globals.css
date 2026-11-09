@@ -50,3 +50,10 @@
 .template-detail-head>div>.template-byline{margin:13px 0 0;font-size:12px;font-weight:750;color:var(--green-dark)}
 .template-provenance{display:flex;align-items:flex-start;gap:22px;margin:70px 0;padding:32px 36px;border:1px solid #c8e5d8;border-radius:18px;background:#f2fbf6}.template-provenance>svg{width:32px;height:32px;color:var(--green-dark);flex:none}.template-provenance h2{font:760 26px/1.2 var(--font-display);letter-spacing:-.03em;margin:8px 0}.template-provenance p{max-width:820px;color:var(--muted);line-height:1.7;margin:0}
 @media(max-width:600px){.template-provenance{padding:26px 22px;gap:15px}.template-provenance>svg{width:25px;height:25px}.template-provenance h2{font-size:22px}}
+
+/* Keep the template list reachable on short and narrow viewports. */
+.template-picker{max-height:calc(100dvh - 40px);display:flex;flex-direction:column}
+.template-picker>.eyebrow,.template-picker>h2,.template-picker>p{flex:none}
+.template-picker-grid{min-height:0;overflow-y:auto;overscroll-behavior:contain;align-content:start}
+@media(max-width:600px){.template-picker-grid{max-height:none}}
+.price-card>a{width:100%;display:flex;justify-content:center}
