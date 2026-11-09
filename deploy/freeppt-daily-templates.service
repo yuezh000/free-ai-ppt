@@ -11,6 +11,7 @@ WorkingDirectory=/home/yue/private/freeppt
 Environment=CODEX_HOME=/home/yue/.codex
 Environment=PATH=/home/yue/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ExecStart=/home/yue/private/freeppt/scripts/run-daily-template-agent.sh
+ExecStopPost=/usr/bin/python3 /home/yue/private/freeppt/scripts/notify-daily-template-run.py
 Nice=10
 IOSchedulingClass=idle
 TimeoutStartSec=6h
