@@ -862,8 +862,361 @@ const localized20261020Names: Partial<Record<Locale, Record<string, [string, str
   }
 };
 
+const localized20261021Names: Partial<Record<Locale, Record<string, [string, string]>>> = {
+  "zh-CN": {
+    "retail-replenishment-business-plan": [
+      "免费零售补货商业计划 PowerPoint 模板",
+      "零售补货商业计划"
+    ],
+    "data-cleanup-startup-pitch": [
+      "免费数据清理创业路演 PowerPoint 模板",
+      "数据清理创业路演"
+    ],
+    "textile-supplier-company-profile": [
+      "免费纺织供应商公司简介 PowerPoint 模板",
+      "纺织供应商公司简介"
+    ],
+    "email-lifecycle-marketing-plan": [
+      "免费邮件生命周期营销计划 PowerPoint 模板",
+      "邮件生命周期营销计划"
+    ],
+    "community-reading-lounge-proposal": [
+      "免费社区阅读休息区提案 PowerPoint 模板",
+      "社区阅读休息区提案"
+    ],
+    "renewal-cohort-sales-report": [
+      "免费续约群组销售报告 PowerPoint 模板",
+      "续约群组销售报告"
+    ],
+    "sound-investigation-lesson": [
+      "免费声音探究教学计划 PowerPoint 模板",
+      "声音探究教学计划"
+    ],
+    "industrial-labor-history-thesis-defense": [
+      "免费工业劳动史论文答辩 PowerPoint 模板",
+      "工业劳动史论文答辩"
+    ],
+    "medication-history-clinical-case": [
+      "免费用药史临床病例 PowerPoint 模板",
+      "用药史临床病例"
+    ],
+    "quantum-pilot-readiness-brief": [
+      "免费量子计算试点准备简报 PowerPoint 模板",
+      "量子计算试点准备简报"
+    ],
+    "industrial-object-design-portfolio": [
+      "免费工业物件设计作品集 PowerPoint 模板",
+      "工业物件设计作品集"
+    ],
+    "search-relevance-experiment-roadmap": [
+      "免费搜索相关性实验路线图 PowerPoint 模板",
+      "搜索相关性实验路线图"
+    ]
+  },
+  "zh-TW": {
+    "retail-replenishment-business-plan": [
+      "免費零售補貨商業計畫 PowerPoint 範本",
+      "零售補貨商業計畫"
+    ],
+    "data-cleanup-startup-pitch": [
+      "免費資料清理新創簡報 PowerPoint 範本",
+      "資料清理新創簡報"
+    ],
+    "textile-supplier-company-profile": [
+      "免費紡織供應商公司簡介 PowerPoint 範本",
+      "紡織供應商公司簡介"
+    ],
+    "email-lifecycle-marketing-plan": [
+      "免費郵件生命週期行銷計畫 PowerPoint 範本",
+      "郵件生命週期行銷計畫"
+    ],
+    "community-reading-lounge-proposal": [
+      "免費社區閱讀休憩區提案 PowerPoint 範本",
+      "社區閱讀休憩區提案"
+    ],
+    "renewal-cohort-sales-report": [
+      "免費續約群組銷售報告 PowerPoint 範本",
+      "續約群組銷售報告"
+    ],
+    "sound-investigation-lesson": [
+      "免費聲音探究教學計畫 PowerPoint 範本",
+      "聲音探究教學計畫"
+    ],
+    "industrial-labor-history-thesis-defense": [
+      "免費工業勞動史論文答辯 PowerPoint 範本",
+      "工業勞動史論文答辯"
+    ],
+    "medication-history-clinical-case": [
+      "免費用藥史臨床病例 PowerPoint 範本",
+      "用藥史臨床病例"
+    ],
+    "quantum-pilot-readiness-brief": [
+      "免費量子運算試點準備簡報 PowerPoint 範本",
+      "量子運算試點準備簡報"
+    ],
+    "industrial-object-design-portfolio": [
+      "免費工業物件設計作品集 PowerPoint 範本",
+      "工業物件設計作品集"
+    ],
+    "search-relevance-experiment-roadmap": [
+      "免費搜尋相關性實驗路線圖 PowerPoint 範本",
+      "搜尋相關性實驗路線圖"
+    ]
+  },
+  "ja": {
+    "retail-replenishment-business-plan": [
+      "無料小売補充事業計画 PowerPoint テンプレート",
+      "小売補充事業計画"
+    ],
+    "data-cleanup-startup-pitch": [
+      "無料データ整理スタートアップピッチ PowerPoint テンプレート",
+      "データ整理スタートアップピッチ"
+    ],
+    "textile-supplier-company-profile": [
+      "無料繊維サプライヤー会社概要 PowerPoint テンプレート",
+      "繊維サプライヤー会社概要"
+    ],
+    "email-lifecycle-marketing-plan": [
+      "無料メールライフサイクル施策計画 PowerPoint テンプレート",
+      "メールライフサイクル施策計画"
+    ],
+    "community-reading-lounge-proposal": [
+      "無料地域読書ラウンジ提案 PowerPoint テンプレート",
+      "地域読書ラウンジ提案"
+    ],
+    "renewal-cohort-sales-report": [
+      "無料契約更新コホート営業報告 PowerPoint テンプレート",
+      "契約更新コホート営業報告"
+    ],
+    "sound-investigation-lesson": [
+      "無料音の探究授業計画 PowerPoint テンプレート",
+      "音の探究授業計画"
+    ],
+    "industrial-labor-history-thesis-defense": [
+      "無料産業労働史論文審査 PowerPoint テンプレート",
+      "産業労働史論文審査"
+    ],
+    "medication-history-clinical-case": [
+      "無料服薬歴臨床症例 PowerPoint テンプレート",
+      "服薬歴臨床症例"
+    ],
+    "quantum-pilot-readiness-brief": [
+      "無料量子計算試行準備資料 PowerPoint テンプレート",
+      "量子計算試行準備資料"
+    ],
+    "industrial-object-design-portfolio": [
+      "無料工業製品デザイン作品集 PowerPoint テンプレート",
+      "工業製品デザイン作品集"
+    ],
+    "search-relevance-experiment-roadmap": [
+      "無料検索関連性実験ロードマップ PowerPoint テンプレート",
+      "検索関連性実験ロードマップ"
+    ]
+  },
+  "ko": {
+    "retail-replenishment-business-plan": [
+      "무료 소매 재고 보충 사업 계획 PowerPoint 템플릿",
+      "소매 재고 보충 사업 계획"
+    ],
+    "data-cleanup-startup-pitch": [
+      "무료 데이터 정리 스타트업 피치 PowerPoint 템플릿",
+      "데이터 정리 스타트업 피치"
+    ],
+    "textile-supplier-company-profile": [
+      "무료 섬유 공급업체 회사 소개 PowerPoint 템플릿",
+      "섬유 공급업체 회사 소개"
+    ],
+    "email-lifecycle-marketing-plan": [
+      "무료 이메일 수명주기 마케팅 계획 PowerPoint 템플릿",
+      "이메일 수명주기 마케팅 계획"
+    ],
+    "community-reading-lounge-proposal": [
+      "무료 지역 독서 라운지 제안 PowerPoint 템플릿",
+      "지역 독서 라운지 제안"
+    ],
+    "renewal-cohort-sales-report": [
+      "무료 갱신 코호트 영업 보고서 PowerPoint 템플릿",
+      "갱신 코호트 영업 보고서"
+    ],
+    "sound-investigation-lesson": [
+      "무료 소리 탐구 수업 계획 PowerPoint 템플릿",
+      "소리 탐구 수업 계획"
+    ],
+    "industrial-labor-history-thesis-defense": [
+      "무료 산업 노동사 논문 심사 PowerPoint 템플릿",
+      "산업 노동사 논문 심사"
+    ],
+    "medication-history-clinical-case": [
+      "무료 복약 이력 임상 사례 PowerPoint 템플릿",
+      "복약 이력 임상 사례"
+    ],
+    "quantum-pilot-readiness-brief": [
+      "무료 양자 컴퓨팅 시범 준비 PowerPoint 템플릿",
+      "양자 컴퓨팅 시범 준비"
+    ],
+    "industrial-object-design-portfolio": [
+      "무료 산업 제품 디자인 포트폴리오 PowerPoint 템플릿",
+      "산업 제품 디자인 포트폴리오"
+    ],
+    "search-relevance-experiment-roadmap": [
+      "무료 검색 관련성 실험 로드맵 PowerPoint 템플릿",
+      "검색 관련성 실험 로드맵"
+    ]
+  },
+  "fr": {
+    "retail-replenishment-business-plan": [
+      "Modèle PowerPoint gratuit : Plan de réapprovisionnement du commerce",
+      "Plan de réapprovisionnement du commerce"
+    ],
+    "data-cleanup-startup-pitch": [
+      "Modèle PowerPoint gratuit : Pitch de startup de nettoyage des données",
+      "Pitch de startup de nettoyage des données"
+    ],
+    "textile-supplier-company-profile": [
+      "Modèle PowerPoint gratuit : Profil de fournisseur textile",
+      "Profil de fournisseur textile"
+    ],
+    "email-lifecycle-marketing-plan": [
+      "Modèle PowerPoint gratuit : Plan marketing du cycle de vie des e-mails",
+      "Plan marketing du cycle de vie des e-mails"
+    ],
+    "community-reading-lounge-proposal": [
+      "Modèle PowerPoint gratuit : Proposition de salon de lecture communautaire",
+      "Proposition de salon de lecture communautaire"
+    ],
+    "renewal-cohort-sales-report": [
+      "Modèle PowerPoint gratuit : Rapport commercial des cohortes de renouvellement",
+      "Rapport commercial des cohortes de renouvellement"
+    ],
+    "sound-investigation-lesson": [
+      "Modèle PowerPoint gratuit : Leçon d’investigation du son",
+      "Leçon d’investigation du son"
+    ],
+    "industrial-labor-history-thesis-defense": [
+      "Modèle PowerPoint gratuit : Soutenance en histoire du travail industriel",
+      "Soutenance en histoire du travail industriel"
+    ],
+    "medication-history-clinical-case": [
+      "Modèle PowerPoint gratuit : Cas clinique d’historique médicamenteux",
+      "Cas clinique d’historique médicamenteux"
+    ],
+    "quantum-pilot-readiness-brief": [
+      "Modèle PowerPoint gratuit : Préparation d’un pilote quantique",
+      "Préparation d’un pilote quantique"
+    ],
+    "industrial-object-design-portfolio": [
+      "Modèle PowerPoint gratuit : Portfolio de design d’objets industriels",
+      "Portfolio de design d’objets industriels"
+    ],
+    "search-relevance-experiment-roadmap": [
+      "Modèle PowerPoint gratuit : Feuille de route des expériences de pertinence de recherche",
+      "Feuille de route des expériences de pertinence de recherche"
+    ]
+  },
+  "es": {
+    "retail-replenishment-business-plan": [
+      "Plantilla PowerPoint gratis: Plan de reposición minorista",
+      "Plan de reposición minorista"
+    ],
+    "data-cleanup-startup-pitch": [
+      "Plantilla PowerPoint gratis: Pitch de startup de limpieza de datos",
+      "Pitch de startup de limpieza de datos"
+    ],
+    "textile-supplier-company-profile": [
+      "Plantilla PowerPoint gratis: Perfil de proveedor textil",
+      "Perfil de proveedor textil"
+    ],
+    "email-lifecycle-marketing-plan": [
+      "Plantilla PowerPoint gratis: Plan de marketing del ciclo de vida del correo",
+      "Plan de marketing del ciclo de vida del correo"
+    ],
+    "community-reading-lounge-proposal": [
+      "Plantilla PowerPoint gratis: Propuesta de sala de lectura comunitaria",
+      "Propuesta de sala de lectura comunitaria"
+    ],
+    "renewal-cohort-sales-report": [
+      "Plantilla PowerPoint gratis: Informe de ventas por cohortes de renovación",
+      "Informe de ventas por cohortes de renovación"
+    ],
+    "sound-investigation-lesson": [
+      "Plantilla PowerPoint gratis: Lección de investigación del sonido",
+      "Lección de investigación del sonido"
+    ],
+    "industrial-labor-history-thesis-defense": [
+      "Plantilla PowerPoint gratis: Defensa de tesis de historia laboral industrial",
+      "Defensa de tesis de historia laboral industrial"
+    ],
+    "medication-history-clinical-case": [
+      "Plantilla PowerPoint gratis: Caso clínico de historial de medicación",
+      "Caso clínico de historial de medicación"
+    ],
+    "quantum-pilot-readiness-brief": [
+      "Plantilla PowerPoint gratis: Preparación de piloto cuántico",
+      "Preparación de piloto cuántico"
+    ],
+    "industrial-object-design-portfolio": [
+      "Plantilla PowerPoint gratis: Portafolio de diseño de objetos industriales",
+      "Portafolio de diseño de objetos industriales"
+    ],
+    "search-relevance-experiment-roadmap": [
+      "Plantilla PowerPoint gratis: Hoja de ruta de experimentos de relevancia de búsqueda",
+      "Hoja de ruta de experimentos de relevancia de búsqueda"
+    ]
+  },
+  "ru": {
+    "retail-replenishment-business-plan": [
+      "Бесплатный шаблон PowerPoint: План пополнения розничных запасов",
+      "План пополнения розничных запасов"
+    ],
+    "data-cleanup-startup-pitch": [
+      "Бесплатный шаблон PowerPoint: Питч стартапа по очистке данных",
+      "Питч стартапа по очистке данных"
+    ],
+    "textile-supplier-company-profile": [
+      "Бесплатный шаблон PowerPoint: Профиль поставщика текстиля",
+      "Профиль поставщика текстиля"
+    ],
+    "email-lifecycle-marketing-plan": [
+      "Бесплатный шаблон PowerPoint: План маркетинга жизненного цикла писем",
+      "План маркетинга жизненного цикла писем"
+    ],
+    "community-reading-lounge-proposal": [
+      "Бесплатный шаблон PowerPoint: Предложение общественного читального зала",
+      "Предложение общественного читального зала"
+    ],
+    "renewal-cohort-sales-report": [
+      "Бесплатный шаблон PowerPoint: Отчёт о продажах по когортам продления",
+      "Отчёт о продажах по когортам продления"
+    ],
+    "sound-investigation-lesson": [
+      "Бесплатный шаблон PowerPoint: Урок исследования звука",
+      "Урок исследования звука"
+    ],
+    "industrial-labor-history-thesis-defense": [
+      "Бесплатный шаблон PowerPoint: Защита диссертации по истории промышленного труда",
+      "Защита диссертации по истории промышленного труда"
+    ],
+    "medication-history-clinical-case": [
+      "Бесплатный шаблон PowerPoint: Клинический случай лекарственного анамнеза",
+      "Клинический случай лекарственного анамнеза"
+    ],
+    "quantum-pilot-readiness-brief": [
+      "Бесплатный шаблон PowerPoint: Подготовка квантового пилота",
+      "Подготовка квантового пилота"
+    ],
+    "industrial-object-design-portfolio": [
+      "Бесплатный шаблон PowerPoint: Портфолио промышленного дизайна предметов",
+      "Портфолио промышленного дизайна предметов"
+    ],
+    "search-relevance-experiment-roadmap": [
+      "Бесплатный шаблон PowerPoint: План экспериментов по релевантности поиска",
+      "План экспериментов по релевантности поиска"
+    ]
+  }
+};
+
 export function localizedTemplateName(template: PptTemplate, locale: Locale) {
-  const names = localized20261020Names[locale]?.[template.slug] ?? localized20261019Round2Names[locale]?.[template.slug] ?? localized20260911Round2Names[locale]?.[template.slug] ?? localized20260911Names[locale]?.[template.slug] ?? localized20260910Round2Names[locale]?.[template.slug] ?? localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
+  const names = localized20261021Names[locale]?.[template.slug] ?? localized20261020Names[locale]?.[template.slug] ?? localized20261019Round2Names[locale]?.[template.slug] ?? localized20260911Round2Names[locale]?.[template.slug] ?? localized20260911Names[locale]?.[template.slug] ?? localized20260910Round2Names[locale]?.[template.slug] ?? localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
   return { name: names?.[0] ?? template.name, shortName: names?.[1] ?? template.shortName };
 }
 
