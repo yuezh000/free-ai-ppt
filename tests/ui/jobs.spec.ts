@@ -5,6 +5,7 @@ const session = { token:"mock-session-token", expires_at:"2099-01-01T00:00:00Z",
 test.beforeEach(async({page})=>{
   await page.addInitScript(value=>localStorage.setItem("freeppt-auth",JSON.stringify(value)),session);
   await page.route("**/api/v1/auth/me",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({user:session.user,password_set:true,is_admin:false})}));
+  await page.route("**/api/v1/account/allowance",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({total:10,used:6,remaining:4})}));
 });
 
 test("signed-in user submits a prompt and attachment to the mocked task API",async({page})=>{
@@ -43,6 +44,33 @@ test("signed-in user submits a prompt and attachment to the mocked task API",asy
   await expect(page).toHaveURL(/\/queue\/?$/);
   await expect(page.getByText("Create a quarterly strategy deck",{exact:true})).toBeVisible();
   expect(createAuthorized).toBe(true);expect(authorized).toBe(true);expect(uploaded).toBe(true);expect(registered).toBe(true);expect(submitted).toBe(true);
+});
+
+test("failed task never displays a worker error in the user queue",async({page})=>{
+  const workerError="session.not_found: interaction session id cookie not found";
+  await page.route("**/api/v1/jobs",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({jobs:[{id:"job-failed",prompt:"Create a strategy deck",status:"failed",ready_at:"2099-01-01T00:00:00Z",attempts:3,error:workerError,created_at:"2099-01-01T00:00:00Z",updated_at:"2099-01-01T00:00:00Z",completed_at:null,input_count:0,template_slug:null,downloads:[]}]})}));
+  await page.goto("/queue");
+  await expect(page.getByText("Create a strategy deck",{exact:true})).toBeVisible();
+  await expect(page.locator(".queue-item .status")).toHaveText("Failed");
+  await expect(page.getByText(workerError)).toHaveCount(0);
+  await expect(page.getByTestId("queue-remaining")).toHaveText("4 / 10");
+  await expect(page.getByTestId("queue-buy-pages")).toHaveAttribute("href","/pricing");
+});
+
+test("owner retries a failed task without resubmitting the brief",async({page})=>{
+  let status="failed";
+  let authorized=false;
+  await page.route("**/api/v1/jobs/job-failed/retry",async route=>{
+    authorized=route.request().method()==="POST"&&route.request().headers().authorization==="Bearer mock-session-token";
+    status="pending";
+    await route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({message:"job queued"})});
+  });
+  await page.route("**/api/v1/jobs",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({jobs:[{id:"job-failed",prompt:"Create a strategy deck",status,ready_at:"2099-01-01T00:00:00Z",attempts:status==="failed"?3:0,created_at:"2099-01-01T00:00:00Z",updated_at:"2099-01-01T00:00:00Z",completed_at:null,input_count:2,template_slug:"startup-pitch-deck",downloads:[]}]})}));
+  await page.goto("/queue");
+  await page.getByTestId("queue-job-failed-retry").click();
+  await expect(page.locator(".queue-item .status")).toHaveText("Queued");
+  await expect(page.getByTestId("queue-job-failed-retry")).toHaveCount(0);
+  expect(authorized).toBe(true);
 });
 
 test("plus menu selects a template and homepage CTA carries it into the generator",async({page})=>{

@@ -6,11 +6,22 @@ import { AlertCircle, Download, ExternalLink, FileText, LoaderCircle, LogIn, Plu
 import { openAuthDialog, readAuthSession } from "@/lib/client-auth";
 import { localizePath, translations, type Locale } from "@/lib/i18n";
 import { captureConversion, conversionEvents } from "@/lib/analytics";
+import { loadPageAllowance, pageAllowanceCopy, type PageAllowance } from "@/lib/page-allowance";
 
 type DownloadLink = { kind:string; url:string };
-type Job = { id:string; prompt:string; status:"pending"|"processing"|"completed"|"failed"; ready_at:string|null; attempts:number; error:string|null; created_at:string; updated_at:string; completed_at:string|null; input_count:number; template_slug:string|null; requested_slides?:number; downloads:DownloadLink[] };
+type Job = { id:string; prompt:string; status:"pending"|"processing"|"completed"|"failed"; ready_at:string|null; attempts:number; created_at:string; updated_at:string; completed_at:string|null; input_count:number; template_slug:string|null; requested_slides?:number; downloads:DownloadLink[] };
 
 const slidesLabel: Record<Locale,string> = {en:"slides","zh-CN":"页","zh-TW":"頁",ja:"枚",ko:"장",fr:"diapositives",es:"diapositivas",ru:"слайдов"};
+const retryCopy: Record<Locale,{retry:string;retrying:string;failed:string;quota:string}> = {
+  en:{retry:"Retry",retrying:"Retrying…",failed:"Could not retry the task. Please try again.",quota:"Not enough free pages remain to retry this task."},
+  "zh-CN":{retry:"重试",retrying:"正在重试……",failed:"重试失败，请稍后再试。",quota:"剩余免费页数不足，无法重试此任务。"},
+  "zh-TW":{retry:"重試",retrying:"正在重試……",failed:"重試失敗，請稍後再試。",quota:"剩餘免費頁數不足，無法重試此任務。"},
+  ja:{retry:"再試行",retrying:"再試行中…",failed:"再試行できませんでした。もう一度お試しください。",quota:"再試行に必要な無料ページ数が残っていません。"},
+  ko:{retry:"다시 시도",retrying:"다시 시도 중…",failed:"다시 시도하지 못했습니다. 잠시 후 다시 시도하세요.",quota:"다시 시도할 무료 페이지가 부족합니다."},
+  fr:{retry:"Réessayer",retrying:"Nouvel essai…",failed:"Impossible de relancer la tâche. Réessayez.",quota:"Il ne reste pas assez de pages gratuites pour réessayer."},
+  es:{retry:"Reintentar",retrying:"Reintentando…",failed:"No se pudo reintentar la tarea. Inténtalo de nuevo.",quota:"No quedan suficientes páginas gratuitas para reintentar."},
+  ru:{retry:"Повторить",retrying:"Повтор…",failed:"Не удалось повторить задачу. Попробуйте позже.",quota:"Для повтора не хватает бесплатных страниц."},
+};
 
 const copy: Record<Locale,{signIn:string;empty:string;queued:string;draft:string;processing:string;completed:string;failed:string;files:string;template:string;refresh:string;loadError:string;viewHtml:string;downloadPptx:string}> = {
   en:{signIn:"Sign in to see your presentation queue.",empty:"No tasks yet. Describe a presentation to create your first one.",queued:"Queued",draft:"Uploading",processing:"Generating",completed:"Completed",failed:"Failed",files:"attachments",template:"Template",refresh:"Refresh",loadError:"Could not load your tasks.",viewHtml:"View HTML",downloadPptx:"Download PPTX"},
@@ -31,9 +42,11 @@ function statusText(job: Job, t: (typeof copy)[Locale]) {
 export function JobQueue({ locale = "en" }: { locale?: Locale }) {
   const t=translations[locale].queue,c=copy[locale];
   const [jobs,setJobs]=useState<Job[]>([]),[loading,setLoading]=useState(true),[signedOut,setSignedOut]=useState(false),[error,setError]=useState("");
+  const [allowance,setAllowance]=useState<PageAllowance|null>(null);
+  const [retryingJobId,setRetryingJobId]=useState<string|null>(null);
   const load=useCallback(async()=>{
     const session=readAuthSession();
-    if(!session){setSignedOut(true);setLoading(false);return;}
+    if(!session){setSignedOut(true);setAllowance(null);setLoading(false);return;}
     setSignedOut(false);setError("");
     try{
       const response=await fetch("/api/v1/jobs",{headers:{Authorization:`Bearer ${session.token}`},cache:"no-store"});
@@ -49,9 +62,21 @@ export function JobQueue({ locale = "en" }: { locale?: Locale }) {
         if(firstObservation)captureConversion(job.status==="completed"?conversionEvents.taskCompleted:conversionEvents.taskFailed,{job_id:job.id,slide_count:job.requested_slides,attempts:job.attempts,input_count:job.input_count,template:job.template_slug,locale});
       }
       setJobs(nextJobs);
+      setAllowance(await loadPageAllowance(session.token));
     }catch(cause){setError(cause instanceof Error?cause.message:c.loadError);}finally{setLoading(false);}
   },[c.loadError,c.signIn,locale]);
   useEffect(()=>{void load();const timer=window.setInterval(()=>void load(),10000);return()=>window.clearInterval(timer);},[load]);
+
+  const retryJob=async(job:Job)=>{
+    const session=readAuthSession();if(!session){openAuthDialog();return;}
+    setRetryingJobId(job.id);setError("");
+    try{
+      const response=await fetch(`/api/v1/jobs/${encodeURIComponent(job.id)}/retry`,{method:"POST",headers:{Authorization:`Bearer ${session.token}`}});
+      if(!response.ok)throw new Error(response.status===402?retryCopy[locale].quota:retryCopy[locale].failed);
+      setJobs(previous=>previous.map(item=>item.id===job.id?{...item,status:"pending",ready_at:new Date().toISOString(),attempts:0}:item));
+      await load();
+    }catch(cause){setError(cause instanceof Error?cause.message:retryCopy[locale].failed);}finally{setRetryingJobId(null);}
+  };
 
   const openOutput=async(job:Job,link:DownloadLink)=>{
     const session=readAuthSession();if(!session){openAuthDialog();return;}
@@ -70,7 +95,8 @@ export function JobQueue({ locale = "en" }: { locale?: Locale }) {
   };
 
   return <section className="dashboard"><div className="dashboard-title"><div><span className="eyebrow">{t.eyebrow}</span><h1>{t.title}</h1><p>{t.lead}</p></div><div className="dashboard-actions"><button data-testid="queue-refresh" className="secondary-button" onClick={()=>void load()}><RefreshCw size={16}/>{c.refresh}</button><Link data-testid="queue-new-deck" href={localizePath(locale)} className="primary-button"><Plus size={17}/>{t.newDeck}</Link></div></div>
-    {loading?<div className="queue-state"><LoaderCircle className="spin"/><p>{c.loadError.replace("Could not", "Loading")}</p></div>:signedOut?<div className="queue-state"><LogIn/><p>{c.signIn}</p><button data-testid="queue-sign-in" className="primary-button" onClick={openAuthDialog}>{translations[locale].nav.signIn}</button></div>:jobs.length===0?<div className="queue-state"><FileText/><p>{c.empty}</p></div>:<div className="queue-card">{jobs.map(job=><div className="queue-item" key={job.id}><span className="deck-icon">{job.status==="processing"?<LoaderCircle className="spin"/>:job.status==="failed"?<AlertCircle/>:<FileText/>}</span><div className="queue-main"><strong>{job.prompt}</strong><span>{new Date(job.created_at).toLocaleString(locale)} · {job.input_count} {c.files}{job.requested_slides?` · ${job.requested_slides} ${slidesLabel[locale]}`:""}{job.template_slug?` · ${c.template}: ${job.template_slug}`:""}</span>{job.error&&<span className="queue-error">{job.error}</span>}</div><span className={`status ${job.status==="completed"?"ready":job.status==="failed"?"failed":"generating"}`}>{statusText(job,c)}</span>{job.downloads.length>0&&<div className="download-group">{job.downloads.map(link=><button data-testid={`queue-${job.id}-${link.kind==="html"?"view":"download"}-${link.kind}`} key={link.kind} onClick={()=>void openOutput(job,link)}>{link.kind==="html"?<ExternalLink size={15}/>:<Download size={15}/>} {link.kind==="html"?c.viewHtml:c.downloadPptx}</button>)}</div>}</div>)}</div>}
+    {!loading&&!signedOut&&<div className="queue-allowance"><div><span>{pageAllowanceCopy[locale].remaining}</span><strong data-testid="queue-remaining">{allowance?`${allowance.remaining} / ${allowance.total}`:"— / 10"}</strong></div><Link data-testid="queue-buy-pages" href={localizePath(locale,"/pricing")}>{pageAllowanceCopy[locale].buy}</Link></div>}
+    {loading?<div className="queue-state"><LoaderCircle className="spin"/><p>{c.loadError.replace("Could not", "Loading")}</p></div>:signedOut?<div className="queue-state"><LogIn/><p>{c.signIn}</p><button data-testid="queue-sign-in" className="primary-button" onClick={openAuthDialog}>{translations[locale].nav.signIn}</button></div>:jobs.length===0?<div className="queue-state"><FileText/><p>{c.empty}</p></div>:<div className="queue-card">{jobs.map(job=><div className="queue-item" key={job.id}><span className="deck-icon">{job.status==="processing"?<LoaderCircle className="spin"/>:job.status==="failed"?<AlertCircle/>:<FileText/>}</span><div className="queue-main"><strong>{job.prompt}</strong><span>{new Date(job.created_at).toLocaleString(locale)} · {job.input_count} {c.files}{job.requested_slides?` · ${job.requested_slides} ${slidesLabel[locale]}`:""}{job.template_slug?` · ${c.template}: ${job.template_slug}`:""}</span></div><span className={`status ${job.status==="completed"?"ready":job.status==="failed"?"failed":"generating"}`}>{statusText(job,c)}</span>{(job.status==="failed"||job.downloads.length>0)&&<div className="download-group">{job.status==="failed"&&<button data-testid={`queue-${job.id}-retry`} disabled={retryingJobId!==null} onClick={()=>void retryJob(job)}>{retryingJobId===job.id?<LoaderCircle className="spin" size={15}/>:<RefreshCw size={15}/>} {retryingJobId===job.id?retryCopy[locale].retrying:retryCopy[locale].retry}</button>}{job.downloads.map(link=><button data-testid={`queue-${job.id}-${link.kind==="html"?"view":"download"}-${link.kind}`} key={link.kind} onClick={()=>void openOutput(job,link)}>{link.kind==="html"?<ExternalLink size={15}/>:<Download size={15}/>} {link.kind==="html"?c.viewHtml:c.downloadPptx}</button>)}</div>}</div>)}</div>}
     {error&&<p className="auth-error queue-page-error" role="alert">{error}</p>}
   </section>;
 }

@@ -43,7 +43,7 @@ async fn main() -> Result<()> {
                 let job_id = claimed.job.id.clone();
                 info!(job_id = %job_id, "claimed presentation job");
                 if let Err(cause) = process_job(&config, &freeppt, &mut wispaper, &claimed).await {
-                    error!(job_id = %job_id, error = %cause, "presentation job failed");
+                    error!(job_id = %job_id, error = %format!("{cause:#}"), "presentation job failed");
                     let message = public_error(&cause);
                     if let Err(report_error) = freeppt
                         .fail(&job_id, &claimed.claim_token, &message, true)

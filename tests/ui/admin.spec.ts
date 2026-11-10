@@ -2,6 +2,10 @@ import { expect, test } from "@playwright/test";
 
 const session = { token:"admin-token", expires_at:"2099-01-01T00:00:00Z", password_set:true, is_admin:true, user:{id:"admin",email:"admin@example.com"} };
 
+test.beforeEach(async ({ page }) => {
+  await page.route("**/api/v1/account/allowance",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({total:10,used:0,remaining:10})}));
+});
+
 test("administrator sees mocked tasks and trial candidates",async({page})=>{
   await page.addInitScript(value=>localStorage.setItem("freeppt-auth",JSON.stringify(value)),session);
   await page.route("**/api/v1/auth/me",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({user:session.user,password_set:true,is_admin:true})}));

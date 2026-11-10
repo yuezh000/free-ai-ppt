@@ -153,10 +153,7 @@ struct ArtifactDownload {
 impl WisPaperClient {
     pub fn new(config: &WorkerConfig) -> Result<Self> {
         Ok(Self {
-            http: Client::builder()
-                .cookie_store(true)
-                .user_agent("FreeAIPPT-WisPaper-Worker/0.1")
-                .build()?,
+            http: new_http_client()?,
             gateway_url: config.wispaper_gateway_url.clone(),
             auth_url: config.wispaper_auth_url.clone(),
             client_id: config.wispaper_client_id.clone(),
@@ -403,6 +400,11 @@ impl WisPaperClient {
             _ => bail!("WisPaper credentials are unavailable"),
         };
 
+        // A previous OIDC interaction cookie can outlive the server-side session.
+        // Start every sign-in with a fresh cookie jar so the new interaction is paired
+        // with its own cookie, including when a gateway 401 triggers reauthentication.
+        self.http = new_http_client()?;
+
         let response = self
             .http
             .get(format!("{}/oidc/auth", self.auth_url))
@@ -504,6 +506,13 @@ impl WisPaperClient {
         self.authenticated_at = Some(Instant::now());
         Ok(())
     }
+}
+
+fn new_http_client() -> Result<Client> {
+    Ok(Client::builder()
+        .cookie_store(true)
+        .user_agent("FreeAIPPT-WisPaper-Worker/0.1")
+        .build()?)
 }
 
 impl WisPaperEventStream {
@@ -723,6 +732,56 @@ async fn ensure_success(response: reqwest::Response, action: &str) -> Result<req
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[tokio::test]
+    async fn reauthentication_discards_a_stale_interaction_cookie() {
+        use axum::{Json, Router, http::HeaderMap, routing::{get, post, put}};
+
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+        let base = format!("http://{}", listener.local_addr().unwrap());
+        let redirect = format!("{base}/callback?code=valid-code");
+        let app = Router::new()
+            .route("/stale", get(|| async { ([("set-cookie", "interaction=stale; Path=/")], "ok") }))
+            .route("/oidc/auth", get(|| async { ([("set-cookie", "interaction=fresh; Path=/")], "ok") }))
+            .route("/api/experience", put(|headers: HeaderMap| async move {
+                if headers.get("cookie").and_then(|value| value.to_str().ok()).is_some_and(|value| value.contains("interaction=fresh")) {
+                    axum::http::StatusCode::OK
+                } else {
+                    axum::http::StatusCode::BAD_REQUEST
+                }
+            }))
+            .route("/api/experience/verification/password", post(|| async { Json(json!({"verificationId":"verification-1"})) }))
+            .route("/api/experience/identification", post(|| async { Json(json!({})) }))
+            .route("/api/experience/submit", post(move || {
+                let redirect = redirect.clone();
+                async move { Json(json!({"redirectTo":redirect})) }
+            }))
+            .route("/callback", get(|| async { "ok" }))
+            .route("/auth/user/callback", get(|| async { Json(json!({"token":"valid-worker-token-long-enough"})) }));
+        let server = tokio::spawn(async move { axum::serve(listener, app).await.unwrap() });
+
+        let http = new_http_client().unwrap();
+        http.get(format!("{base}/stale")).send().await.unwrap();
+        assert_eq!(http.put(format!("{base}/api/experience")).send().await.unwrap().status(), StatusCode::BAD_REQUEST);
+        let mut worker = WisPaperClient {
+            http,
+            gateway_url: base.clone(),
+            auth_url: base,
+            client_id: "test-client".into(),
+            redirect_uri: "http://localhost/test".into(),
+            email: Some("test@example.com".into()),
+            password: Some("test-password".into()),
+            token: None,
+            authenticated_at: None,
+            reauth_interval: std::time::Duration::from_secs(60),
+            language: "en".into(),
+            tier: "pro".into(),
+            max_file_bytes: 1024,
+        };
+        worker.ensure_authenticated(true).await.unwrap();
+        assert_eq!(worker.token.as_deref(), Some("valid-worker-token-long-enough"));
+        server.abort();
+    }
 
     #[test]
     fn selects_pptx_and_html_outputs() {

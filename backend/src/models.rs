@@ -112,7 +112,6 @@ pub struct PublicJob {
     pub status: String,
     pub ready_at: Option<String>,
     pub attempts: i64,
-    pub error: Option<String>,
     pub created_at: String,
     pub updated_at: String,
     pub completed_at: Option<String>,
@@ -125,6 +124,13 @@ pub struct PublicJob {
 #[derive(Serialize)]
 pub struct JobsResponse {
     pub jobs: Vec<PublicJob>,
+}
+
+#[derive(Serialize)]
+pub struct PageAllowance {
+    pub total: i64,
+    pub used: i64,
+    pub remaining: i64,
 }
 
 #[derive(Debug, FromRow, Serialize)]

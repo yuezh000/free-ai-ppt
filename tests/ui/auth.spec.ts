@@ -3,6 +3,10 @@ import { expect, test, type Page } from "@playwright/test";
 const future = "2099-01-01T00:00:00Z";
 const authSession = (email: string, passwordSet = false, isAdmin = false) => ({ token:"mock-session-token", expires_at:future, password_set:passwordSet, is_admin:isAdmin, user:{id:"mock-user",email} });
 
+test.beforeEach(async ({ page }) => {
+  await page.route("**/api/v1/account/allowance",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({total:10,used:6,remaining:4})}));
+});
+
 async function mockAccount(page: Page, email: string, passwordSet = false, isAdmin = false) {
   await page.route("**/api/v1/auth/me", route => route.fulfill({ status:200, contentType:"application/json", body:JSON.stringify({user:{id:"mock-user",email},password_set:passwordSet,is_admin:isAdmin}) }));
 }
@@ -86,4 +90,6 @@ test("personal menu exposes admin panel only for an administrator", async ({ pag
   await expect(page.getByTestId("account-menu-admin")).toHaveAttribute("href","/admin");
   await expect(page.getByTestId("account-menu-password")).toHaveText("Change password");
   await expect(page.getByTestId("account-menu-sign-out")).toBeVisible();
+  await expect(page.getByTestId("account-menu-remaining")).toContainText("4 / 10");
+  await expect(page.getByTestId("account-menu-buy-pages")).toHaveAttribute("href","/pricing");
 });

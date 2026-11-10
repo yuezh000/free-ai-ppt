@@ -83,6 +83,7 @@ fn build_router(state: AppState) -> anyhow::Result<Router> {
         .route("/api/v1/auth/password-login", post(password_login))
         .route("/api/v1/auth/password", post(set_password))
         .route("/api/v1/auth/me", get(get_account))
+        .route("/api/v1/account/allowance", get(get_page_allowance))
         .route("/api/v1/jobs", get(list_jobs).post(create_job))
         .route("/api/v1/jobs/{id}", get(get_job))
         .route(
@@ -91,6 +92,7 @@ fn build_router(state: AppState) -> anyhow::Result<Router> {
         )
         .route("/api/v1/jobs/{id}/files", post(register_input_upload))
         .route("/api/v1/jobs/{id}/submit", post(submit_job))
+        .route("/api/v1/jobs/{id}/retry", post(retry_job))
         .route("/api/v1/jobs/{id}/downloads/{kind}", get(download_output))
         .route("/api/v1/admin/jobs", get(list_admin_jobs))
         .route("/api/v1/admin/waitlist", get(list_admin_waitlist))
@@ -434,6 +436,22 @@ async fn get_account(
     }))
 }
 
+async fn get_page_allowance(
+    State(state): State<AppState>,
+    headers: HeaderMap,
+) -> Result<Json<PageAllowance>, ApiError> {
+    let user = require_user(&headers, &state).await?;
+    let used: i64 = sqlx::query_scalar("SELECT COALESCE(SUM(requested_slides),0) FROM jobs WHERE user_id=? AND ready_at IS NOT NULL AND status!='failed'")
+        .bind(&user.id)
+        .fetch_one(&state.db)
+        .await?;
+    Ok(Json(PageAllowance {
+        total: FREE_SLIDES_PER_ACCOUNT,
+        used,
+        remaining: (FREE_SLIDES_PER_ACCOUNT - used).max(0),
+    }))
+}
+
 async fn set_password(
     State(state): State<AppState>,
     headers: HeaderMap,
@@ -562,7 +580,6 @@ async fn public_job(state: &AppState, job: Job) -> Result<PublicJob, ApiError> {
         status: job.status,
         ready_at: job.ready_at,
         attempts: job.attempts,
-        error: job.error_message,
         created_at: job.created_at,
         updated_at: job.updated_at,
         completed_at: job.completed_at,
@@ -809,6 +826,50 @@ async fn submit_job(
         .await?.rows_affected();
     if changed != 1 {
         return Err(ApiError::payment_required("free slide allowance exhausted; payments are coming soon"));
+    }
+    Ok(Json(ApiMessage {
+        message: "job queued".into(),
+    }))
+}
+
+async fn retry_job(
+    State(state): State<AppState>,
+    Path(id): Path<String>,
+    headers: HeaderMap,
+) -> Result<Json<ApiMessage>, ApiError> {
+    if state.config.waitlist {
+        return Err(ApiError::unavailable(
+            "task submission is disabled while waitlist mode is active",
+        ));
+    }
+    let user = require_user(&headers, &state).await?;
+    let job = sqlx::query_as::<_, Job>("SELECT * FROM jobs WHERE id=? AND user_id=?")
+        .bind(&id)
+        .bind(&user.id)
+        .fetch_optional(&state.db)
+        .await?
+        .ok_or_else(ApiError::not_found)?;
+    if job.status != "failed" {
+        return Err(ApiError::conflict("only failed jobs can be retried"));
+    }
+    let now = Utc::now().to_rfc3339();
+    let changed = sqlx::query(
+        "UPDATE jobs SET status='pending',ready_at=?,attempts=0,error_message=NULL,agent_id=NULL,claim_token_hash=NULL,lease_until=NULL,completed_at=NULL,upstream_provider=NULL,upstream_workflow_id=NULL,upstream_task_id=NULL,upstream_status=NULL,updated_at=? \
+         WHERE id=? AND user_id=? AND status='failed' AND (SELECT COALESCE(SUM(requested_slides),0) FROM jobs WHERE user_id=? AND ready_at IS NOT NULL AND status!='failed') + requested_slides <= ?",
+    )
+    .bind(&now)
+    .bind(&now)
+    .bind(&id)
+    .bind(&user.id)
+    .bind(&user.id)
+    .bind(FREE_SLIDES_PER_ACCOUNT)
+    .execute(&state.db)
+    .await?
+    .rows_affected();
+    if changed != 1 {
+        return Err(ApiError::payment_required(
+            "free slide allowance exhausted; payments are coming soon",
+        ));
     }
     Ok(Json(ApiMessage {
         message: "job queued".into(),
@@ -1430,6 +1491,45 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn failed_job_retry_is_owner_only_and_reserves_pages_once() {
+        let (app, db) = test_app().await;
+        add_user(&db, "owner", "owner@example.com", "owner-token").await;
+        add_user(&db, "other", "other@example.com", "other-token").await;
+        let created = app.clone().oneshot(post_auth("/api/v1/jobs", json!({"prompt":"Create a 6-slide report"}), "owner-token")).await.unwrap();
+        let created = json_body(created).await;
+        let id = created["id"].as_str().unwrap();
+        sqlx::query("UPDATE jobs SET status='failed',ready_at=?,attempts=3,error_message='upstream session failed',upstream_provider='wispaper',upstream_workflow_id='old-run' WHERE id=?")
+            .bind(Utc::now().to_rfc3339()).bind(id).execute(&db).await.unwrap();
+
+        let other = app.clone().oneshot(post_auth(&format!("/api/v1/jobs/{id}/retry"), json!({}), "other-token")).await.unwrap();
+        assert_eq!(other.status(), StatusCode::NOT_FOUND);
+
+        let competing = app.clone().oneshot(post_auth("/api/v1/jobs", json!({"prompt":"Create a 6-slide report"}), "owner-token")).await.unwrap();
+        let competing = json_body(competing).await;
+        let queued = app.clone().oneshot(Request::builder().method("POST")
+            .uri(format!("/api/v1/jobs/{}/submit", competing["id"].as_str().unwrap()))
+            .header("x-job-token", competing["job_token"].as_str().unwrap())
+            .body(Body::empty()).unwrap()).await.unwrap();
+        assert_eq!(queued.status(), StatusCode::OK);
+        let no_quota = app.clone().oneshot(post_auth(&format!("/api/v1/jobs/{id}/retry"), json!({}), "owner-token")).await.unwrap();
+        assert_eq!(no_quota.status(), StatusCode::PAYMENT_REQUIRED);
+
+        sqlx::query("UPDATE jobs SET status='failed' WHERE id=?").bind(competing["id"].as_str().unwrap()).execute(&db).await.unwrap();
+        let retried = app.clone().oneshot(post_auth(&format!("/api/v1/jobs/{id}/retry"), json!({}), "owner-token")).await.unwrap();
+        assert_eq!(retried.status(), StatusCode::OK);
+        let row: (String, i64, Option<String>, Option<String>) = sqlx::query_as("SELECT status,attempts,error_message,upstream_workflow_id FROM jobs WHERE id=?")
+            .bind(id).fetch_one(&db).await.unwrap();
+        assert_eq!(row, ("pending".into(), 0, None, None));
+        let used: i64 = sqlx::query_scalar("SELECT COALESCE(SUM(requested_slides),0) FROM jobs WHERE user_id='owner' AND ready_at IS NOT NULL AND status!='failed'").fetch_one(&db).await.unwrap();
+        assert_eq!(used, 6);
+        let allowance = app.clone().oneshot(get_auth("/api/v1/account/allowance", "owner-token")).await.unwrap();
+        assert_eq!(allowance.status(), StatusCode::OK);
+        assert_eq!(json_body(allowance).await, json!({"total":10,"used":6,"remaining":4}));
+        let duplicate = app.oneshot(post_auth(&format!("/api/v1/jobs/{id}/retry"), json!({}), "owner-token")).await.unwrap();
+        assert_eq!(duplicate.status(), StatusCode::CONFLICT);
+    }
+
+    #[tokio::test]
     async fn user_queue_waitlist_and_admin_access_are_enforced() {
         let (app, db) = test_app().await;
         add_user(&db, "member", "member@example.com", "member-token").await;
@@ -1463,6 +1563,21 @@ mod tests {
         assert_eq!(own.status(), StatusCode::OK);
         assert_eq!(json_body(own).await["jobs"][0]["prompt"], "Board update");
 
+        sqlx::query("UPDATE jobs SET status='failed',error_message=? WHERE id=?")
+            .bind("WisPaper internal session cookie is missing")
+            .bind(id)
+            .execute(&db)
+            .await
+            .unwrap();
+        let own_failed = app
+            .clone()
+            .oneshot(get_auth("/api/v1/jobs", "member-token"))
+            .await
+            .unwrap();
+        let own_failed = json_body(own_failed).await;
+        assert_eq!(own_failed["jobs"][0]["status"], "failed");
+        assert!(own_failed["jobs"][0].get("error").is_none());
+
         let now = Utc::now().to_rfc3339();
         sqlx::query("INSERT INTO waitlist_entries (id,email,source,locale,created_at,updated_at) VALUES (?,?,?,?,?,?)")
             .bind("lead-1").bind("lead@example.com").bind("generator").bind("zh-CN").bind(&now).bind(&now).execute(&db).await.unwrap();
@@ -1490,10 +1605,9 @@ mod tests {
             .await
             .unwrap();
         assert_eq!(admin_jobs.status(), StatusCode::OK);
-        assert_eq!(
-            json_body(admin_jobs).await["jobs"][0]["user_email"],
-            "member@example.com"
-        );
+        let admin_jobs = json_body(admin_jobs).await;
+        assert_eq!(admin_jobs["jobs"][0]["user_email"], "member@example.com");
+        assert_eq!(admin_jobs["jobs"][0]["error"], "WisPaper internal session cookie is missing");
         let candidates = app
             .clone()
             .oneshot(get_auth("/api/v1/admin/waitlist", "admin-token"))
