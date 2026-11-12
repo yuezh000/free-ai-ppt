@@ -165,8 +165,6 @@ pub async fn authorize_put(
         ("x-vercel-blob-store-id".into(), store_id.into()),
         ("x-vercel-blob-access".into(), "private".into()),
         ("x-content-type".into(), content_type),
-        ("x-add-random-suffix".into(), "0".into()),
-        ("x-allow-overwrite".into(), "0".into()),
     ]);
     Ok(UploadAuthorization {
         reservation_id,
