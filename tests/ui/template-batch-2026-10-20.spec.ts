@@ -4,7 +4,7 @@ import seeds from "../../lib/template-seeds-2026-10-20.json";
 for (const deck of seeds) {
   test(`${deck.shortName}: category card, gallery, SEO and editable download`, async ({ page, request }) => {
     await page.goto(`/templates/${deck.categorySlug}`);
-    await expect(page.locator(".template-card")).toHaveCount(11);
+    await expect(page.locator(".template-card")).toHaveCount(deck.categorySlug === "education" ? 12 : 11);
     await page.getByRole("heading", { level: 3, name: deck.name, exact: true }).getByRole("link").click();
     await expect(page).toHaveURL(new RegExp(`/templates/${deck.slug}/?$`));
     await expect(page.getByRole("heading", { level: 1, name: deck.name, exact: true })).toBeVisible();
@@ -45,10 +45,10 @@ test("current batch preserves Chinese navigation, naming and template selection"
 test("catalog totals retain every category and a bounded homepage sample", async ({ page }) => {
   await page.goto("/templates");
   for (const slug of ["business-plan", "pitch-deck", "company-profile", "marketing", "project-proposal", "education", "thesis-defense", "medical", "artificial-intelligence", "portfolio", "product-roadmap"]) {
-    await expect(page.getByTestId(`template-category-${slug}`)).toContainText("11 free templates");
+    await expect(page.getByTestId(`template-category-${slug}`)).toContainText(slug === "education" ? "12 free templates" : "11 free templates");
   }
   await expect(page.getByTestId("template-category-sales-report")).toContainText("11 free templates");
-  await expect(page.locator(".template-card")).toHaveCount(132);
+  await expect(page.locator(".template-card")).toHaveCount(133);
   await page.goto("/");
   await expect(page.locator(".home-template-grid article")).toHaveCount(3);
 });

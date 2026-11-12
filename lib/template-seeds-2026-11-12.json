@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "source-check-studio-lesson",
+    "name": "Free Source Check Studio Lesson PowerPoint Template",
+    "shortName": "Source Check Studio Lesson",
+    "category": "Lesson Plan",
+    "categorySlug": "education",
+    "style": "claim-ledger",
+    "accent": "E76C45",
+    "dark": "35264B",
+    "soft": "FDE9DC",
+    "second": "227F77",
+    "paper": "FFF9F1",
+    "description": "An editable source evaluation lesson for teaching learners to separate a claim from its evidence, question a source, and explain a careful conclusion.",
+    "longDescription": "This original eight-slide source evaluation lesson gives teachers a complete classroom sequence: a question, learning goal, sample claim, source check, evidence comparison, guided practice, reflection, and next action. A claim-ledger visual system uses offset evidence strips, large verdict stamps, and a warm cream, aubergine, coral, and teal palette. Every element is editable PowerPoint text or a native shape. All sample numbers are illustrative placeholders and should be replaced with verified classroom material.",
+    "tags": ["Lesson plan", "Source evaluation", "Critical thinking", "Media literacy", "16:9"],
+    "cover": ["LESSON PLAN · SOURCE CHECK STUDIO", "Pause. Trace. Decide.", "A practical lesson for checking a claim before sharing it."],
+    "story": [
+      {"eyebrow":"THE QUESTION", "title":"What would make this claim trustworthy?", "body":"Start with a fictional claim and invite learners to name what they need to know.", "stat":"One claim*", "points":[["Notice","What is the claim asking us to believe?"],["Question","Which part needs evidence?"],["Plan","Where could we check first?"]]},
+      {"eyebrow":"LEARNING GOAL", "title":"Name the checks before the search", "body":"Learners practice tracing an author, date, and supporting evidence.", "stat":"Three checks*", "points":[["Author","Identify who made the claim"],["Date","Check when the information appeared"],["Evidence","Look for a source that can be examined"]]},
+      {"eyebrow":"MODEL A CLAIM", "title":"Separate the statement from its support", "body":"Use a teacher-made example to show the difference between confidence and proof.", "stat":"Two parts*", "points":[["Claim","Write the exact assertion"],["Support","List the evidence actually supplied"],["Gap","Name what remains unknown"]]},
+      {"eyebrow":"CHECK THE SOURCE", "title":"Trace the path back to an origin", "body":"Check who published the material and whether the cited evidence is accessible.", "stat":"Three links*", "points":[["Publisher","Find the original context"],["Citation","Follow the named source"],["Context","Read beyond the excerpt"]]},
+      {"eyebrow":"COMPARE EVIDENCE", "title":"One signal is not the whole picture", "body":"Compare independent evidence and record where sources agree or differ.", "stat":"Two sources*", "points":[["Agree","What do both sources support?"],["Differ","Where do they disagree?"],["Limit","What can neither source show?"]]},
+      {"eyebrow":"GUIDED PRACTICE", "title":"Build a careful evidence note", "body":"Pairs make a provisional judgment and explain which check changed their view.", "stat":"Six minutes*", "points":[["Trace","Record the source path"],["Weigh","Rate the strength of evidence"],["Explain","Say what would change the conclusion"]]},
+      {"eyebrow":"REFLECT & ACT", "title":"Share a conclusion with its limits", "body":"Close by naming the best-supported statement and one open question.", "stat":"One next step*", "points":[["Conclude","State only what the evidence supports"],["Limit","Mark remaining uncertainty"],["Next","Choose a useful follow-up check"]]}
+    ],
+    "included": ["Lesson cover", "Opening question", "Learning goal", "Claim model", "Source tracing", "Evidence comparison", "Guided practice", "Reflection and next step"],
+    "bestFor": ["Media literacy lessons", "Critical thinking workshops", "Secondary classrooms", "Teacher training"]
+  }
+]

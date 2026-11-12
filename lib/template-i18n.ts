@@ -1215,6 +1215,16 @@ const localized20261021Names: Partial<Record<Locale, Record<string, [string, str
   }
 };
 
+const localized20261112Names: Partial<Record<Locale, Record<string, [string, string]>>> = {
+  "zh-CN": { "source-check-studio-lesson": ["免费来源核查课堂 PowerPoint 模板", "来源核查课堂"] },
+  "zh-TW": { "source-check-studio-lesson": ["免費來源查核課堂 PowerPoint 範本", "來源查核課堂"] },
+  ja: { "source-check-studio-lesson": ["無料の情報源チェック授業 PowerPoint テンプレート", "情報源チェック授業"] },
+  ko: { "source-check-studio-lesson": ["무료 정보 출처 확인 수업 PowerPoint 템플릿", "정보 출처 확인 수업"] },
+  fr: { "source-check-studio-lesson": ["Modèle PowerPoint gratuit de leçon sur la vérification des sources", "Atelier de vérification des sources"] },
+  es: { "source-check-studio-lesson": ["Plantilla PowerPoint gratis para comprobar fuentes en clase", "Clase de verificación de fuentes"] },
+  ru: { "source-check-studio-lesson": ["Бесплатный шаблон PowerPoint: урок проверки источников", "Урок проверки источников"] },
+};
+
 const localized20261110Names: Partial<Record<Locale, Record<string, [string, string]>>> = {
   "zh-CN": { "forecast-sensitivity-sales-report": ["免费销售预测敏感性报告 PowerPoint 模板", "销售预测敏感性报告"] },
   "zh-TW": { "forecast-sensitivity-sales-report": ["免費銷售預測敏感度報告 PowerPoint 範本", "銷售預測敏感度報告"] },
@@ -1226,7 +1236,7 @@ const localized20261110Names: Partial<Record<Locale, Record<string, [string, str
 };
 
 export function localizedTemplateName(template: PptTemplate, locale: Locale) {
-  const names = localized20261110Names[locale]?.[template.slug] ?? localized20261021Names[locale]?.[template.slug] ?? localized20261020Names[locale]?.[template.slug] ?? localized20261019Round2Names[locale]?.[template.slug] ?? localized20260911Round2Names[locale]?.[template.slug] ?? localized20260911Names[locale]?.[template.slug] ?? localized20260910Round2Names[locale]?.[template.slug] ?? localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
+  const names = localized20261112Names[locale]?.[template.slug] ?? localized20261110Names[locale]?.[template.slug] ?? localized20261021Names[locale]?.[template.slug] ?? localized20261020Names[locale]?.[template.slug] ?? localized20261019Round2Names[locale]?.[template.slug] ?? localized20260911Round2Names[locale]?.[template.slug] ?? localized20260911Names[locale]?.[template.slug] ?? localized20260910Round2Names[locale]?.[template.slug] ?? localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
   return { name: names?.[0] ?? template.name, shortName: names?.[1] ?? template.shortName };
 }
 
