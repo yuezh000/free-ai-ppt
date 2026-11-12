@@ -47,8 +47,8 @@ test("catalog totals retain every category and a bounded homepage sample", async
   for (const slug of ["business-plan", "pitch-deck", "company-profile", "marketing", "project-proposal", "education", "thesis-defense", "medical", "artificial-intelligence", "portfolio", "product-roadmap"]) {
     await expect(page.getByTestId(`template-category-${slug}`)).toContainText("11 free templates");
   }
-  await expect(page.getByTestId("template-category-sales-report")).toContainText("10 free templates");
-  await expect(page.locator(".template-card")).toHaveCount(131);
+  await expect(page.getByTestId("template-category-sales-report")).toContainText("11 free templates");
+  await expect(page.locator(".template-card")).toHaveCount(132);
   await page.goto("/");
   await expect(page.locator(".home-template-grid article")).toHaveCount(3);
 });

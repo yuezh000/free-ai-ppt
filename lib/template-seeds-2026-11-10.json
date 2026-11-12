@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "forecast-sensitivity-sales-report",
+    "name": "Free Sales Forecast Sensitivity Report PowerPoint Template",
+    "shortName": "Forecast Sensitivity Sales Report",
+    "category": "Sales Report",
+    "categorySlug": "sales-report",
+    "style": "signal-lanes",
+    "accent": "D95138",
+    "dark": "202E3A",
+    "soft": "F7EDE6",
+    "second": "438A82",
+    "paper": "FBF9F4",
+    "description": "An editable sales forecast sensitivity report for explaining the base case, downside triggers, pipeline evidence and decisions that could change the outlook.",
+    "longDescription": "This original sales forecast sensitivity report helps a team explain a forecast as a set of testable assumptions. Eight editable widescreen PowerPoint slides cover the reporting context, baseline, evidence, scenario drivers, forecast method, decision cadence, limitations and next action. A warm paper field, offset signal lanes and small decision markers create a distinct visual system from the existing sales dashboards and cohort reports. All figures are illustrative placeholders and must be replaced with verified sales data.",
+    "tags": ["Sales forecast", "Sensitivity analysis", "Sales report", "Editable", "16:9"],
+    "cover": ["SALES REPORT · FORECAST REVIEW", "A forecast is a decision map", "Show the assumptions, signals and actions that could change the next sales outlook."],
+    "story": [
+      {"eyebrow":"CONTEXT", "title":"Frame the decision before the number", "body":"Name the reporting window, decision owner and evidence cutoff.", "stat":"One review*", "points":[["Decision","What must the team decide?"],["Window","Which selling period is in scope?"],["Source","Where will verified data come from?"]]},
+      {"eyebrow":"BASELINE", "title":"Show the base case clearly", "body":"Show the assumptions that produce the working outlook.", "stat":"$4.2M*", "points":[["Booked","Separate closed work from forecast work"],["Pipeline","Apply stage and timing rules"],["Gap","Show the distance to the target"]]},
+      {"eyebrow":"EVIDENCE", "title":"Signals matter more than one headline", "body":"Compare conversion, deal age and recent customer intent.", "stat":"62%*", "points":[["Conversion","Check the cohort behind each rate"],["Age","Flag opportunities drifting past plan"],["Intent","Record changes in buyer commitment"]]},
+      {"eyebrow":"SCENARIOS", "title":"Show what moves the range", "body":"Keep upside and downside tied to observable triggers.", "stat":"±12%*", "points":[["Upside","Name evidence required to raise the case"],["Base","Hold assumptions at current quality"],["Downside","Define the trigger for a lower case"]]},
+      {"eyebrow":"METHOD", "title":"Make the forecast repeatable", "body":"Document the source, adjustment rule and reviewer for each input.", "stat":"Three inputs*", "points":[["Collect","Freeze source data at one cutoff"],["Adjust","Record changes with an explanation"],["Review","Reconcile exceptions with an owner"]]},
+      {"eyebrow":"CADENCE", "title":"Turn changes into timely decisions", "body":"Use a recurring review to connect signals with actions.", "stat":"Weekly*", "points":[["Monitor","Watch the earliest change signal"],["Decide","Choose a response with a clear owner"],["Learn","Compare the last call with reality"]]},
+      {"eyebrow":"NEXT STEP", "title":"Approve the forecast guardrails", "body":"Replace the illustrative inputs, agree limits and set the next review.", "stat":"One owner*", "points":[["Validate","Replace every sample figure"],["Limit","State what this forecast cannot prove"],["Act","Confirm owner and review date"]]}
+    ],
+    "included": ["Forecast review cover", "Decision context", "Base case", "Leading evidence", "Scenario sensitivity", "Forecast method", "Review cadence", "Limitations and next action"],
+    "bestFor": ["Sales leadership reviews", "Forecast calls", "Revenue operations", "Board preparation"]
+  }
+]

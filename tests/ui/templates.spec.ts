@@ -7,7 +7,7 @@ test("template directory exposes twelve focused presentation categories", async 
   await expect(categories).toHaveCount(12);
   await expect(page.getByTestId("template-category-business-plan")).toContainText("11 free templates");
   await expect(page.getByTestId("template-category-artificial-intelligence")).toBeVisible();
-  await expect(page.locator(".template-card")).toHaveCount(131);
+  await expect(page.locator(".template-card")).toHaveCount(132);
   await expect(page.getByRole("heading", { level: 3, name: "Free Subscription Unit Economics Business Plan PowerPoint Template", exact: true })).toBeVisible();
 
   await page.getByTestId("template-category-marketing").click();
