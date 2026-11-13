@@ -15,10 +15,11 @@ The Rust API stores authentication, generation tasks, attachment metadata, and t
 ## Page allowance
 
 - Each account receives 10 free generated slides in total. Historical jobs created before the page allowance migration do not consume it.
-- The API infers a requested slide count from an explicit count in the brief (for example, `6 slides` or `六页`). Without an explicit count, a short brief gets 6 slides, a medium brief 8, and a long brief 10. The worker asks WisPaper for exactly that many slides in both output formats.
-- Pages are reserved when a job enters the queue. A failed job releases its reservation. A second submission is checked atomically so concurrent requests cannot exceed the free allowance.
+- The generator can prepend a selected count to the brief. Otherwise, the API infers a requested slide count from an explicit count in the brief (for example, `6 slides` or `六页`). Without an explicit count, a short brief gets 6 slides, a medium brief 8, and a long brief 10. The worker asks WisPaper for exactly that many slides in both output formats.
+- Pages are reserved when a job enters the queue. A failed job releases its reservation. A second submission is checked atomically so concurrent requests cannot exceed the account's allowance.
 - A signed-in user may retry a failed task with the same brief, template, and attachments. Retry reserves its pages again, resets attempts and upstream workflow state, and starts a new generation run.
-- Paid page credits are not available until payments launch. The API returns HTTP 402 when the remaining free allowance is insufficient. Pricing is $1 per 10 pages, $8 per 100 pages (20% off), or $15 per 250 pages (40% off).
+- Administrators may grant additional pages to a registered account. Each grant records the administrator, page count, optional note, and time. The allowance endpoint includes these grants in `total` and `remaining`.
+- Paid page credits are not available until payments launch. The API returns HTTP 402 when the remaining allowance is insufficient. Pricing is $1 per 10 pages, $8 per 100 pages (20% off), or $15 per 250 pages (40% off).
 
 `BLOB_READ_WRITE_TOKEN` is server-only. Never expose it to the frontend or an agent. The returned upload/download URLs are restricted to one pathname and one operation.
 
@@ -36,9 +37,9 @@ The public `GET /api/v1/features` endpoint derives and returns both capabilities
 - `POST /api/v1/jobs/:id/files/authorize`: authorize one direct Blob attachment upload.
 - `POST /api/v1/jobs/:id/files`: register a completed direct upload using the returned reservation ID.
 - `POST /api/v1/jobs/:id/submit`: make the task claimable by a presentation agent.
-- `POST /api/v1/jobs/:id/retry`: requeue an owned failed task when enough free pages remain.
+- `POST /api/v1/jobs/:id/retry`: requeue an owned failed task when enough pages remain.
 - `GET /api/v1/jobs`: list the signed-in user's tasks.
-- `GET /api/v1/account/allowance`: return the account's total, used, and remaining free pages.
+- `GET /api/v1/account/allowance`: return the account's total, used, and remaining pages.
 - Worker error details are omitted from user task responses and remain visible in `GET /api/v1/admin/jobs`.
 - `GET /api/v1/jobs/:id/downloads/:kind`: get a short-lived direct Blob download URL for a completed `pptx` or `html` result.
 - `POST /api/v1/waitlist`: register or refresh a trial candidate by email.
@@ -46,10 +47,12 @@ The public `GET /api/v1/features` endpoint derives and returns both capabilities
 
 ## Admin endpoints
 
-Both endpoints require a valid user bearer token whose email is in `ADMIN_EMAILS`:
+These endpoints require a valid user bearer token whose email is in `ADMIN_EMAILS`:
 
 - `GET /api/v1/admin/jobs`
 - `GET /api/v1/admin/waitlist`
+- `GET /api/v1/admin/users?q=member&page=1`: search registered email addresses; results are paginated 50 per page.
+- `POST /api/v1/admin/users/:id/page-grants`: add 1–1000 pages with an optional `note`; grants are recorded in the database.
 
 ## WisPaper generation worker
 

@@ -19,6 +19,8 @@ export const conversionEvents = {
   passwordConfigured: "password_configured",
   signoutCompleted: "signout_completed",
   pricingPlanSelected: "pricing_plan_selected",
+  pricingPageViewed: "pricing_page_viewed",
+  pricingPaymentClicked: "pricing_payment_clicked",
   waitlistJoined: "waitlist_joined",
   templateViewed: "template_viewed",
   templatePreviewOpened: "template_preview_opened",

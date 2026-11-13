@@ -134,6 +134,35 @@ pub struct PageAllowance {
 }
 
 #[derive(Debug, FromRow, Serialize)]
+pub struct AdminUser {
+    pub id: String,
+    pub email: String,
+    pub created_at: String,
+    pub granted: i64,
+    pub used: i64,
+}
+
+#[derive(Serialize)]
+pub struct AdminUsersResponse {
+    pub users: Vec<AdminUser>,
+    pub total: i64,
+    pub page: i64,
+    pub page_size: i64,
+}
+
+#[derive(Deserialize)]
+pub struct AdminUsersQuery {
+    pub q: Option<String>,
+    pub page: Option<i64>,
+}
+
+#[derive(Deserialize)]
+pub struct GrantPages {
+    pub pages: i64,
+    pub note: Option<String>,
+}
+
+#[derive(Debug, FromRow, Serialize)]
 pub struct AdminJob {
     pub id: String,
     pub prompt: String,

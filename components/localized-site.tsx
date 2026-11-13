@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Check, Download, FileInput, Info, Layers3, Ruler, Sparkles } from "lucide-react";
 import { PricingNotice } from "@/components/pricing-notice";
@@ -16,6 +16,7 @@ type PageName = "home" | "pricing" | "queue" | "resources" | "article";
 export function LocalizedSite({ locale, page }: { locale: Locale; page: PageName }) {
   const t = translations[locale];
   const [open, setOpen] = useState(false);
+  useEffect(() => { if (page === "pricing") captureConversion(conversionEvents.pricingPageViewed, { locale }); }, [locale, page]);
 
   if (page === "home") return (
     <main>
@@ -26,7 +27,7 @@ export function LocalizedSite({ locale, page }: { locale: Locale; page: PageName
   );
 
   if (page === "pricing") return (
-    <main><Header locale={locale} /><section className="pricing-hero"><span className="pill"><Sparkles size={14} /> {t.pricing.badge}</span><h1>{t.pricing.title1}<br /><em>{t.pricing.title2}</em></h1><p>{t.pricing.lead}</p></section><section className="pricing-grid">{t.pricing.plans.map((plan, index) => <article className={`price-card ${index === 1 ? "featured" : ""}`} key={plan.name}>{index === 1 && <span className="popular">{t.pricing.popular}</span>}<h2>{plan.name}</h2><div className="price"><strong>{plan.price}</strong><span>{plan.unit}</span></div><p>{plan.detail}</p><div className="credit-line"><Check size={17} />{plan.credits}</div><ul>{t.pricing.benefits.map((item) => <li key={item}><Check size={15} />{item}</li>)}</ul>{index===0?<Link data-testid="pricing-plan-0-select" href={`${localizePath(locale)}#generator`} onClick={()=>captureConversion(conversionEvents.pricingPlanSelected,{locale,plan_index:0,plan_name:plan.name})} className="secondary-button">{plan.button}</Link>:<button data-testid={`pricing-plan-${index}-select`} onClick={() => { captureConversion(conversionEvents.pricingPlanSelected, { locale, plan_index: index, plan_name: plan.name }); setOpen(true); }} className={index === 1 ? "primary-button" : "secondary-button"}>{plan.button}</button>}</article>)}</section><p className="pricing-note">{t.pricing.note}</p><PricingNotice locale={locale} open={open} onClose={() => setOpen(false)} /></main>
+    <main><Header locale={locale} /><section className="pricing-hero"><span className="pill"><Sparkles size={14} /> {t.pricing.badge}</span><h1>{t.pricing.title1}<br /><em>{t.pricing.title2}</em></h1><p>{t.pricing.lead}</p></section><section className="pricing-grid">{t.pricing.plans.map((plan, index) => <article className={`price-card ${index === 1 ? "featured" : ""}`} key={plan.name}>{index === 1 && <span className="popular">{t.pricing.popular}</span>}<h2>{plan.name}</h2><div className="price"><strong>{plan.price}</strong><span>{plan.unit}</span></div><p>{plan.detail}</p><div className="credit-line"><Check size={17} />{plan.credits}</div><ul>{t.pricing.benefits.map((item) => <li key={item}><Check size={15} />{item}</li>)}</ul>{index===0?<Link data-testid="pricing-plan-0-select" href={`${localizePath(locale)}#generator`} onClick={()=>captureConversion(conversionEvents.pricingPlanSelected,{locale,plan_index:0,plan_name:plan.name})} className="secondary-button">{plan.button}</Link>:<button data-testid={`pricing-plan-${index}-select`} onClick={() => { captureConversion(conversionEvents.pricingPlanSelected, { locale, plan_index: index, plan_name: plan.name }); captureConversion(conversionEvents.pricingPaymentClicked, { locale, plan_index: index, plan_name: plan.name, price: plan.price, payment_status: "coming_soon" }); setOpen(true); }} className={index === 1 ? "primary-button" : "secondary-button"}>{plan.button}</button>}</article>)}</section><p className="pricing-note">{t.pricing.note}</p><PricingNotice locale={locale} open={open} onClose={() => setOpen(false)} /></main>
   );
 
   if (page === "queue") return (

@@ -46,6 +46,22 @@ test("signed-in user submits a prompt and attachment to the mocked task API",asy
   expect(createAuthorized).toBe(true);expect(authorized).toBe(true);expect(uploaded).toBe(true);expect(registered).toBe(true);expect(submitted).toBe(true);
 });
 
+test("selected slide count is prepended to the submitted brief",async({page})=>{
+  await page.route("**/api/v1/features",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({task_submission:true,waitlist:false})}));
+  await page.route("**/api/v1/jobs",async route=>{
+    if(route.request().method()==="POST"){
+      expect(await route.request().postDataJSON()).toEqual({prompt:"Create exactly 4 slides. This selected count overrides any other page count in the brief.\n\nCreate an 8-slide strategy deck",template_slug:null});
+      await route.fulfill({status:201,contentType:"application/json",body:JSON.stringify({id:"job-4",job_token:"job-token",requested_slides:4})});
+    }else await route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({jobs:[]})});
+  });
+  await page.route("**/api/v1/jobs/job-4/submit",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({message:"job queued"})}));
+  await page.goto("/");
+  await page.getByTestId("generator-slide-count").selectOption("4");
+  await page.getByLabel("Presentation brief").fill("Create an 8-slide strategy deck");
+  await page.getByTestId("generator-submit").click();
+  await expect(page).toHaveURL(/\/queue\/?$/);
+});
+
 test("failed task never displays a worker error in the user queue",async({page})=>{
   const workerError="session.not_found: interaction session id cookie not found";
   await page.route("**/api/v1/jobs",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({jobs:[{id:"job-failed",prompt:"Create a strategy deck",status:"failed",ready_at:"2099-01-01T00:00:00Z",attempts:3,error:workerError,created_at:"2099-01-01T00:00:00Z",updated_at:"2099-01-01T00:00:00Z",completed_at:null,input_count:0,template_slug:null,downloads:[]}]})}));
@@ -125,7 +141,7 @@ test("page allowance error is shown without creating a queue item",async({page})
   await page.goto("/");
   await page.getByLabel("Presentation brief").fill("Create a 10-slide pitch deck");
   await page.getByTestId("generator-submit").click();
-  await expect(page.getByRole("status")).toContainText("0 free slides remain");
+  await expect(page.getByRole("status")).toContainText("0 slides remain");
   await expect(page).toHaveURL(/\/$/);
 });
 
@@ -135,7 +151,7 @@ test("Chinese page allowance error stays localized",async({page})=>{
   await page.goto("/zh-CN");
   await page.getByLabel("演示文稿需求").fill("制作六页产品报告");
   await page.getByTestId("generator-submit").click();
-  await expect(page.getByRole("status")).toContainText("剩余 4 页免费额度");
+  await expect(page.getByRole("status")).toContainText("剩余 4 页");
 });
 
 test("pricing uses pages and free entry reaches the generator",async({page})=>{

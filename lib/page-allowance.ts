@@ -3,14 +3,14 @@ import type { Locale } from "@/lib/i18n";
 export type PageAllowance = { total: number; used: number; remaining: number };
 
 export const pageAllowanceCopy: Record<Locale, { remaining: string; buy: string }> = {
-  en: { remaining: "Free slides left", buy: "Get more pages" },
-  "zh-CN": { remaining: "剩余免费页数", buy: "购买更多页数" },
-  "zh-TW": { remaining: "剩餘免費頁數", buy: "購買更多頁數" },
-  ja: { remaining: "無料ページ残数", buy: "ページを追加" },
-  ko: { remaining: "남은 무료 페이지", buy: "페이지 더 구매" },
-  fr: { remaining: "Diapositives gratuites restantes", buy: "Obtenir plus de pages" },
-  es: { remaining: "Diapositivas gratis restantes", buy: "Conseguir más páginas" },
-  ru: { remaining: "Осталось бесплатных слайдов", buy: "Получить больше страниц" },
+  en: { remaining: "Slides left", buy: "Get more pages" },
+  "zh-CN": { remaining: "剩余页数", buy: "购买更多页数" },
+  "zh-TW": { remaining: "剩餘頁數", buy: "購買更多頁數" },
+  ja: { remaining: "残りのページ数", buy: "ページを追加" },
+  ko: { remaining: "남은 페이지", buy: "페이지 더 구매" },
+  fr: { remaining: "Diapositives restantes", buy: "Obtenir plus de pages" },
+  es: { remaining: "Diapositivas restantes", buy: "Conseguir más páginas" },
+  ru: { remaining: "Осталось слайдов", buy: "Получить больше страниц" },
 };
 
 export async function loadPageAllowance(token: string): Promise<PageAllowance | null> {

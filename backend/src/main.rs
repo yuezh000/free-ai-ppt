@@ -13,7 +13,7 @@ use auth::{
 };
 use axum::{
     Json, Router,
-    extract::{DefaultBodyLimit, Path, State},
+    extract::{DefaultBodyLimit, Path, Query, State},
     http::{HeaderMap, StatusCode, header},
     response::{IntoResponse, Response},
     routing::{get, post},
@@ -96,6 +96,8 @@ fn build_router(state: AppState) -> anyhow::Result<Router> {
         .route("/api/v1/jobs/{id}/downloads/{kind}", get(download_output))
         .route("/api/v1/admin/jobs", get(list_admin_jobs))
         .route("/api/v1/admin/waitlist", get(list_admin_waitlist))
+        .route("/api/v1/admin/users", get(list_admin_users))
+        .route("/api/v1/admin/users/{id}/page-grants", post(grant_user_pages))
         .route("/api/v1/agent/jobs/claim", post(claim_job))
         .route(
             "/api/v1/agent/jobs/{id}/inputs/{file_id}",
@@ -445,10 +447,15 @@ async fn get_page_allowance(
         .bind(&user.id)
         .fetch_one(&state.db)
         .await?;
+    let granted: i64 = sqlx::query_scalar("SELECT COALESCE(SUM(pages),0) FROM page_credit_grants WHERE user_id=?")
+        .bind(&user.id)
+        .fetch_one(&state.db)
+        .await?;
+    let total = FREE_SLIDES_PER_ACCOUNT + granted;
     Ok(Json(PageAllowance {
-        total: FREE_SLIDES_PER_ACCOUNT,
+        total,
         used,
-        remaining: (FREE_SLIDES_PER_ACCOUNT - used).max(0),
+        remaining: (total - used).max(0),
     }))
 }
 
@@ -511,8 +518,10 @@ async fn create_job(
     }
     let used_slides: i64 = sqlx::query_scalar("SELECT COALESCE(SUM(requested_slides),0) FROM jobs WHERE user_id=? AND ready_at IS NOT NULL AND status!='failed'")
         .bind(&user.id).fetch_one(&state.db).await?;
-    if used_slides + requested_slides > FREE_SLIDES_PER_ACCOUNT {
-        return Err(ApiError::payment_required(format!("{} free slides remain; payments are coming soon", (FREE_SLIDES_PER_ACCOUNT-used_slides).max(0))));
+    let granted: i64 = sqlx::query_scalar("SELECT COALESCE(SUM(pages),0) FROM page_credit_grants WHERE user_id=?")
+        .bind(&user.id).fetch_one(&state.db).await?;
+    if used_slides + requested_slides > FREE_SLIDES_PER_ACCOUNT + granted {
+        return Err(ApiError::payment_required(format!("{} slides remain; payments are coming soon", (FREE_SLIDES_PER_ACCOUNT+granted-used_slides).max(0))));
     }
     let template_slug = input
         .template_slug
@@ -631,6 +640,55 @@ async fn list_admin_waitlist(
             .fetch_all(&state.db)
             .await?;
     Ok(Json(WaitlistResponse { entries }))
+}
+
+async fn list_admin_users(
+    State(state): State<AppState>,
+    headers: HeaderMap,
+    Query(input): Query<AdminUsersQuery>,
+) -> Result<Json<AdminUsersResponse>, ApiError> {
+    require_admin(&headers, &state).await?;
+    let q = input.q.unwrap_or_default().trim().to_string();
+    if q.len() > 120 {
+        return Err(ApiError::bad_request("search must be 120 characters or fewer"));
+    }
+    let page = input.page.unwrap_or(1);
+    let page_size = 50;
+    let offset = page.checked_sub(1).and_then(|value| value.checked_mul(page_size))
+        .ok_or_else(|| ApiError::bad_request("invalid page"))?;
+    let total: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM users WHERE ?='' OR instr(lower(email),lower(?))>0")
+        .bind(&q).bind(&q).fetch_one(&state.db).await?;
+    let users: Vec<AdminUser> = sqlx::query_as(
+        "SELECT u.id,u.email,u.created_at,\
+         (SELECT COALESCE(SUM(pages),0) FROM page_credit_grants g WHERE g.user_id=u.id) AS granted,\
+         (SELECT COALESCE(SUM(requested_slides),0) FROM jobs j WHERE j.user_id=u.id AND j.ready_at IS NOT NULL AND j.status!='failed') AS used \
+         FROM users u WHERE ?='' OR instr(lower(u.email),lower(?))>0 \
+         ORDER BY u.created_at DESC,u.id DESC LIMIT ? OFFSET ?",
+    ).bind(&q).bind(&q).bind(page_size).bind(offset).fetch_all(&state.db).await?;
+    Ok(Json(AdminUsersResponse { users, total, page, page_size }))
+}
+
+async fn grant_user_pages(
+    State(state): State<AppState>,
+    Path(id): Path<String>,
+    headers: HeaderMap,
+    Json(input): Json<GrantPages>,
+) -> Result<Json<ApiMessage>, ApiError> {
+    let admin = require_admin(&headers, &state).await?;
+    if !(1..=1000).contains(&input.pages) {
+        return Err(ApiError::bad_request("pages must be between 1 and 1000"));
+    }
+    let note = input.note.as_deref().map(str::trim).filter(|value| !value.is_empty());
+    if note.is_some_and(|value| value.len() > 500) {
+        return Err(ApiError::bad_request("note must be 500 characters or fewer"));
+    }
+    let exists: Option<String> = sqlx::query_scalar("SELECT id FROM users WHERE id=?")
+        .bind(&id).fetch_optional(&state.db).await?;
+    if exists.is_none() { return Err(ApiError::not_found()); }
+    sqlx::query("INSERT INTO page_credit_grants (id,user_id,admin_user_id,pages,note,created_at) VALUES (?,?,?,?,?,?)")
+        .bind(Uuid::new_v4().to_string()).bind(&id).bind(&admin.id).bind(input.pages)
+        .bind(note).bind(Utc::now().to_rfc3339()).execute(&state.db).await?;
+    Ok(Json(ApiMessage { message: "pages granted".into() }))
 }
 
 async fn authorize_input_upload(
@@ -816,12 +874,13 @@ async fn submit_job(
         return Err(ApiError::conflict("job has already been submitted"));
     }
     let now = Utc::now().to_rfc3339();
-    let changed = sqlx::query("UPDATE jobs SET ready_at=?,updated_at=? WHERE id=? AND ready_at IS NULL AND (SELECT COALESCE(SUM(requested_slides),0) FROM jobs WHERE user_id=? AND ready_at IS NOT NULL AND status!='failed') + requested_slides <= ?")
+    let changed = sqlx::query("UPDATE jobs SET ready_at=?,updated_at=? WHERE id=? AND ready_at IS NULL AND (SELECT COALESCE(SUM(requested_slides),0) FROM jobs WHERE user_id=? AND ready_at IS NOT NULL AND status!='failed') + requested_slides <= ? + (SELECT COALESCE(SUM(pages),0) FROM page_credit_grants WHERE user_id=?)")
         .bind(&now)
         .bind(&now)
         .bind(&id)
         .bind(&job.user_id)
         .bind(FREE_SLIDES_PER_ACCOUNT)
+        .bind(&job.user_id)
         .execute(&state.db)
         .await?.rows_affected();
     if changed != 1 {
@@ -855,7 +914,7 @@ async fn retry_job(
     let now = Utc::now().to_rfc3339();
     let changed = sqlx::query(
         "UPDATE jobs SET status='pending',ready_at=?,attempts=0,error_message=NULL,agent_id=NULL,claim_token_hash=NULL,lease_until=NULL,completed_at=NULL,upstream_provider=NULL,upstream_workflow_id=NULL,upstream_task_id=NULL,upstream_status=NULL,updated_at=? \
-         WHERE id=? AND user_id=? AND status='failed' AND (SELECT COALESCE(SUM(requested_slides),0) FROM jobs WHERE user_id=? AND ready_at IS NOT NULL AND status!='failed') + requested_slides <= ?",
+         WHERE id=? AND user_id=? AND status='failed' AND (SELECT COALESCE(SUM(requested_slides),0) FROM jobs WHERE user_id=? AND ready_at IS NOT NULL AND status!='failed') + requested_slides <= ? + (SELECT COALESCE(SUM(pages),0) FROM page_credit_grants WHERE user_id=?)",
     )
     .bind(&now)
     .bind(&now)
@@ -863,6 +922,7 @@ async fn retry_job(
     .bind(&user.id)
     .bind(&user.id)
     .bind(FREE_SLIDES_PER_ACCOUNT)
+    .bind(&user.id)
     .execute(&state.db)
     .await?
     .rows_affected();
@@ -1456,6 +1516,45 @@ mod tests {
                 "running".into()
             )
         );
+    }
+
+    #[tokio::test]
+    async fn admin_can_search_users_and_grant_pages_that_count_toward_submission() {
+        let (app, db) = test_app().await;
+        add_user(&db, "admin", "admin@example.com", "admin-token").await;
+        add_user(&db, "member", "member@example.com", "member-token").await;
+        let denied = app.clone().oneshot(get_auth("/api/v1/admin/users", "member-token")).await.unwrap();
+        assert_eq!(denied.status(), StatusCode::FORBIDDEN);
+        let search = app.clone().oneshot(get_auth("/api/v1/admin/users?q=MEMBER&page=1", "admin-token")).await.unwrap();
+        assert_eq!(search.status(), StatusCode::OK);
+        let search = json_body(search).await;
+        assert_eq!(search["total"], 1);
+        assert_eq!(search["users"][0]["email"], "member@example.com");
+        assert_eq!(search["users"][0]["granted"], 0);
+        let before = app.clone().oneshot(post_auth("/api/v1/jobs", json!({"prompt":"Create a 12-slide overview"}), "member-token")).await.unwrap();
+        assert_eq!(before.status(), StatusCode::PAYMENT_REQUIRED);
+        let denied_grant = app.clone().oneshot(post_auth("/api/v1/admin/users/member/page-grants", json!({"pages":5}), "member-token")).await.unwrap();
+        assert_eq!(denied_grant.status(), StatusCode::FORBIDDEN);
+        let invalid_grant = app.clone().oneshot(post_auth("/api/v1/admin/users/member/page-grants", json!({"pages":0}), "admin-token")).await.unwrap();
+        assert_eq!(invalid_grant.status(), StatusCode::BAD_REQUEST);
+        let granted = app.clone().oneshot(post_auth("/api/v1/admin/users/member/page-grants", json!({"pages":5,"note":"Support credit"}), "admin-token")).await.unwrap();
+        assert_eq!(granted.status(), StatusCode::OK);
+        let audit: (i64, String, String) = sqlx::query_as("SELECT pages,admin_user_id,note FROM page_credit_grants WHERE user_id='member'").fetch_one(&db).await.unwrap();
+        assert_eq!(audit, (5, "admin".into(), "Support credit".into()));
+        let created = app.clone().oneshot(post_auth("/api/v1/jobs", json!({"prompt":"Create a 12-slide overview"}), "member-token")).await.unwrap();
+        assert_eq!(created.status(), StatusCode::CREATED);
+        let created = json_body(created).await;
+        let submitted = app.clone().oneshot(Request::builder().method("POST")
+            .uri(format!("/api/v1/jobs/{}/submit", created["id"].as_str().unwrap()))
+            .header("x-job-token", created["job_token"].as_str().unwrap())
+            .body(Body::empty()).unwrap()).await.unwrap();
+        assert_eq!(submitted.status(), StatusCode::OK);
+        let allowance = app.clone().oneshot(get_auth("/api/v1/account/allowance", "member-token")).await.unwrap();
+        assert_eq!(json_body(allowance).await, json!({"total":15,"used":12,"remaining":3}));
+        let search = app.oneshot(get_auth("/api/v1/admin/users?q=member", "admin-token")).await.unwrap();
+        let search = json_body(search).await;
+        assert_eq!(search["users"][0]["granted"], 5);
+        assert_eq!(search["users"][0]["used"], 12);
     }
 
     #[tokio::test]

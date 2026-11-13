@@ -13,14 +13,14 @@ type Job = { id:string; prompt:string; status:"pending"|"processing"|"completed"
 
 const slidesLabel: Record<Locale,string> = {en:"slides","zh-CN":"页","zh-TW":"頁",ja:"枚",ko:"장",fr:"diapositives",es:"diapositivas",ru:"слайдов"};
 const retryCopy: Record<Locale,{retry:string;retrying:string;failed:string;quota:string}> = {
-  en:{retry:"Retry",retrying:"Retrying…",failed:"Could not retry the task. Please try again.",quota:"Not enough free pages remain to retry this task."},
-  "zh-CN":{retry:"重试",retrying:"正在重试……",failed:"重试失败，请稍后再试。",quota:"剩余免费页数不足，无法重试此任务。"},
-  "zh-TW":{retry:"重試",retrying:"正在重試……",failed:"重試失敗，請稍後再試。",quota:"剩餘免費頁數不足，無法重試此任務。"},
-  ja:{retry:"再試行",retrying:"再試行中…",failed:"再試行できませんでした。もう一度お試しください。",quota:"再試行に必要な無料ページ数が残っていません。"},
-  ko:{retry:"다시 시도",retrying:"다시 시도 중…",failed:"다시 시도하지 못했습니다. 잠시 후 다시 시도하세요.",quota:"다시 시도할 무료 페이지가 부족합니다."},
-  fr:{retry:"Réessayer",retrying:"Nouvel essai…",failed:"Impossible de relancer la tâche. Réessayez.",quota:"Il ne reste pas assez de pages gratuites pour réessayer."},
-  es:{retry:"Reintentar",retrying:"Reintentando…",failed:"No se pudo reintentar la tarea. Inténtalo de nuevo.",quota:"No quedan suficientes páginas gratuitas para reintentar."},
-  ru:{retry:"Повторить",retrying:"Повтор…",failed:"Не удалось повторить задачу. Попробуйте позже.",quota:"Для повтора не хватает бесплатных страниц."},
+  en:{retry:"Retry",retrying:"Retrying…",failed:"Could not retry the task. Please try again.",quota:"Not enough pages remain to retry this task."},
+  "zh-CN":{retry:"重试",retrying:"正在重试……",failed:"重试失败，请稍后再试。",quota:"剩余页数不足，无法重试此任务。"},
+  "zh-TW":{retry:"重試",retrying:"正在重試……",failed:"重試失敗，請稍後再試。",quota:"剩餘頁數不足，無法重試此任務。"},
+  ja:{retry:"再試行",retrying:"再試行中…",failed:"再試行できませんでした。もう一度お試しください。",quota:"再試行に必要なページ数が残っていません。"},
+  ko:{retry:"다시 시도",retrying:"다시 시도 중…",failed:"다시 시도하지 못했습니다. 잠시 후 다시 시도하세요.",quota:"다시 시도할 페이지가 부족합니다."},
+  fr:{retry:"Réessayer",retrying:"Nouvel essai…",failed:"Impossible de relancer la tâche. Réessayez.",quota:"Il ne reste pas assez de pages pour réessayer."},
+  es:{retry:"Reintentar",retrying:"Reintentando…",failed:"No se pudo reintentar la tarea. Inténtalo de nuevo.",quota:"No quedan suficientes páginas para reintentar."},
+  ru:{retry:"Повторить",retrying:"Повтор…",failed:"Не удалось повторить задачу. Попробуйте позже.",quota:"Для повтора не хватает страниц."},
 };
 
 const copy: Record<Locale,{signIn:string;empty:string;queued:string;draft:string;processing:string;completed:string;failed:string;files:string;template:string;refresh:string;loadError:string;viewHtml:string;downloadPptx:string}> = {

@@ -15,16 +15,28 @@ import { localizedTemplateName } from "@/lib/template-i18n";
 
 const extensions = ["DOCX", "PPTX", "XLSX", "PDF", "PNG", "JPG"];
 const maxFileBytes = 25 * 1024 * 1024;
+const slideOptions = [...Array.from({ length: 10 }, (_, index) => index + 1), 12, 15, 20, 25, 30, 40, 50, 75, 100];
+
+const slideCountCopy: Record<Locale, { label: string; automatic: string; unit: string }> = {
+  en: { label: "Slides", automatic: "Auto", unit: "slides" },
+  "zh-CN": { label: "页数", automatic: "自动", unit: "页" },
+  "zh-TW": { label: "頁數", automatic: "自動", unit: "頁" },
+  ja: { label: "枚数", automatic: "自動", unit: "枚" },
+  ko: { label: "슬라이드 수", automatic: "자동", unit: "장" },
+  fr: { label: "Diapositives", automatic: "Auto", unit: "diapositives" },
+  es: { label: "Diapositivas", automatic: "Auto", unit: "diapositivas" },
+  ru: { label: "Слайды", automatic: "Авто", unit: "слайдов" },
+};
 
 const quotaMessage: Record<Locale,(remaining:number)=>string> = {
-  en:remaining=>`${remaining} free slides remain. Reduce the requested slide count or wait for payments to launch.`,
-  "zh-CN":remaining=>`剩余 ${remaining} 页免费额度。请减少需求中的页数，或等待支付功能上线。`,
-  "zh-TW":remaining=>`剩餘 ${remaining} 頁免費額度。請減少需求中的頁數，或等待付款功能上線。`,
-  ja:remaining=>`無料枠は残り${remaining}枚です。依頼の枚数を減らすか、決済機能の公開をお待ちください。`,
-  ko:remaining=>`무료 슬라이드가 ${remaining}장 남았습니다. 요청 장수를 줄이거나 결제 기능을 기다려 주세요.`,
-  fr:remaining=>`Il reste ${remaining} diapositives gratuites. Réduisez le nombre demandé ou attendez l'ouverture des paiements.`,
-  es:remaining=>`Quedan ${remaining} diapositivas gratis. Reduce el número solicitado o espera a que se habiliten los pagos.`,
-  ru:remaining=>`Осталось ${remaining} бесплатных слайдов. Уменьшите число слайдов или дождитесь запуска оплаты.`,
+  en:remaining=>`${remaining} slides remain. Select fewer slides or wait for payments to launch.`,
+  "zh-CN":remaining=>`剩余 ${remaining} 页。请选择更少页数，或等待支付功能上线。`,
+  "zh-TW":remaining=>`剩餘 ${remaining} 頁。請選擇較少頁數，或等待付款功能上線。`,
+  ja:remaining=>`残り${remaining}枚です。枚数を減らすか、決済機能の公開をお待ちください。`,
+  ko:remaining=>`남은 슬라이드는 ${remaining}장입니다. 장수를 줄이거나 결제 기능을 기다려 주세요.`,
+  fr:remaining=>`Il reste ${remaining} diapositives. Choisissez-en moins ou attendez l'ouverture des paiements.`,
+  es:remaining=>`Quedan ${remaining} diapositivas. Elige menos o espera a que se habiliten los pagos.`,
+  ru:remaining=>`Осталось ${remaining} слайдов. Выберите меньше или дождитесь запуска оплаты.`,
 };
 
 type CreatedJob = { id: string; job_token: string; requested_slides?: number };
@@ -54,6 +66,7 @@ export function Generator({ locale = "en" }: { locale?: Locale }) {
   const t = translations[locale].generator;
   const c = taskCopy[locale];
   const [prompt, setPrompt] = useState("");
+  const [slideCount, setSlideCount] = useState("auto");
   const [files, setFiles] = useState<File[]>([]);
   const [dragging, setDragging] = useState(false);
   const [modal, setModal] = useState(false);
@@ -112,7 +125,9 @@ export function Generator({ locale = "en" }: { locale?: Locale }) {
       setBusy(true); setMessage(c.submitting);
       captureConversion(conversionEvents.generationRequested, { input_source: prompt.trim() && files.length ? "prompt_and_attachment" : files.length ? "attachment" : "prompt", file_count: files.length, locale });
       stage = "create_job";
-      const create = await fetch("/api/v1/jobs", { method:"POST", headers:{"Authorization":`Bearer ${session.token}`,"Content-Type":"application/json"}, body:JSON.stringify({ prompt:prompt.trim() || c.attachmentPrompt, template_slug:selectedTemplate?.slug ?? null }) });
+      const brief = prompt.trim() || c.attachmentPrompt;
+      const submittedPrompt = slideCount === "auto" ? brief : `Create exactly ${slideCount} slides. This selected count overrides any other page count in the brief.\n\n${brief}`;
+      const create = await fetch("/api/v1/jobs", { method:"POST", headers:{"Authorization":`Bearer ${session.token}`,"Content-Type":"application/json"}, body:JSON.stringify({ prompt:submittedPrompt, template_slug:selectedTemplate?.slug ?? null }) });
       const created = await create.json().catch(() => ({})) as CreatedJob & { error?:string };
       if (create.status===402) throw new Error(quotaMessage[locale](Number.parseInt(created.error?.match(/^\d+/)?.[0] ?? "0",10)));
       if (!create.ok) throw new Error(created.error || c.failed);
@@ -163,6 +178,7 @@ export function Generator({ locale = "en" }: { locale?: Locale }) {
           <div>
             <input ref={inputRef} hidden type="file" multiple accept=".doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.pdf,.png,.jpg,.jpeg,.webp" onChange={handleInput} />
             <span className="composer-tools"><button data-testid="generator-tools-toggle" className="composer-plus" onClick={()=>setToolsOpen(!toolsOpen)} aria-label="Add" aria-expanded={toolsOpen}><Plus size={18}/></button>{toolsOpen&&<span className="composer-tools-menu"><button data-testid="generator-attachment-open" onClick={()=>{setToolsOpen(false);inputRef.current?.click();}}><Paperclip size={16}/>{c.attachFiles}</button><button data-testid="generator-template-open" onClick={()=>{setToolsOpen(false);setTemplateOpen(true);}}><LayoutTemplate size={16}/>{c.chooseTemplate}</button></span>}</span>
+            <label className="slide-count-control"><span>{slideCountCopy[locale].label}</span><select data-testid="generator-slide-count" value={slideCount} onChange={event=>setSlideCount(event.target.value)} aria-label={slideCountCopy[locale].label}><option value="auto">{slideCountCopy[locale].automatic}</option>{slideOptions.map(count=><option value={count} key={count}>{count} {slideCountCopy[locale].unit}</option>)}</select></label>
             <span className="file-hint">{t.drop}</span>
           </div>
           <button data-testid="generator-submit" className="send-button" disabled={busy || (!prompt.trim() && files.length === 0)} onClick={submit} aria-label="Generate deck"><ArrowUp size={20} /></button>
