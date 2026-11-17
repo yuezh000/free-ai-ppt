@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "classroom-feedback-study-defense",
+    "name": "Free Classroom Feedback Study Thesis Defense PowerPoint Template",
+    "shortName": "Classroom Feedback Study Defense",
+    "category": "Thesis Defense",
+    "categorySlug": "thesis-defense",
+    "accent": "D36C4D",
+    "dark": "203943",
+    "soft": "E7F0E8",
+    "paper": "FAF7EF",
+    "second": "617F69",
+    "description": "An editable thesis defense for presenting a classroom feedback study through its question, method, illustrative evidence, limits, and next inquiry.",
+    "longDescription": "This original eight-slide classroom feedback thesis defense helps researchers present a focused question, conceptual frame, study design, illustrative evidence, interpretation, limitations, contribution, and discussion prompt. Its distinctive editorial system combines a narrow evidence spine, offset annotation fields, and large native-shape quotation markers on a warm paper canvas. All text and shapes are editable. Every sample number is an illustrative placeholder; replace all examples with verified research before presenting.",
+    "tags": ["Thesis defense", "Education research", "Classroom feedback", "Research methods", "16:9"],
+    "cover": ["THESIS DEFENSE · CLASSROOM FEEDBACK", "What changes when feedback is usable?", "A research-defense framework for questions, evidence, limits, and next inquiry."],
+    "story": [
+      {"eyebrow":"01 / RESEARCH QUESTION", "title":"Define the feedback moment", "body":"Ask how learners interpret a specific kind of feedback in a bounded classroom setting.", "stat":"1 question*", "points":[["Context","Specify the learning activity"],["Gap","Name what remains uncertain"],["Question","State the relationship to examine"]]},
+      {"eyebrow":"02 / CONCEPTUAL FRAME", "title":"Connect action to interpretation", "body":"Separate what the teacher communicates from what the learner understands and tries next.", "stat":"3 lenses*", "points":[["Message","What information was shared?"],["Meaning","How was it understood?"],["Action","What response followed?"]]},
+      {"eyebrow":"03 / STUDY DESIGN", "title":"Make the comparison credible", "body":"Describe a hypothetical observation plan, participant boundary, consent process, and analysis approach.", "stat":"2 groups*", "points":[["Sample","Describe the illustrative cohort"],["Measure","Define an observable response"],["Ethics","Protect identity and choice"]]},
+      {"eyebrow":"04 / ILLUSTRATIVE EVIDENCE", "title":"Show the signal, then its limit", "body":"Use clearly labeled placeholder observations to demonstrate how a finding could be presented.", "stat":"64%*", "points":[["Signal","Example response rate: 64%*"],["Context","Example comparison: 48%*"],["Limit","These values are invented placeholders"]]},
+      {"eyebrow":"05 / INTERPRETATION", "title":"Explain what the pattern may mean", "body":"Link observations to the question while keeping alternative explanations visible.", "stat":"2 readings*", "points":[["Reading A","Specificity may support a next action"],["Reading B","Timing may explain part of the pattern"],["Test","Name evidence that distinguishes them"]]},
+      {"eyebrow":"06 / LIMITATIONS", "title":"Bound the claim before extending it", "body":"State where sampling, observation, measurement, and classroom context constrain inference.", "stat":"4 limits*", "points":[["Selection","Who may be missing?"],["Measure","What was not captured?"],["Transfer","Which settings may differ?"]]},
+      {"eyebrow":"07 / CONTRIBUTION & NEXT STEP", "title":"End with a testable next question", "body":"Summarize the proposed contribution and invite scrutiny of the strongest alternative explanation.", "stat":"1 next study*", "points":[["Contribution","Clarify a feedback-use mechanism"],["Next study","Test it in a new setting"],["Discuss","Invite one critical question"]]}
+    ],
+    "included": ["Defense cover", "Research question", "Conceptual frame", "Study design", "Illustrative evidence", "Interpretation", "Limitations", "Contribution and discussion"],
+    "bestFor": ["Education thesis defenses", "Teacher research seminars", "Graduate research reviews", "Methods workshops"]
+  }
+]

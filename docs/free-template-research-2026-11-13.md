@@ -1,0 +1,15 @@
+# Original template research — 2026-11-13
+
+Research date: 2026-11-13 UTC. The worktree was clean and fast-forwarded before work. Existing names, slugs, search intents, references, palettes, motifs, and page systems were compared. No external source file or asset was downloaded.
+
+| Original FreeAIPPT template | Category | Reference page and direct URL | Abstract signals observed | Original visual system |
+|---|---|---|---|---|
+| Classroom Feedback Study Defense | Thesis Defense | [Teaching Methods Thesis Presentation — Slidesgo](https://slidesgo.com/theme/teaching-methods-thesis) | Green and blue color family, readable hierarchy, structured research-defense mood | Deep ink cover, warm paper pages, narrow vertical evidence spine, alternating annotation margins, and coral/green native-shape markers. |
+
+The direct reference page was opened and confirmed to offer a free 16:9 editable presentation with PowerPoint, Google Slides, and Canva routes. Its photographs, children, rectangular frames, calligraphic font, icons, charts, text, data, decorations, individual layouts, proportions, and slide sequence were explicitly excluded. No source presentation, preview, screenshot, image, font, or artwork was imported. Attribution terms for use of Slidesgo's own slides do not apply to this independently authored deck.
+
+The new deck began on a blank 16:9 canvas. Its eight slides use only Aptos system fonts and editable native PowerPoint text and shapes. The original sequence covers a bounded question, conceptual frame, study design, illustrative evidence, interpretation, limitations, contribution, and discussion. Every sample number has an asterisk, and slide footers identify all numbers as illustrative placeholders. The example makes no claim about a real study. Originality review: unique source URL, intent, palette, motif, composition, and story sequence compared with the current library.
+
+Skipped categories: Business Plan, Startup Pitch Deck, Company Profile, Marketing Plan, Project Proposal, Sales Report, Lesson Plan, Clinical Case, AI & Technology, Creative Portfolio, and Product Roadmap. Today's selected reference supports one distinct thesis-defense direction; the other categories were skipped rather than adding unresearched or visually repetitive material.
+
+Validation: the PPTX archive is intact, contains exactly eight slide XML files, and contains no media files. The PPTX and all eight numbered JPG previews are nonempty. The cover and content slides 03 and 06 were visually reviewed for clipping, collisions, contrast, composition, and pagination. Source lint passed with one pre-existing warning and zero errors. TypeScript checking, the complete Next.js production build (1,231 static pages), and localized SEO checks passed. The full mocked Playwright suite passed 70 of 70 tests after updating catalog counts in three older batch test files. This includes login, task submission, waitlist, administrator, and the new English and Chinese detail routes. Git whitespace checks passed.
