@@ -224,7 +224,7 @@ docs/free-template-research-YYYY-MM-DD.md
 测试全部通过后：
 
 1. 在 aibox Docker 中执行 Vercel production build。
-2. 使用仓库现有的 Vercel 项目配置部署。
+2. 使用仓库现有的 Vercel 项目配置部署。将 aibox 上的 `/home/yue/.local/share/freeaippt-vercel` 以只读方式挂载到 Node Docker 的 `/vercel-auth`，使用 `scripts/vercel-ci.sh` 执行所有 Vercel 命令。脚本从仓库外的 `/vercel-auth/token` 读取专用个人访问令牌；在开始研究新模板前运行 `scripts/check-vercel-access.py` 验证令牌对当前项目的访问。团队范围令牌不一定支持 `vercel whoami`。凭据不得复制到仓库或临时构建目录。
 3. 将生产部署绑定到 <https://freeaippt.space>。
 4. 不得修改现有域名、环境变量或 Vercel 项目归属。
 5. 发布后逐项验证 HTTP 200：

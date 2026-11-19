@@ -20,14 +20,14 @@ test("administrator sees mocked tasks and trial candidates",async({page})=>{
   await expect(page.getByText("startup-pitch-deck",{exact:true})).toBeVisible();
   await expect(page.getByText("Task submission · ON",{exact:true})).toBeVisible();
   await expect(page.getByTestId("admin-user-member")).toContainText("member@example.com");
-  await expect(page.getByTestId("admin-resource-primary")).toContainText("151");
+  await expect(page.getByTestId("admin-resource-primary")).toContainText("152");
   await expect(page.getByText("Indexable resource urls",{exact:true})).toBeVisible();
-  await expect(page.getByTestId("admin-resource-indexed")).toContainText("1201");
-  await expect(page.getByTestId("admin-resource-templates")).toContainText("134");
+  await expect(page.getByTestId("admin-resource-indexed")).toContainText("1209");
+  await expect(page.getByTestId("admin-resource-templates")).toContainText("135");
   await expect(page.getByTestId("admin-resource-categories")).toContainText("12");
   await expect(page.getByTestId("admin-resource-guides")).toContainText("2");
-  await expect(page.getByTestId("admin-resource-row-template-details")).toContainText("1072");
-  await expect(page.getByTestId("admin-resource-stats")).toContainText("Sitemap total: 1217 URLs");
+  await expect(page.getByTestId("admin-resource-row-template-details")).toContainText("1080");
+  await expect(page.getByTestId("admin-resource-stats")).toContainText("Sitemap total: 1225 URLs");
 });
 
 test("non-admin account is denied by the mocked admin API",async({page})=>{

@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "activation-milestone-product-roadmap",
+    "name": "Free Activation Milestone Product Roadmap PowerPoint Template",
+    "shortName": "Activation Milestone Roadmap",
+    "category": "Product Roadmap",
+    "categorySlug": "product-roadmap",
+    "description": "An editable product roadmap for improving user onboarding, first value, sustained use, and release readiness.",
+    "longDescription": "This original eight-slide activation milestone product roadmap turns an onboarding problem into a measurable product plan. It covers the user friction, outcome, evidence, priority bets, staged delivery, release checks, risks, and the next decision. A stepped signal-column system and warm ivory, ink, copper, and mint native PowerPoint shapes make the planning logic easy to edit. Every sample metric is an illustrative placeholder and should be replaced with verified product data.",
+    "accent": "BD5B3C",
+    "dark": "202B35",
+    "soft": "DCECE4",
+    "paper": "FAF6EF",
+    "second": "3D806D",
+    "tags": ["Product roadmap", "User onboarding", "Activation", "Product adoption", "16:9"],
+    "cover": ["PRODUCT ROADMAP / ACTIVATION", "Make first value easier to reach", "An editable product plan from onboarding friction to release evidence."],
+    "story": [
+      {"eyebrow":"FRICTION", "title":"Users meet effort before value", "body":"Map where a new user pauses, asks for help, or leaves before completing a meaningful task.", "stat":"3 moments*", "points":[["Entry","Identify the first choice"],["Setup","Remove avoidable effort"],["Value","Define a useful first result"]]},
+      {"eyebrow":"OUTCOME", "title":"Choose one activation outcome", "body":"Name the task that demonstrates value, its measurement window, and the audience it serves.", "stat":"1 outcome*", "points":[["Behavior","Complete a real first task"],["Window","Set an example review period"],["Owner","Assign product accountability"]]},
+      {"eyebrow":"EVIDENCE", "title":"Separate signal from assumption", "body":"Combine an illustrative funnel with user observations; validate both before prioritizing work.", "stat":"42%*", "points":[["Signal","Example completion: 42%*"],["Context","Review support requests"],["Limit","Numbers are invented placeholders"]]},
+      {"eyebrow":"PRIORITIES", "title":"Build for the next useful action", "body":"Rank proposed changes by likely user value, uncertainty, and delivery cost.", "stat":"3 bets*", "points":[["Guide","Clarify the next action"],["Practice","Provide a safe first task"],["Recover","Offer help at a stall"]]},
+      {"eyebrow":"DELIVERY", "title":"Release in measurable steps", "body":"Sequence a small test, controlled rollout, and wider release around evidence gates.", "stat":"3 gates*", "points":[["Pilot","Observe a bounded cohort"],["Review","Compare quality and completion"],["Expand","Ship only after review"]]},
+      {"eyebrow":"RISKS", "title":"Protect trust during the change", "body":"Watch for misleading progress, excess prompts, and improvements that shift work to support.", "stat":"2 checks*", "points":[["Quality","Verify completed tasks"],["Burden","Watch support demand"],["Access","Review edge journeys"]]},
+      {"eyebrow":"DECISION", "title":"Agree on the next release gate", "body":"Close with an owner, a validated metric, and the evidence required to approve wider rollout.", "stat":"1 gate*", "points":[["Decide","Approve a bounded pilot"],["Measure","Review first-value quality"],["Return","Set the next decision date"]]}
+    ],
+    "included": ["Roadmap cover", "Onboarding friction", "Activation outcome", "Illustrative evidence", "Priority bets", "Delivery stages", "Risks and safeguards", "Release decision"],
+    "bestFor": ["Product onboarding reviews", "Activation planning", "SaaS product teams", "Release readiness meetings"]
+  }
+]

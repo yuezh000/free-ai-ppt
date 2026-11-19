@@ -4,6 +4,7 @@ node_modules/
 .DS_Store
 *.log
 .env*
+vercel.token.txt
 !.env.example
 !backend/.env.example
 .vercel
