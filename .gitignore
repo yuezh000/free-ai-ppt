@@ -5,6 +5,7 @@ node_modules/
 *.log
 .env*
 vercel.token.txt
+posthog.txt
 !.env.example
 !backend/.env.example
 .vercel
