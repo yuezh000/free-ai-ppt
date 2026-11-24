@@ -8,11 +8,9 @@
 
 ## 一、运行前检查
 
-1. 进入 FreeAIPPT 仓库根目录。
+1. 定时器先在 VPS 上执行 `scripts/prepare-daily-template-worktree.sh`：抓取最新 `origin/main`，在 `/tmp/codex` 下创建独立的 detached worktree；本次研究、源码修改及 Git 提交都在该 worktree 内完成。
 2. 阅读仓库中的 `AGENTS.md`，并严格遵守环境、编译、临时文件和部署要求。
-3. 检查 Git 状态：
-   - 如果存在不属于本次任务的未提交修改，停止执行并记录原因。
-   - 工作区干净时执行 `git pull --ff-only`。
+3. 只检查本次独立 worktree 的 Git 状态；如其中存在不属于本次任务的修改，停止并记录原因。主工作区中的未提交修改属于其他任务，不得查看、修改、暂存或作为本次任务的阻塞条件。worktree 已从最新远端提交创建，不要在 detached worktree 内执行 `git pull`。
 4. 检查现有内容：
    - `lib/templates.ts`
    - `lib/template-i18n.ts`
@@ -248,7 +246,7 @@ docs/free-template-research-YYYY-MM-DD.md
    feat: add daily original PPT template resources
    ```
 
-4. 推送到 `origin/main`。
+4. 在独立 worktree 中提交，并使用 `git push origin HEAD:main` 正常快进推送到 `origin/main`。若远端已前进，停止并报告；不得通过 rebase、merge 或覆盖远端来继续发布。
 5. 禁止 force push、`reset --hard` 或覆盖用户修改。
 
 ## 十二、最终报告
