@@ -1,0 +1,17 @@
+# Original template research — 2026-11-24
+
+Research date: 2026-11-24 UTC. The isolated worktree was clean before editing. Existing slugs, topics, reference URLs, palettes, and motifs were checked. No external template asset was downloaded.
+
+| Original FreeAIPPT template | Category | Direct reference page | Abstract signals observed | Original visual system |
+|---|---|---|---|---|
+| Community Cooling Hub Funding Proposal | Project Proposal | [Fundraiser Project Proposal Presentation — Slidesgo](https://slidesgo.com/theme/fundraiser-project-proposal) | A public fundraising use case, lively blue color family, clear heading hierarchy, and a moderate information rhythm | Deep indigo cover, pale sky and coral accents, an open shelter frame, alternating light and dark decision pages, and compact evidence rows. All are native editable PowerPoint shapes. |
+
+The direct page was opened on 2026-11-24. It identifies a free 16:9 presentation and offers editable PowerPoint, Google Slides, and Canva routes. Its artwork, doodles, graphics, icons, charts, diagrams, text, data, layout proportions, and slide sequence were excluded. Its free-user attribution requirement applies to use of Slidesgo slides; this deck was authored independently from a blank canvas. No source PPTX, screenshot, image, illustration, font, or preview was copied or imported.
+
+The original eight-slide story covers the cooling need, service outcome, illustrative evidence, funding, delivery gates, safeguards, and a bounded approval request. Every sample metric has an asterisk and a visible illustrative-data footer. No sample value describes real local conditions. The reference URL and cooling hub funding intent do not occur in earlier research records or template slugs. Originality review: the shelter frame, indigo/coral/teal system, and decision rows differ from existing project proposal decks.
+
+Skipped categories: Business Plan, Startup Pitch Deck, Company Profile, Marketing Plan, Sales Report, Lesson Plan, Thesis Defense, Clinical Case, AI & Technology, Creative Portfolio, and Product Roadmap. Only Project Proposal had a distinct verified reference and safe original treatment selected for this run; no other category was filled without one.
+
+Validation: the PPTX archive is sound, contains exactly eight slide XML files and no embedded media files, and has eight nonempty numbered JPG previews. The cover and slides 03 and 06 were visually checked for overflow, contrast, collisions, composition, and pagination. Source lint passed with zero errors and one pre-existing warning in the 2026-09-28 generator. TypeScript checking, the full Next.js production build (1,247 static pages), localized SEO checks, and Vercel production build passed. After updating older Project Proposal count assertions, the full mocked Playwright suite passed 74 of 74 tests, including existing login, task, candidate, and admin regressions. Git whitespace checks passed.
+
+Publication: Vercel reported the production deployment at https://freeppt-1i0hanv3v-yuezh000s-projects.vercel.app ready and aliased it to https://freeaippt.space. The catalog, Project Proposal category, English and Simplified Chinese detail pages, PPTX, preview image, and sitemap returned HTTP 200. The live sitemap contains 1,233 URLs, including the category and all eight localized detail URLs. The optional Vercel CLI `inspect` command could not load a user with the team-scoped token; the required build, deploy, and public HTTP checks passed.

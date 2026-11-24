@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "community-cooling-hub-funding-proposal",
+    "name": "Free Community Cooling Hub Funding Proposal PowerPoint Template",
+    "shortName": "Cooling Hub Funding Proposal",
+    "category": "Project Proposal",
+    "categorySlug": "project-proposal",
+    "description": "An editable funding proposal for a community cooling hub, with need, service design, evidence, budget logic, delivery gates, and approval request.",
+    "longDescription": "This original eight-slide community cooling hub funding proposal helps a team explain a local service idea to prospective funders. It moves from the need and intended outcome through a service model, illustrative evidence, funding structure, staged delivery, safeguards, and the specific decision requested. Deep indigo, pale sky, vivid coral, and editable native PowerPoint shapes form an original typographic system. Every example metric is illustrative and must be replaced with verified local evidence before presentation.",
+    "accent": "F07460",
+    "dark": "172844",
+    "soft": "DDF3F3",
+    "paper": "F7F4EE",
+    "second": "197A83",
+    "tags": ["Project proposal", "Community cooling", "Fundraising", "Climate resilience", "16:9"],
+    "cover": ["COMMUNITY SERVICE / FUNDING PROPOSAL", "A cool place within reach", "A decision-ready plan for a welcoming neighborhood cooling hub."],
+    "story": [
+      {"eyebrow":"NEED", "title":"A hot day can become an access problem", "body":"Describe who needs a safe indoor place and where existing options leave a gap.", "stat":"3 gaps*", "points":[["Access","Identify travel and opening-hour barriers"],["Trust","Ask residents what feels welcoming"],["Evidence","Verify local needs before making claims"]]},
+      {"eyebrow":"OUTCOME", "title":"Define the service people should receive", "body":"Specify a usable space, clear hours, trained hosts, and a practical referral route.", "stat":"1 service*", "points":[["Arrive","Make the location easy to find"],["Stay","Offer seating, water, and guidance"],["Refer","Connect visitors to further support"]]},
+      {"eyebrow":"EVIDENCE", "title":"Show the decision, then the assumptions", "body":"Use local listening and a small pilot to test whether the proposed service is needed.", "stat":"60 visits*", "points":[["Signal","Illustrative pilot visit target"],["Source","Collect voluntary visitor feedback"],["Limit","Replace every sample figure with records"]]},
+      {"eyebrow":"FUNDING", "title":"Fund the service, not just the room", "body":"Separate setup, daily operations, and a reserve so the request has clear boundaries.", "stat":"$48k*", "points":[["Setup","Prepare a safe accessible space"],["Operate","Cover hosts and basic supplies"],["Reserve","Allow for demand variation"]]},
+      {"eyebrow":"DELIVERY", "title":"Open through three evidence gates", "body":"Confirm the site, run a limited pilot, and review outcomes before extending hours.", "stat":"3 gates*", "points":[["Prepare","Confirm partners and access"],["Pilot","Test service on selected days"],["Review","Adjust from real feedback"]]},
+      {"eyebrow":"SAFEGUARDS", "title":"Plan for the people at the margins", "body":"Review accessibility, privacy, transport, staffing, and capacity before launch.", "stat":"4 checks*", "points":[["Access","Check step-free entry and directions"],["Safety","Set escalation and staffing rules"],["Privacy","Collect only essential information"]]},
+      {"eyebrow":"DECISION", "title":"Approve a bounded pilot and review date", "body":"Ask for a named sponsor, a limited funding envelope, and an evidence review.", "stat":"1 ask*", "points":[["Approve","Authorize a defined pilot"],["Own","Name a responsible lead"],["Return","Set the decision review date"]]}
+    ],
+    "included": ["Funding proposal cover", "Community need", "Service outcome", "Illustrative evidence", "Funding structure", "Delivery gates", "Safeguards", "Decision and next step"],
+    "bestFor": ["Community grant applications", "Local service proposals", "Climate resilience planning", "Nonprofit funding meetings"]
+  }
+]
