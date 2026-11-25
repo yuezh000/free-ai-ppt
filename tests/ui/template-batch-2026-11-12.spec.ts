@@ -5,7 +5,7 @@ const name = "Free Source Check Studio Lesson PowerPoint Template";
 
 test("source check lesson opens from its category with editable download and SEO data", async ({ page, request }) => {
   await page.goto("/templates/education");
-  await expect(page.locator(".template-card")).toHaveCount(12);
+  await expect(page.locator(".template-card")).toHaveCount(13);
   await page.getByRole("heading", { level: 3, name, exact: true }).getByRole("link").click();
   await expect(page).toHaveURL(new RegExp(`/templates/${slug}/?$`));
   await expect(page.getByRole("heading", { level: 1, name, exact: true })).toBeVisible();

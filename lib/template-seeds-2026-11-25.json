@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "reading-data-fifth-grade-lesson",
+    "name": "Free Reading Data Fifth Grade Lesson PowerPoint Template",
+    "shortName": "Reading Data Lesson",
+    "category": "Lesson Plan",
+    "categorySlug": "education",
+    "description": "A free, editable fifth-grade data literacy lesson with a question, sample survey, chart reading, comparison, practice, and exit ticket.",
+    "longDescription": "This original eight-slide lesson helps a teacher introduce fifth-grade students to reading and discussing simple survey data. The story moves from a question and learning goal through an illustrative class survey, a bar comparison, a guided reading method, partner practice, a check for misleading scales, and an exit ticket. A warm paper background, deep plum type, mint data tiles, and a clear ledger grid are built entirely from native editable PowerPoint shapes. All counts are explicitly illustrative; replace them with actual classroom data before teaching.",
+    "accent": "D85E72",
+    "dark": "332646",
+    "soft": "D8F1E8",
+    "paper": "FFF9F0",
+    "second": "3B8F83",
+    "tags": ["Data literacy", "Fifth grade", "Math lesson", "Editable", "16:9"],
+    "cover": ["MATH LAB / GRADE 5", "What does the data say?", "A classroom lesson in reading, comparing, and questioning sample survey results."],
+    "story": [
+      {"eyebrow":"QUESTION", "title":"Begin with one answerable question", "body":"Which reading spot does our sample group prefer? First agree on what each response means.", "stat":"1 question*", "points":[["Ask","Use a clear question"],["Choose","Offer distinct choices"],["Count","Record each response once"]]},
+      {"eyebrow":"SAMPLE", "title":"A small survey becomes a data set", "body":"Use these invented responses to practice before collecting real classroom answers.", "stat":"24 votes*", "points":[["Window","8* sample votes"],["Library","10* sample votes"],["Garden","6* sample votes"]]},
+      {"eyebrow":"COMPARE", "title":"Look for the largest and smallest groups", "body":"Read the labels and scale before making a claim about the sample results.", "stat":"4 votes*", "points":[["Most","Library: 10* sample votes"],["Least","Garden: 6* sample votes"],["Gap","10* minus 6* equals 4*"]]},
+      {"eyebrow":"METHOD", "title":"Read a chart in three careful passes", "body":"A repeatable routine makes the evidence easier to explain and check.", "stat":"3 passes*", "points":[["Label","Name what is counted"],["Scale","Check each tick value"],["Claim","Use a number to support it"]]},
+      {"eyebrow":"PRACTICE", "title":"Ask a partner to test your claim", "body":"Write one comparison, swap explanations, and check the arithmetic together.", "stat":"2 voices*", "points":[["Say","State a claim clearly"],["Show","Point to the sample counts"],["Revise","Fix an unclear explanation"]]},
+      {"eyebrow":"CAUTION", "title":"A short axis can exaggerate a gap", "body":"Compare the same sample counts on a scale that starts at zero before interpreting size.", "stat":"0 start*", "points":[["Notice","Find the axis baseline"],["Compare","Look at actual values"],["Question","Ask what was omitted"]]},
+      {"eyebrow":"EXIT TICKET", "title":"Explain one finding and one limit", "body":"Use a sample number to support your answer, then name what the class still needs to learn.", "stat":"1 claim*", "points":[["Find","Choose a sample result"],["Explain","Support it with a count"],["Limit","Avoid claims about all students"]]}
+    ],
+    "included": ["Lesson cover", "Inquiry question", "Illustrative sample survey", "Data comparison", "Chart reading method", "Partner practice", "Scale caution", "Exit ticket"],
+    "bestFor": ["Fifth-grade mathematics", "Introductory data literacy", "Classroom discussion", "Survey interpretation practice"]
+  }
+]
