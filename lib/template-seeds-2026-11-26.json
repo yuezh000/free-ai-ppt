@@ -1,0 +1,177 @@
+[
+  {
+    "slug": "service-handoff-design-portfolio",
+    "name": "Free Service Handoff Design Portfolio PowerPoint Template",
+    "shortName": "Service Handoff Design Portfolio",
+    "category": "Creative Portfolio",
+    "categorySlug": "portfolio",
+    "description": "An editable service design portfolio for explaining a fictional lending-service brief, customer handoffs, research evidence, prototyping practice and delivery ownership.",
+    "longDescription": "This free service design portfolio PowerPoint template helps designers explain the work behind a customer experience. Eight original slides cover a fictional brief, an editable service handoff, illustrative research notes, a rehearsal method, delivery ownership, limitations and a collaboration invitation. Its original swimlane visual system uses rust-orange routing blocks, ink typography, pale blue service bands and open white space. Every element is native editable PowerPoint text or shape, using a system font. Replace the fictional case and all visibly marked illustrative figures with your own verified and permitted portfolio material. No third-party artwork, photography, source layout or presentation file is included.",
+    "accent": "C6512C",
+    "dark": "202B36",
+    "soft": "E7EFF3",
+    "paper": "FCFAF5",
+    "tags": [
+      "Service design portfolio",
+      "UX case study",
+      "Service blueprint",
+      "16:9"
+    ],
+    "cover": [
+      "SERVICE DESIGN / SELECTED PRACTICE",
+      "Design the moments\nbetween the screens",
+      "An editable portfolio of service handoffs, research decisions and shared ownership."
+    ],
+    "story": [
+      {
+        "eyebrow": "CONTEXT",
+        "title": "Find the break between touchpoints",
+        "body": "A fictional equipment-lending service gives this portfolio a concrete brief.",
+        "points": [
+          [
+            "Visitor need",
+            "Know whether an item is ready before making a trip."
+          ],
+          [
+            "Service gap",
+            "Confirmation and pickup currently feel disconnected."
+          ],
+          [
+            "My contribution",
+            "Research synthesis, service mapping and prototype facilitation."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "SELECTED WORK",
+        "title": "Make the handoff visible",
+        "body": "Show the relationship between a customer action and the work that supports it.",
+        "points": [
+          [
+            "Customer",
+            "Request a loan"
+          ],
+          [
+            "Frontstage",
+            "Confirm pickup"
+          ],
+          [
+            "Backstage",
+            "Reserve equipment"
+          ]
+        ]
+      },
+      {
+        "eyebrow": "EVIDENCE",
+        "title": "Separate observation from impact",
+        "body": "Illustrative review notes help explain a design decision; they do not prove a business outcome.",
+        "points": [
+          [
+            "Observation",
+            "6* of 8* sample sessions asked who confirms readiness."
+          ],
+          [
+            "Design response",
+            "Give the confirmation a named owner and a clear status."
+          ],
+          [
+            "Evidence limit",
+            "Fictional small sample; replace with verified study records."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "METHOD",
+        "title": "Trace, rehearse, revise",
+        "body": "Use a repeatable practice to expose assumptions before polishing the interface.",
+        "points": [
+          [
+            "Trace",
+            "Map the request and the responsible people."
+          ],
+          [
+            "Rehearse",
+            "Walk through a paper service with the team."
+          ],
+          [
+            "Revise",
+            "Change the handoff and record the reason."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "DELIVERY",
+        "title": "Carry the idea into operations",
+        "body": "A portfolio case becomes stronger when the next owner can continue the work.",
+        "points": [
+          [
+            "Explore",
+            "Agree the question and consent approach."
+          ],
+          [
+            "Prototype",
+            "Test the confirmation and exception path."
+          ],
+          [
+            "Transfer",
+            "Document ownership and arrange a review."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "LIMITS",
+        "title": "Show what still needs testing",
+        "body": "Describe the boundary of your contribution and the work that remains.",
+        "points": [
+          [
+            "Access",
+            "Check the service with people using different channels."
+          ],
+          [
+            "Exceptions",
+            "Rehearse unavailable items and missed pickups."
+          ],
+          [
+            "Attribution",
+            "Separate personal work from the wider team contribution."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "CONTACT",
+        "title": "Start with a service worth improving",
+        "body": "Replace the fictional case with your own work, evidence and collaboration details.",
+        "points": [
+          [
+            "Discuss",
+            "Bring a real handoff that customers find confusing."
+          ],
+          [
+            "Share",
+            "Add a permitted case study and your contact details."
+          ],
+          [
+            "Agree",
+            "Choose a scoped discovery session and an accountable owner."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Portfolio cover",
+      "Fictional service brief",
+      "Editable service handoff",
+      "Illustrative evidence",
+      "Research and rehearsal method",
+      "Delivery plan",
+      "Limitations and contribution",
+      "Contact and collaboration"
+    ],
+    "bestFor": [
+      "Service design interviews",
+      "UX case study presentations",
+      "Design graduate portfolios",
+      "Service improvement workshops"
+    ]
+  }
+]
