@@ -5,7 +5,7 @@ const name = "Free Community Cooling Hub Funding Proposal PowerPoint Template";
 
 test("cooling hub proposal opens from its category with download and structured data", async ({ page, request }) => {
   await page.goto("/templates/project-proposal");
-  await expect(page.locator(".template-card")).toHaveCount(12);
+  await expect(page.locator(".template-card")).toHaveCount(13);
   await page.getByRole("heading", { level: 3, name, exact: true }).getByRole("link").click();
   await expect(page).toHaveURL(new RegExp(`/templates/${slug}/?$`));
   await expect(page.getByRole("heading", { level: 1, name, exact: true })).toBeVisible();

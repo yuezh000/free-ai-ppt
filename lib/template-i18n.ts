@@ -1245,8 +1245,67 @@ const localized20261110Names: Partial<Record<Locale, Record<string, [string, str
   ru: { "forecast-sensitivity-sales-report": ["Бесплатный шаблон PowerPoint: анализ чувствительности прогноза продаж", "Анализ прогноза продаж"] },
 };
 
+const localized20261127Names: Partial<Record<Locale, Record<string, [string, string]>>> = {
+  "zh-CN": {
+    "laundromat-operating-business-plan": ["免费自助洗衣店运营计划 PowerPoint 模板", "自助洗衣店运营计划"],
+    "education-enrollment-marketing-plan": ["免费教育招生营销计划 PowerPoint 模板", "教育招生营销计划"],
+    "role-succession-project-proposal": ["免费关键岗位接任项目提案 PowerPoint 模板", "关键岗位接任项目提案"],
+    "scale-drawing-geometry-lesson": ["免费比例图几何课 PowerPoint 模板", "比例图几何课"],
+    "vision-referral-case-review": ["免费视力转诊病例复盘 PowerPoint 模板", "视力转诊病例复盘"],
+    "gallery-lighting-design-portfolio": ["免费展厅灯光设计作品集 PowerPoint 模板", "展厅灯光设计作品集"],
+  },
+  "zh-TW": {
+    "laundromat-operating-business-plan": ["免費自助洗衣店營運計畫 PowerPoint 範本", "自助洗衣店營運計畫"],
+    "education-enrollment-marketing-plan": ["免費教育招生行銷計畫 PowerPoint 範本", "教育招生行銷計畫"],
+    "role-succession-project-proposal": ["免費關鍵職務接任專案提案 PowerPoint 範本", "關鍵職務接任專案提案"],
+    "scale-drawing-geometry-lesson": ["免費比例圖幾何課 PowerPoint 範本", "比例圖幾何課"],
+    "vision-referral-case-review": ["免費視力轉介病例檢討 PowerPoint 範本", "視力轉介病例檢討"],
+    "gallery-lighting-design-portfolio": ["免費展廳燈光設計作品集 PowerPoint 範本", "展廳燈光設計作品集"],
+  },
+  "ja": {
+    "laundromat-operating-business-plan": ["無料のコインランドリー事業運営計画 PowerPoint テンプレート", "コインランドリー事業運営計画"],
+    "education-enrollment-marketing-plan": ["無料の教育プログラム募集計画 PowerPoint テンプレート", "教育プログラム募集計画"],
+    "role-succession-project-proposal": ["無料の重要業務の後継者育成プロジェクト提案 PowerPoint テンプレート", "重要業務の後継者育成プロジェクト提案"],
+    "scale-drawing-geometry-lesson": ["無料の縮尺図の幾何学授業 PowerPoint テンプレート", "縮尺図の幾何学授業"],
+    "vision-referral-case-review": ["無料の視覚に関する紹介症例のレビュー PowerPoint テンプレート", "視覚に関する紹介症例のレビュー"],
+    "gallery-lighting-design-portfolio": ["無料の展示照明デザインのポートフォリオ PowerPoint テンプレート", "展示照明デザインのポートフォリオ"],
+  },
+  "ko": {
+    "laundromat-operating-business-plan": ["무료 셀프 세탁소 운영 사업 계획 PowerPoint 템플릿", "셀프 세탁소 운영 사업 계획"],
+    "education-enrollment-marketing-plan": ["무료 교육 과정 등록 마케팅 계획 PowerPoint 템플릿", "교육 과정 등록 마케팅 계획"],
+    "role-succession-project-proposal": ["무료 핵심 직무 승계 프로젝트 제안 PowerPoint 템플릿", "핵심 직무 승계 프로젝트 제안"],
+    "scale-drawing-geometry-lesson": ["무료 축척 도면 기하 수업 PowerPoint 템플릿", "축척 도면 기하 수업"],
+    "vision-referral-case-review": ["무료 시력 관련 의뢰 사례 검토 PowerPoint 템플릿", "시력 관련 의뢰 사례 검토"],
+    "gallery-lighting-design-portfolio": ["무료 전시장 조명 디자인 포트폴리오 PowerPoint 템플릿", "전시장 조명 디자인 포트폴리오"],
+  },
+  "fr": {
+    "laundromat-operating-business-plan": ["Modèle PowerPoint gratuit – Plan d’exploitation d’une laverie", "Plan d’exploitation d’une laverie"],
+    "education-enrollment-marketing-plan": ["Modèle PowerPoint gratuit – Plan marketing pour les inscriptions", "Plan marketing pour les inscriptions"],
+    "role-succession-project-proposal": ["Modèle PowerPoint gratuit – Proposition de projet de succession", "Proposition de projet de succession"],
+    "scale-drawing-geometry-lesson": ["Modèle PowerPoint gratuit – Cours de géométrie sur les dessins à l’échelle", "Cours de géométrie sur les dessins à l’échelle"],
+    "vision-referral-case-review": ["Modèle PowerPoint gratuit – Revue d’un dossier d’orientation ophtalmologique", "Revue d’un dossier d’orientation ophtalmologique"],
+    "gallery-lighting-design-portfolio": ["Modèle PowerPoint gratuit – Portfolio d’éclairage de galerie", "Portfolio d’éclairage de galerie"],
+  },
+  "es": {
+    "laundromat-operating-business-plan": ["Plantilla PowerPoint gratis de Plan operativo de una lavandería autoservicio", "Plan operativo de una lavandería autoservicio"],
+    "education-enrollment-marketing-plan": ["Plantilla PowerPoint gratis de Plan de marketing para matrículas", "Plan de marketing para matrículas"],
+    "role-succession-project-proposal": ["Plantilla PowerPoint gratis de Propuesta de proyecto de sucesión de puestos", "Propuesta de proyecto de sucesión de puestos"],
+    "scale-drawing-geometry-lesson": ["Plantilla PowerPoint gratis de Lección de geometría sobre dibujos a escala", "Lección de geometría sobre dibujos a escala"],
+    "vision-referral-case-review": ["Plantilla PowerPoint gratis de Revisión de un caso de derivación oftalmológica", "Revisión de un caso de derivación oftalmológica"],
+    "gallery-lighting-design-portfolio": ["Plantilla PowerPoint gratis de Portafolio de iluminación de galerías", "Portafolio de iluminación de galerías"],
+  },
+  "ru": {
+    "laundromat-operating-business-plan": ["Бесплатный шаблон PowerPoint – Операционный план прачечной самообслуживания", "Операционный план прачечной самообслуживания"],
+    "education-enrollment-marketing-plan": ["Бесплатный шаблон PowerPoint – Маркетинговый план набора учащихся", "Маркетинговый план набора учащихся"],
+    "role-succession-project-proposal": ["Бесплатный шаблон PowerPoint – Проект подготовки преемника на ключевую роль", "Проект подготовки преемника на ключевую роль"],
+    "scale-drawing-geometry-lesson": ["Бесплатный шаблон PowerPoint – Урок геометрии о масштабных чертежах", "Урок геометрии о масштабных чертежах"],
+    "vision-referral-case-review": ["Бесплатный шаблон PowerPoint – Разбор случая направления к офтальмологу", "Разбор случая направления к офтальмологу"],
+    "gallery-lighting-design-portfolio": ["Бесплатный шаблон PowerPoint – Портфолио светового дизайна галереи", "Портфолио светового дизайна галереи"],
+  },
+};
+
 export function localizedTemplateName(template: PptTemplate, locale: Locale) {
-  const names = localized20261113Names[locale]?.[template.slug] ?? localized20261112Names[locale]?.[template.slug] ?? localized20261110Names[locale]?.[template.slug] ?? localized20261021Names[locale]?.[template.slug] ?? localized20261020Names[locale]?.[template.slug] ?? localized20261019Round2Names[locale]?.[template.slug] ?? localized20260911Round2Names[locale]?.[template.slug] ?? localized20260911Names[locale]?.[template.slug] ?? localized20260910Round2Names[locale]?.[template.slug] ?? localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
+  const names = localized20261127Names[locale]?.[template.slug] ?? localized20261113Names[locale]?.[template.slug] ?? localized20261112Names[locale]?.[template.slug] ?? localized20261110Names[locale]?.[template.slug] ?? localized20261021Names[locale]?.[template.slug] ?? localized20261020Names[locale]?.[template.slug] ?? localized20261019Round2Names[locale]?.[template.slug] ?? localized20260911Round2Names[locale]?.[template.slug] ?? localized20260911Names[locale]?.[template.slug] ?? localized20260910Round2Names[locale]?.[template.slug] ?? localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
   return { name: names?.[0] ?? template.name, shortName: names?.[1] ?? template.shortName };
 }
 

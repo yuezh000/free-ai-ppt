@@ -1,0 +1,1046 @@
+[
+  {
+    "slug": "laundromat-operating-business-plan",
+    "name": "Free Laundromat Operating Business Plan PowerPoint Template",
+    "shortName": "Laundromat Operating Business Plan",
+    "category": "Business Plan",
+    "categorySlug": "business-plan",
+    "description": "Plan a self-service laundromat around machine utilization, utility costs, service coverage, and a lease decision.",
+    "longDescription": "Present a self-service laundry business plan to lenders, operators, and prospective partners. The worked example shows how to connect site choice, machine capacity, utility exposure, and opening readiness. A violet machine-status board and editable porthole shapes make the operating logic easy to follow.",
+    "accent": "5B3A75",
+    "dark": "251B39",
+    "soft": "EADFF3",
+    "paper": "FCF6E8",
+    "tags": [
+      "Laundromat",
+      "Business Plan",
+      "Editable PPTX"
+    ],
+    "cover": [
+      "SELF-SERVICE LAUNDRY",
+      "Open where repeat demand can support the lease",
+      "An operating brief for a fictional neighborhood laundromat."
+    ],
+    "story": [
+      {
+        "eyebrow": "Site need",
+        "title": "Choose a site people can return to easily",
+        "body": "Check recurring laundry demand before committing to a lease.",
+        "points": [
+          [
+            "Access",
+            "Observe walking routes and evening access."
+          ],
+          [
+            "Demand",
+            "Record busy periods at nearby alternatives."
+          ],
+          [
+            "Lease",
+            "Confirm utility and ventilation permissions."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Operating model",
+        "title": "Plan around the machine cycle",
+        "body": "Estimate how much useful capacity is available when customers need it.",
+        "points": [
+          [
+            "Wash",
+            "Allocate machines by load size."
+          ],
+          [
+            "Dry",
+            "Check turnover and queue at peak times."
+          ],
+          [
+            "Reset",
+            "Budget for cleaning and equipment downtime."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Capacity model",
+        "title": "Show the assumption behind throughput",
+        "body": "Use your observed cycle counts and local utility tariffs to replace this example.",
+        "points": [
+          [
+            "14* turns",
+            "Illustrative peak-window washer turns."
+          ],
+          [
+            "Capacity driver",
+            "Count only working machines."
+          ],
+          [
+            "Cost driver",
+            "Model utilities by cycle type."
+          ]
+        ],
+        "stat": "14* turns"
+      },
+      {
+        "eyebrow": "Daily operations",
+        "title": "Give every shift a service standard",
+        "body": "Use an operating routine the team can run consistently.",
+        "points": [
+          [
+            "Open",
+            "Check change, payment, and machine status."
+          ],
+          [
+            "Maintain",
+            "Log faults and assign a repair owner."
+          ],
+          [
+            "Close",
+            "Reconcile payments and restock supplies."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Opening plan",
+        "title": "Sign off the site before opening",
+        "body": "Define the evidence required to progress from lease review to public opening.",
+        "points": [
+          [
+            "Inspect",
+            "Verify the utility and drainage setup."
+          ],
+          [
+            "Install",
+            "Schedule commissioning and staff walk-through."
+          ],
+          [
+            "Open",
+            "Test payment, signage, and support."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Financial risk",
+        "title": "Pressure-test the lease and utility bill",
+        "body": "Show which assumptions would change the decision to open.",
+        "points": [
+          [
+            "Demand dip",
+            "Test a quieter weekday scenario."
+          ],
+          [
+            "Downtime",
+            "Allow for lost cycles and repair time."
+          ],
+          [
+            "Renewal",
+            "Document lease escalators and options."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Funding decision",
+        "title": "Authorize the next diligence step",
+        "body": "Request approval for site inspection and written equipment estimates.",
+        "points": [
+          [
+            "Decision",
+            "Confirm the proposed site and spending cap."
+          ],
+          [
+            "Owner",
+            "Name the operator responsible for diligence."
+          ],
+          [
+            "Next review",
+            "Bring verified costs to the lease decision."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover",
+      "Site need",
+      "Operating model",
+      "Capacity model",
+      "Daily operations",
+      "Opening plan",
+      "Financial risk",
+      "Funding decision"
+    ],
+    "bestFor": [
+      "Laundromat owners",
+      "Small business lenders",
+      "Site selection teams"
+    ]
+  },
+  {
+    "slug": "education-enrollment-marketing-plan",
+    "name": "Free Education Enrollment Marketing Plan PowerPoint Template",
+    "shortName": "Education Enrollment Marketing Plan",
+    "category": "Marketing Plan",
+    "categorySlug": "marketing",
+    "description": "Plan an education enrollment campaign covering inquiry sources, information sessions, application steps, and seat availability.",
+    "longDescription": "Use this enrollment marketing PowerPoint for an adult education center or continuing education program. Eight slides map the decision from first inquiry to application, then tie channel choices to advisor capacity and available seats. Editable arches and stepped registration bands organize the example.",
+    "accent": "94304D",
+    "dark": "43192B",
+    "soft": "F7DCE1",
+    "paper": "FFF6F7",
+    "tags": [
+      "Enrollment",
+      "Marketing Plan",
+      "Editable PPTX"
+    ],
+    "cover": [
+      "EDUCATION ENROLLMENT",
+      "Turn early questions into considered applications",
+      "A fictional campaign for evening skills courses."
+    ],
+    "story": [
+      {
+        "eyebrow": "Audience",
+        "title": "Start with the learner's scheduling decision",
+        "body": "Identify what prospective learners need to know before speaking with an advisor.",
+        "points": [
+          [
+            "Working learners",
+            "Show class times and attendance expectations."
+          ],
+          [
+            "Career changers",
+            "Explain what the course helps them practice."
+          ],
+          [
+            "Returning learners",
+            "State entry requirements in plain language."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Message",
+        "title": "Answer a different question at each step",
+        "body": "Carry the same course promise from first contact to application.",
+        "points": [
+          [
+            "Discover",
+            "Make format and schedule easy to find."
+          ],
+          [
+            "Visit",
+            "Offer a low-pressure course information session."
+          ],
+          [
+            "Apply",
+            "Show the documents and steps required."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Measurement",
+        "title": "Track places where inquiries stall",
+        "body": "Use a common reporting period and deduplicate inquiries before comparison.",
+        "points": [
+          [
+            "24* inquiries",
+            "Illustrative inquiries before a session."
+          ],
+          [
+            "Attendance",
+            "Match sign-ups to actual visitors."
+          ],
+          [
+            "Applications",
+            "Separate started and submitted forms."
+          ]
+        ],
+        "stat": "24* inquiries"
+      },
+      {
+        "eyebrow": "Channel plan",
+        "title": "Give each channel a practical job",
+        "body": "Choose the channels the team can maintain during the intake window.",
+        "points": [
+          [
+            "Community partners",
+            "Share a short course and schedule sheet."
+          ],
+          [
+            "Search",
+            "Send visitors to the relevant course page."
+          ],
+          [
+            "Follow-up",
+            "Give advisors an answer guide for common questions."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Schedule",
+        "title": "Work backward from the application deadline",
+        "body": "Approve public dates only after speaking with admissions and teaching staff.",
+        "points": [
+          [
+            "Prepare",
+            "Verify program details and availability."
+          ],
+          [
+            "Invite",
+            "Run the session and publish the recap."
+          ],
+          [
+            "Close",
+            "Follow up on open application questions."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Capacity risks",
+        "title": "Match promotion to seats and staff time",
+        "body": "Set conditions for pausing or slowing the campaign.",
+        "points": [
+          [
+            "Advisor load",
+            "Check the response queue before sending reminders."
+          ],
+          [
+            "Seat availability",
+            "Keep the course page current."
+          ],
+          [
+            "Clarity",
+            "Review ambiguous language with learners."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Campaign sign-off",
+        "title": "Approve the first intake campaign",
+        "body": "Agree on ownership, the reporting window, and the next decision.",
+        "points": [
+          [
+            "Message",
+            "Sign off the course description."
+          ],
+          [
+            "Resources",
+            "Confirm coverage for the session and follow-up."
+          ],
+          [
+            "Review",
+            "Bring application and attendance figures to the debrief."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover",
+      "Audience",
+      "Message",
+      "Measurement",
+      "Channel plan",
+      "Schedule",
+      "Capacity risks",
+      "Campaign sign-off"
+    ],
+    "bestFor": [
+      "Education marketing teams",
+      "Continuing education programs",
+      "Enrollment coordinators"
+    ]
+  },
+  {
+    "slug": "role-succession-project-proposal",
+    "name": "Free Role Succession Project Proposal PowerPoint Template",
+    "shortName": "Role Succession Project Proposal",
+    "category": "Project Proposal",
+    "categorySlug": "project-proposal",
+    "description": "Propose a role succession pilot with critical responsibilities, readiness evidence, shadowing, and an approval gate.",
+    "longDescription": "This free succession planning proposal helps operations and people teams make a practical case for covering a critical role. The fictional pilot defines essential duties, evidence of readiness, supervised practice, handover criteria, and confidentiality boundaries. The design uses centered handover markers and asymmetric editable responsibility zones.",
+    "accent": "365747",
+    "dark": "192D26",
+    "soft": "DBEAD5",
+    "paper": "F8FAF0",
+    "tags": [
+      "Succession",
+      "Project Proposal",
+      "Editable PPTX"
+    ],
+    "cover": [
+      "ROLE SUCCESSION PILOT",
+      "Keep critical work moving when a lead is away",
+      "A fictional proposal to rehearse coverage for a specialist role."
+    ],
+    "story": [
+      {
+        "eyebrow": "Context",
+        "title": "Name the work at risk of interruption",
+        "body": "Separate routine duties from decisions that need a designated backup.",
+        "points": [
+          [
+            "Daily work",
+            "Identify activities that cannot wait for the lead."
+          ],
+          [
+            "Authority",
+            "Document what the backup may approve."
+          ],
+          [
+            "Escalation",
+            "Agree who handles unfamiliar exceptions."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Scope",
+        "title": "Define where the authority changes hands",
+        "body": "Write down what is delegated and what stays with the role owner.",
+        "points": [
+          [
+            "Role owner",
+            "Keep decisions outside the pilot scope."
+          ],
+          [
+            "Backup",
+            "Lead assigned tasks with an observer present."
+          ],
+          [
+            "Manager",
+            "Accept or return the readiness decision."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Readiness",
+        "title": "Collect evidence that someone can cover the work",
+        "body": "Assess work samples and handoff quality before expanding the pilot.",
+        "points": [
+          [
+            "3* rehearsals",
+            "Illustrative count for this planning example."
+          ],
+          [
+            "Work sample",
+            "File a completed task with reviewer comments."
+          ],
+          [
+            "Exception",
+            "Record how the backup escalated a new issue."
+          ]
+        ],
+        "stat": "3* rehearsals"
+      },
+      {
+        "eyebrow": "Method",
+        "title": "Move from observation to supervised practice",
+        "body": "Give the backup a safe way to rehearse recurring decisions.",
+        "points": [
+          [
+            "Observe",
+            "Follow the lead through a normal work cycle."
+          ],
+          [
+            "Practice",
+            "Complete a task and explain the choices made."
+          ],
+          [
+            "Review",
+            "Turn gaps into a specific coaching plan."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Approvals",
+        "title": "Require clear approval before handover",
+        "body": "Use a short sequence of checkpoints and named decision makers.",
+        "points": [
+          [
+            "Define",
+            "Approve role duties and decision boundaries."
+          ],
+          [
+            "Rehearse",
+            "Review evidence with the role owner."
+          ],
+          [
+            "Authorize",
+            "Sign off scope and escalation contacts."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Risks",
+        "title": "Protect privacy and availability during the pilot",
+        "body": "Document the limits of coverage and the conditions for pausing it.",
+        "points": [
+          [
+            "Workload",
+            "Reserve time for both participants."
+          ],
+          [
+            "Confidentiality",
+            "Review access before sharing records."
+          ],
+          [
+            "Coverage gap",
+            "Name an alternate if either participant is absent."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Pilot approval",
+        "title": "Authorize a supervised succession pilot",
+        "body": "Assign a sponsor and bring the readiness record to the next review.",
+        "points": [
+          [
+            "Sponsor",
+            "Approve the mandate and time allocation."
+          ],
+          [
+            "Lead",
+            "Confirm work samples and escalation rules."
+          ],
+          [
+            "Review date",
+            "Schedule the readiness discussion."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover",
+      "Context",
+      "Scope",
+      "Readiness",
+      "Method",
+      "Approvals",
+      "Risks",
+      "Pilot approval"
+    ],
+    "bestFor": [
+      "People operations",
+      "Department leads",
+      "Business continuity teams"
+    ]
+  },
+  {
+    "slug": "scale-drawing-geometry-lesson",
+    "name": "Free Scale Drawing Geometry Lesson PowerPoint Template",
+    "shortName": "Scale Drawing Geometry Lesson",
+    "category": "Lesson Plan",
+    "categorySlug": "education",
+    "description": "Teach scale drawings with an editable comparison grid, a worked example, guided practice, and an exit ticket.",
+    "longDescription": "Use this free geometry PowerPoint to help learners connect corresponding lengths and reason about scale factor. A cobalt drafting grid anchors the worked comparison, guided activity, and misconception check. All diagrams and labels are native PowerPoint objects.",
+    "accent": "1E56A4",
+    "dark": "162D56",
+    "soft": "DDEBFE",
+    "paper": "F3F8FF",
+    "tags": [
+      "Scale drawing",
+      "Lesson Plan",
+      "Editable PPTX"
+    ],
+    "cover": [
+      "GEOMETRY LESSON",
+      "Read and make a scale drawing",
+      "A classroom exercise that connects grids, lengths, and scale factors."
+    ],
+    "story": [
+      {
+        "eyebrow": "Warm-up",
+        "title": "Compare shape before comparing size",
+        "body": "Ask students which features stayed the same when a drawing grew.",
+        "points": [
+          [
+            "Notice",
+            "Identify the sides that correspond."
+          ],
+          [
+            "Discuss",
+            "Explain why a taller outline may be distorted."
+          ],
+          [
+            "Goal",
+            "Use the same factor for every matching length."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Core idea",
+        "title": "Count the matching sides",
+        "body": "Compare the editable unit grids below and describe what happened to each side.",
+        "points": [
+          [
+            "Original",
+            "Match the marked edge to its copy."
+          ],
+          [
+            "Copy",
+            "Count squares along the corresponding edge."
+          ],
+          [
+            "Rule",
+            "Use the same multiplier across the shape."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Worked example",
+        "title": "Use a ratio to explain the scale",
+        "body": "Divide the copy length by the original length in the same units.",
+        "points": [
+          [
+            "2* → 4* units",
+            "Example lengths from the drawing."
+          ],
+          [
+            "Scale factor",
+            "The copy is twice as long along the marked edge."
+          ],
+          [
+            "Check",
+            "Compare a different matching edge."
+          ]
+        ],
+        "stat": "2* → 4* units"
+      },
+      {
+        "eyebrow": "Guided practice",
+        "title": "Draw an enlargement on a fresh grid",
+        "body": "Choose a short original path and enlarge it using the same factor on both axes.",
+        "points": [
+          [
+            "Mark",
+            "Circle a starting point on each grid."
+          ],
+          [
+            "Build",
+            "Apply the factor to each horizontal and vertical move."
+          ],
+          [
+            "Explain",
+            "Tell a partner what stayed unchanged."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Class plan",
+        "title": "Model, pair up, then draw solo",
+        "body": "Pause after each activity to check that students can explain their choice.",
+        "points": [
+          [
+            "Model",
+            "Think aloud while pairing corresponding sides."
+          ],
+          [
+            "Pair task",
+            "Have partners compare their drawn copies."
+          ],
+          [
+            "Independent",
+            "Ask each learner to show a second length check."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Misconception check",
+        "title": "Find a drawing that used different factors",
+        "body": "Offer a stretched outline and ask learners to identify the error.",
+        "points": [
+          [
+            "Match",
+            "Locate each original side on the copy."
+          ],
+          [
+            "Calculate",
+            "Compare the horizontal and vertical factors."
+          ],
+          [
+            "Correct",
+            "Adjust the drawing and explain the change."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Exit ticket",
+        "title": "Show how you know the copy is to scale",
+        "body": "Ask each learner for a drawing and a brief proportional explanation.",
+        "points": [
+          [
+            "Draw",
+            "Make an enlargement on the grid."
+          ],
+          [
+            "Label",
+            "Mark lengths on two corresponding pairs."
+          ],
+          [
+            "Explain",
+            "Describe the common scale factor in words."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover",
+      "Warm-up",
+      "Core idea",
+      "Worked example",
+      "Guided practice",
+      "Class plan",
+      "Misconception check",
+      "Exit ticket"
+    ],
+    "bestFor": [
+      "Middle school math classes",
+      "Geometry workshops",
+      "Tutoring sessions"
+    ]
+  },
+  {
+    "slug": "vision-referral-case-review",
+    "name": "Free Vision Referral Case Review PowerPoint Template",
+    "shortName": "Vision Referral Case Review",
+    "category": "Clinical Case",
+    "categorySlug": "medical",
+    "description": "Structure a fictional vision referral case review around the handoff record, documentation gaps, follow-up ownership, and discussion.",
+    "longDescription": "An editable case conference presentation for discussing the quality of a vision referral handoff. It uses fictional documentation prompts for referral context, evidence status, and follow-up ownership. An amber review margin keeps open questions visible throughout the case.",
+    "accent": "785024",
+    "dark": "26211D",
+    "soft": "F4E0B7",
+    "paper": "FFFBF1",
+    "tags": [
+      "Vision referral",
+      "Clinical Case",
+      "Editable PPTX"
+    ],
+    "cover": [
+      "VISION REFERRAL REVIEW",
+      "Make the referral record easier to review",
+      "A fictional case conference focused on documentation and ownership."
+    ],
+    "story": [
+      {
+        "eyebrow": "Case context",
+        "title": "Set out the question for the case conference",
+        "body": "Summarize why the handoff is being reviewed and what the group needs to clarify.",
+        "points": [
+          [
+            "Referral reason",
+            "Use a de-identified summary supplied by the presenter."
+          ],
+          [
+            "Review scope",
+            "Focus on handoff documentation and communication."
+          ],
+          [
+            "Discussion",
+            "Record the questions the team wants answered."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Record map",
+        "title": "Trace how information reached the reviewer",
+        "body": "Keep what was recorded separate from what the group still needs to confirm.",
+        "points": [
+          [
+            "Intake note",
+            "Identify the record containing the original account."
+          ],
+          [
+            "Referral note",
+            "Identify the clinician responsible for the summary."
+          ],
+          [
+            "Receiving review",
+            "Document how receipt was acknowledged."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Evidence status",
+        "title": "Show which fields still need confirmation",
+        "body": "Replace the sample audit count with verified information from the authorized record.",
+        "points": [
+          [
+            "3* open fields",
+            "Illustrative audit count only."
+          ],
+          [
+            "Evidence source",
+            "Add the record locator used by the review team."
+          ],
+          [
+            "Verification",
+            "Mark the person who will confirm missing fields."
+          ]
+        ],
+        "stat": "3* open fields"
+      },
+      {
+        "eyebrow": "Review method",
+        "title": "Keep observations and questions apart",
+        "body": "Move through the file in sequence and preserve the source of each note.",
+        "points": [
+          [
+            "Observe",
+            "State what appears in the available file."
+          ],
+          [
+            "Question",
+            "List what the team needs to confirm."
+          ],
+          [
+            "Assign",
+            "Record who will follow up on each question."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Follow-up record",
+        "title": "Record ownership for the next review",
+        "body": "Agree on who will document the response and where it will be recorded.",
+        "points": [
+          [
+            "Confirm receipt",
+            "Identify the receiving team and channel."
+          ],
+          [
+            "Close the loop",
+            "Name who records the acknowledgment."
+          ],
+          [
+            "Review status",
+            "Schedule a check of outstanding items."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Review limitations",
+        "title": "Make uncertainty visible to the group",
+        "body": "Use the evidence record to decide which questions can be closed.",
+        "points": [
+          [
+            "Missing record",
+            "Identify the unavailable source."
+          ],
+          [
+            "Scope",
+            "Keep discussion within the agreed review question."
+          ],
+          [
+            "Permission",
+            "Verify that shared material is de-identified."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Case discussion",
+        "title": "Close with agreed documentation actions",
+        "body": "Summarize the review and confirm the next owner before the group leaves.",
+        "points": [
+          [
+            "Decision",
+            "Record any agreed change to the handoff form."
+          ],
+          [
+            "Owner",
+            "Assign follow-up for unresolved questions."
+          ],
+          [
+            "Check-in",
+            "Agree when to review the updated record."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover",
+      "Case context",
+      "Record map",
+      "Evidence status",
+      "Review method",
+      "Follow-up record",
+      "Review limitations",
+      "Case discussion"
+    ],
+    "bestFor": [
+      "Case conference facilitators",
+      "Clinical education teams",
+      "Referral quality reviews"
+    ]
+  },
+  {
+    "slug": "gallery-lighting-design-portfolio",
+    "name": "Free Gallery Lighting Design Portfolio PowerPoint Template",
+    "shortName": "Gallery Lighting Design Portfolio",
+    "category": "Creative Portfolio",
+    "categorySlug": "portfolio",
+    "description": "Show a gallery lighting design project through its brief, lighting zones, mock-up feedback, installation, and handoff.",
+    "longDescription": "Present an original gallery or exhibition lighting case study with this free editable portfolio deck. It frames spatial intent, zoning, mock-up observations, adjustment decisions, and client handover in a plum theater palette with native beam shapes.",
+    "accent": "F5BE76",
+    "dark": "22182C",
+    "soft": "4B3858",
+    "paper": "FFF2DD",
+    "tags": [
+      "Lighting design",
+      "Creative Portfolio",
+      "Editable PPTX"
+    ],
+    "cover": [
+      "GALLERY LIGHTING CASE STUDY",
+      "Lead visitors through a quiet exhibition",
+      "A fictional small-gallery study in emphasis, transition, and focus."
+    ],
+    "story": [
+      {
+        "eyebrow": "Brief",
+        "title": "Give each room a clear visual priority",
+        "body": "Explain the intended visitor experience and the constraints on the installation.",
+        "points": [
+          [
+            "Arrival",
+            "Let visitors orient themselves at the threshold."
+          ],
+          [
+            "Exhibit wall",
+            "Use emphasis to establish an order of looking."
+          ],
+          [
+            "Route",
+            "Keep the transition between rooms legible."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Light zones",
+        "title": "Describe the space through lighting cues",
+        "body": "Use the editable beams to label how light supports the visitor route.",
+        "points": [
+          [
+            "Arrival wash",
+            "Set the context for the entrance."
+          ],
+          [
+            "Object focus",
+            "Draw attention toward the featured work."
+          ],
+          [
+            "Exit glow",
+            "Indicate where the route continues."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Mock-up evidence",
+        "title": "Use rehearsal notes to justify adjustments",
+        "body": "Show a review observation, the change that followed, and what remains uncertain.",
+        "points": [
+          [
+            "3* trial cues",
+            "Illustrative mock-up count."
+          ],
+          [
+            "Observation",
+            "Record where attention landed first in the room."
+          ],
+          [
+            "Adjustment",
+            "Describe the intended shift in emphasis."
+          ]
+        ],
+        "stat": "3* trial cues"
+      },
+      {
+        "eyebrow": "Design method",
+        "title": "Test competing priorities in the same space",
+        "body": "Work with the curator to compare alternate cue settings during a rehearsal.",
+        "points": [
+          [
+            "Map",
+            "Mark sightlines and exhibit positions."
+          ],
+          [
+            "Focus",
+            "Rehearse transitions with the room team."
+          ],
+          [
+            "Record",
+            "Save notes and record the approved settings."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Installation",
+        "title": "Schedule focus and handover around gallery access",
+        "body": "Document what the gallery team should see before opening.",
+        "points": [
+          [
+            "Setup",
+            "Confirm placement and access with the installation team."
+          ],
+          [
+            "Focus session",
+            "Review cue changes with the curator."
+          ],
+          [
+            "Handover",
+            "Deliver the setting log and a room walk-through."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Constraints",
+        "title": "Explain the limits of the concept",
+        "body": "Use verified project constraints to show why you chose this approach.",
+        "points": [
+          [
+            "Daylight",
+            "Record where ambient conditions vary."
+          ],
+          [
+            "Access",
+            "Agree on maintenance access before sign-off."
+          ],
+          [
+            "Review",
+            "Document decisions still waiting on the client."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Portfolio close",
+        "title": "Invite a review of a new gallery brief",
+        "body": "Summarize your contribution and give clients a way to begin a conversation.",
+        "points": [
+          [
+            "Contribution",
+            "State which design decisions you owned."
+          ],
+          [
+            "Deliverables",
+            "Share the cue log and handover scope."
+          ],
+          [
+            "Contact",
+            "Add your studio name and contact details."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover",
+      "Brief",
+      "Light zones",
+      "Mock-up evidence",
+      "Design method",
+      "Installation",
+      "Constraints",
+      "Portfolio close"
+    ],
+    "bestFor": [
+      "Exhibition designers",
+      "Lighting design studios",
+      "Design students"
+    ]
+  }
+]
