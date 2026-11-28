@@ -1,10 +1,13 @@
 export const expectedCategoryCounts: Record<string, number> = {
-  "business-plan": 12,
-  education: 14,
-  marketing: 12,
+  "artificial-intelligence": 12,
+  "business-plan": 13,
+  education: 15,
+  marketing: 13,
+  "pitch-deck": 12,
+  "sales-report": 12,
   medical: 12,
   portfolio: 13,
   "product-roadmap": 12,
-  "project-proposal": 13,
+  "project-proposal": 14,
   "thesis-defense": 12,
 };

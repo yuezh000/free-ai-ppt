@@ -1,0 +1,1227 @@
+[
+  {
+    "slug": "coffee-roastery-business-plan",
+    "shortName": "Coffee Roastery Business Plan",
+    "category": "Business Plan",
+    "categorySlug": "business-plan",
+    "accent": "934122",
+    "dark": "302019",
+    "soft": "F0CEB4",
+    "paper": "FDF1E6",
+    "description": "Build a coffee roastery business plan around recurring wholesale orders, roast capacity, contribution margin, and opening milestones.",
+    "longDescription": "Use this free coffee roastery business plan PowerPoint template to explain how a small roaster will earn and retain wholesale accounts. Model sellable output, connect bag pricing to variable costs, explain lot tracking, and define what must be proven before buying equipment. The editable roasting-lot cards and production bands are built with PowerPoint shapes.",
+    "tags": [
+      "Coffee roasting",
+      "Wholesale business plan",
+      "Capacity planning"
+    ],
+    "bestFor": [
+      "Independent coffee roasters",
+      "Wholesale planning",
+      "Equipment financing",
+      "Operating model reviews"
+    ],
+    "cover": [
+      "WHOLESALE ROASTERY",
+      "Build the roastery around repeat orders",
+      "A fictional production and financing plan for a small wholesale coffee roaster."
+    ],
+    "name": "Free Coffee Roastery Business Plan PowerPoint Template",
+    "story": [
+      {
+        "eyebrow": "Customer need",
+        "title": "Start with cafés that reorder predictably",
+        "body": "Confirm what a café needs each delivery day before committing to roast capacity.",
+        "points": [
+          [
+            "Buying pattern",
+            "Ask how often the café changes its standing order."
+          ],
+          [
+            "Service window",
+            "Record the latest useful delivery time."
+          ],
+          [
+            "Trial order",
+            "Agree how the buyer will judge the first delivery."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Operating model",
+        "title": "Translate each order into a roast slot",
+        "body": "A simple booking sheet connects promised deliveries to work on the floor.",
+        "points": [
+          [
+            "Reserve",
+            "Group orders by coffee and desired delivery day."
+          ],
+          [
+            "Roast",
+            "Set aside time for warm-up and changeovers."
+          ],
+          [
+            "Pack",
+            "Label each bag with the lot and route."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Capacity assumptions",
+        "title": "Price only the output you can ship",
+        "body": "Test sellable weight and contribution at the same operating volume.",
+        "points": [
+          [
+            "24 kg*",
+            "Sample sellable output per roasting session."
+          ],
+          [
+            "$9* per bag",
+            "Sample contribution after variable costs."
+          ],
+          [
+            "Waste allowance",
+            "Replace sample assumptions with weighed output."
+          ]
+        ],
+        "stat": "24 kg*"
+      },
+      {
+        "eyebrow": "Process",
+        "title": "Track each lot through delivery",
+        "body": "Document the lot information staff will need when a café asks about an order.",
+        "points": [
+          [
+            "Receive",
+            "Record the lot and all received weights."
+          ],
+          [
+            "Release",
+            "Record roast date, yield and who cleared packing."
+          ],
+          [
+            "Deliver",
+            "Match the invoice to the lot before dispatch."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Opening sequence",
+        "title": "Prove the schedule before buying",
+        "body": "Use borrowed roast time to test the delivery promise.",
+        "points": [
+          [
+            "Sample run",
+            "Collect buyer feedback and record packing time."
+          ],
+          [
+            "Standing orders",
+            "Confirm quantities and delivery windows in writing."
+          ],
+          [
+            "Equipment decision",
+            "Review capacity and cash needs before signing."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Operating risks",
+        "title": "Plan for a late shipment",
+        "body": "Show how the operation would protect existing orders if a supplier misses a date.",
+        "points": [
+          [
+            "Supply",
+            "Log lead times against inventory on hand."
+          ],
+          [
+            "Substitution",
+            "Agree acceptable alternatives with buyers."
+          ],
+          [
+            "Cash",
+            "Keep a separate budget for early freight changes."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Decision",
+        "title": "Fund the trial and set a review date",
+        "body": "Ask for the smallest commitment that can prove the model.",
+        "points": [
+          [
+            "Approve",
+            "Confirm access to trial roast time."
+          ],
+          [
+            "Assign",
+            "Name who owns buyer feedback and costing."
+          ],
+          [
+            "Review",
+            "Bring reorders, yields and cash assumptions."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover and scenario",
+      "Customer need",
+      "Operating model",
+      "Capacity assumptions",
+      "Process",
+      "Opening sequence",
+      "Operating risks",
+      "Decision"
+    ]
+  },
+  {
+    "slug": "music-practice-app-pitch-deck",
+    "shortName": "Music Practice App Pitch Deck",
+    "category": "Startup Pitch Deck",
+    "categorySlug": "pitch-deck",
+    "accent": "C9F878",
+    "dark": "182720",
+    "soft": "DDF1DA",
+    "paper": "F4FAED",
+    "description": "Pitch a music practice app with a clear learner problem, practice-loop demo, studio pilot evidence, and a focused funding ask.",
+    "longDescription": "This free music practice app pitch deck PowerPoint template helps founders present a focused tool for learners and instructors. Show the practice assignment, the recording and reflection workflow, a studio-led pilot, the distribution model and the next funding milestone. Editable loop diagrams and time strips support a live founder narrative.",
+    "tags": [
+      "Music education app",
+      "Startup pitch deck",
+      "Studio pilot"
+    ],
+    "bestFor": [
+      "Music technology founders",
+      "Education app demos",
+      "Accelerator applications",
+      "Early investor meetings"
+    ],
+    "cover": [
+      "MUSIC LEARNING STARTUP",
+      "Make the next practice goal clear",
+      "A fictional pitch for a practice loop linking studio notes to time at home."
+    ],
+    "name": "Free Music Practice App Pitch Deck PowerPoint Template",
+    "story": [
+      {
+        "eyebrow": "Problem",
+        "title": "Lesson notes lose context at home",
+        "body": "A learner can remember what to play while forgetting what to listen for.",
+        "points": [
+          [
+            "Instruction",
+            "Feedback arrives while the passage is fresh."
+          ],
+          [
+            "Practice",
+            "The same cue is hard to recover at home."
+          ],
+          [
+            "Follow-up",
+            "The teacher has little context at the next lesson."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Product",
+        "title": "Give every assignment a short practice loop",
+        "body": "The learner opens a cue, records a take, and saves a note for the next lesson.",
+        "points": [
+          [
+            "Cue",
+            "Instructor pins a passage and listening prompt."
+          ],
+          [
+            "Take",
+            "Learner records a short attempt from the prompt."
+          ],
+          [
+            "Reflect",
+            "Learner marks the part to revisit together."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Pilot evidence",
+        "title": "Track whether learners return to a cue",
+        "body": "Separate assignment creation from follow-through during the trial.",
+        "points": [
+          [
+            "18* learners",
+            "Illustrative studio trial enrollment."
+          ],
+          [
+            "11* returns",
+            "Illustrative learners who reopened a cue."
+          ],
+          [
+            "Review notes",
+            "Ask teachers which records improved discussions."
+          ]
+        ],
+        "stat": "11* returns"
+      },
+      {
+        "eyebrow": "Distribution",
+        "title": "Start with independent teaching studios",
+        "body": "A studio coordinator can recruit instructors and manage the trial together.",
+        "points": [
+          [
+            "Entry",
+            "Invite a studio with a shared teaching routine."
+          ],
+          [
+            "Trial",
+            "Pilot a specific practice habit per instructor."
+          ],
+          [
+            "Billing",
+            "Test a studio plan based on active learners."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Milestones",
+        "title": "Prove repeat use across lesson cycles",
+        "body": "Set a clear threshold for expanding beyond the initial studios.",
+        "points": [
+          [
+            "Onboard",
+            "Make the first prompt easy to create."
+          ],
+          [
+            "Observe",
+            "Compare return use across lesson cycles."
+          ],
+          [
+            "Expand",
+            "Invite the next studio after interviews."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Product risks",
+        "title": "Give learners control over recordings",
+        "body": "Explain the privacy choices instructors and families would see in the pilot.",
+        "points": [
+          [
+            "Visibility",
+            "Default to the learner and assigned instructor."
+          ],
+          [
+            "Deletion",
+            "Design a clear recording removal control."
+          ],
+          [
+            "Quality",
+            "Test audio capture on ordinary devices."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Funding ask",
+        "title": "Help fund the next studio pilot",
+        "body": "Connect the investment to a narrow product and evidence milestone.",
+        "points": [
+          [
+            "Build",
+            "Improve cue creation and audio capture."
+          ],
+          [
+            "Run",
+            "Recruit and support the pilot studios."
+          ],
+          [
+            "Return",
+            "Share repeat-use findings and buyer interviews."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover and scenario",
+      "Problem",
+      "Product",
+      "Pilot evidence",
+      "Distribution",
+      "Milestones",
+      "Product risks",
+      "Funding ask"
+    ]
+  },
+  {
+    "slug": "volunteer-referral-marketing-plan",
+    "shortName": "Volunteer Referral Marketing Plan",
+    "category": "Marketing Plan",
+    "categorySlug": "marketing",
+    "accent": "9E2246",
+    "dark": "41243B",
+    "soft": "FBE0E0",
+    "paper": "FFF3EC",
+    "description": "Plan a nonprofit volunteer referral campaign from the invitation and orientation to a first completed shift.",
+    "longDescription": "Use this free volunteer referral marketing plan PowerPoint template to design a campaign current volunteers can share. Define suitable roles, connect referral channels to orientation capacity, and measure first-shift completion. Editable route markers show each point where an interested person needs a clear next action.",
+    "tags": [
+      "Nonprofit marketing",
+      "Volunteer referrals",
+      "Volunteer recruitment"
+    ],
+    "bestFor": [
+      "Volunteer coordinators",
+      "Community organizations",
+      "Nonprofit marketing teams",
+      "Referral campaign reviews"
+    ],
+    "cover": [
+      "NONPROFIT REFERRAL CAMPAIGN",
+      "Turn a personal invitation into a first shift",
+      "A fictional campaign for volunteers who bring someone they already know."
+    ],
+    "name": "Free Volunteer Referral Marketing Plan PowerPoint Template",
+    "story": [
+      {
+        "eyebrow": "Audience",
+        "title": "Give current volunteers a clear invitation",
+        "body": "Make the ask easy to repeat at the end of a shift.",
+        "points": [
+          [
+            "Ambassador",
+            "Invite volunteers who know the role well."
+          ],
+          [
+            "Prospect",
+            "Describe who would feel comfortable trying it."
+          ],
+          [
+            "Promise",
+            "State what a newcomer will do on arrival."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Message",
+        "title": "Make the first visit feel manageable",
+        "body": "Explain the role and how someone will be welcomed.",
+        "points": [
+          [
+            "Detail",
+            "State the likely shift activity and location."
+          ],
+          [
+            "Reassurance",
+            "Name the person greeting new volunteers."
+          ],
+          [
+            "Action",
+            "Point to an available orientation time."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Campaign evidence",
+        "title": "Measure completed shifts from referrals",
+        "body": "Distinguish interest, orientation and a completed first shift.",
+        "points": [
+          [
+            "36* invitations",
+            "Illustrative count from tracked referral links."
+          ],
+          [
+            "15* orientations",
+            "Illustrative number of people who attended."
+          ],
+          [
+            "9* first shifts",
+            "Illustrative count confirmed by shift leads."
+          ]
+        ],
+        "stat": "9* first shifts"
+      },
+      {
+        "eyebrow": "Channel plan",
+        "title": "Use the moments volunteers already share",
+        "body": "Coordinate personal messages with existing volunteer routines.",
+        "points": [
+          [
+            "Shift close",
+            "Mention the invitation at the regular debrief."
+          ],
+          [
+            "Follow-up",
+            "Send volunteers a short message they can forward."
+          ],
+          [
+            "Orientation",
+            "Tell new volunteers how to choose a first shift."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Schedule",
+        "title": "Time promotion to open orientation seats",
+        "body": "Separate the campaign launch from the available welcome slots.",
+        "points": [
+          [
+            "Prepare",
+            "Confirm role descriptions and hosts."
+          ],
+          [
+            "Invite",
+            "Send the first wave when slots are posted."
+          ],
+          [
+            "Review",
+            "Check attendance and host capacity before expanding."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Capacity risks",
+        "title": "Make waiting and access needs visible",
+        "body": "Agree what people will see when a shift fills up.",
+        "points": [
+          [
+            "Overflow",
+            "Show the next available welcome time."
+          ],
+          [
+            "Access",
+            "Provide a contact for accommodations."
+          ],
+          [
+            "Support",
+            "Limit bookings to shifts with a designated host."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Campaign decision",
+        "title": "Approve a trial with a named host",
+        "body": "Ask for a first group of ambassadors and a review after their referrals are placed.",
+        "points": [
+          [
+            "Assign",
+            "Name the campaign and orientation owners."
+          ],
+          [
+            "Launch",
+            "Share the invitation with the selected group."
+          ],
+          [
+            "Review",
+            "Discuss first-shift completion and volunteer feedback."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover and scenario",
+      "Audience",
+      "Message",
+      "Campaign evidence",
+      "Channel plan",
+      "Schedule",
+      "Capacity risks",
+      "Campaign decision"
+    ]
+  },
+  {
+    "slug": "reusable-packaging-pilot-proposal",
+    "shortName": "Reusable Packaging Pilot Proposal",
+    "category": "Project Proposal",
+    "categorySlug": "project-proposal",
+    "accent": "166477",
+    "dark": "152F3B",
+    "soft": "C9E6EA",
+    "paper": "EEF8F6",
+    "description": "Propose a reusable packaging return pilot with defined handoffs, return evidence, operational controls, and sponsor approval.",
+    "longDescription": "Use this free reusable packaging pilot proposal PowerPoint template to explain who issues, collects, checks and restocks containers in a bounded return trial. The fictional example includes a return ledger, site handoff plan and a decision on whether to expand. The editable diagrams work for pilot sponsors and site operators.",
+    "tags": [
+      "Reusable packaging",
+      "Return pilot",
+      "Project proposal"
+    ],
+    "bestFor": [
+      "Reuse program teams",
+      "Facilities operators",
+      "Sustainability pilots",
+      "Sponsor approvals"
+    ],
+    "cover": [
+      "REUSE PILOT PROPOSAL",
+      "Can the container make it back?",
+      "A fictional return trial for shared workplaces and their on-site vendors."
+    ],
+    "name": "Free Reusable Packaging Pilot Proposal PowerPoint Template",
+    "story": [
+      {
+        "eyebrow": "Challenge",
+        "title": "Make the return as clear as the pickup",
+        "body": "The pilot will observe where people encounter the return option.",
+        "points": [
+          [
+            "Issue point",
+            "Identify where the package leaves the counter."
+          ],
+          [
+            "Return point",
+            "Check that the container fits the marked slot."
+          ],
+          [
+            "Owner",
+            "Name who collects and checks the returns."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Proposed scope",
+        "title": "Define the return loop",
+        "body": "Start with cooperating vendors and a fixed inventory of marked containers.",
+        "points": [
+          [
+            "Issue",
+            "Record each container leaving the counter."
+          ],
+          [
+            "Collect",
+            "Use a marked return point near the exit."
+          ],
+          [
+            "Reset",
+            "Only restock containers cleared by site staff."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Pilot evidence",
+        "title": "Reconcile issued and returned units",
+        "body": "Use a dated issue cohort so late returns can be counted consistently.",
+        "points": [
+          [
+            "60* issued",
+            "Sample containers recorded at checkout."
+          ],
+          [
+            "44* returned",
+            "Sample returns within the review window."
+          ],
+          [
+            "6* exceptions",
+            "Sample returned units held for follow-up."
+          ]
+        ],
+        "stat": "44* returned"
+      },
+      {
+        "eyebrow": "Operating process",
+        "title": "Leave a clear record at each handoff",
+        "body": "Define what staff record while keeping the counter workflow brief.",
+        "points": [
+          [
+            "Counter",
+            "Log the container identifier and issue date."
+          ],
+          [
+            "Collection",
+            "Record returned IDs and separate exceptions."
+          ],
+          [
+            "Restock",
+            "Reconcile the cleared inventory before reuse."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Schedule",
+        "title": "Rehearse with staff before opening",
+        "body": "Make each pilot stage contingent on the previous stage working.",
+        "points": [
+          [
+            "Set up",
+            "Confirm vendor participation and return placement."
+          ],
+          [
+            "Rehearse",
+            "Test the issue, return and exception records."
+          ],
+          [
+            "Operate",
+            "Review the ledger with staff on the agreed dates."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Risk and limits",
+        "title": "Decide when to pause issuance",
+        "body": "Describe how staff should record damage, missing space and lost stock.",
+        "points": [
+          [
+            "Overflow",
+            "Check return capacity before the busiest period."
+          ],
+          [
+            "Exceptions",
+            "Keep held units out of available inventory."
+          ],
+          [
+            "Ownership",
+            "Assign someone to resolve incomplete records."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Approval",
+        "title": "Approve the return trial",
+        "body": "Ask the sponsor to confirm the trial boundary and site staffing.",
+        "points": [
+          [
+            "Authorize",
+            "Confirm participating locations and inventory."
+          ],
+          [
+            "Appoint",
+            "Name the site lead and vendor contacts."
+          ],
+          [
+            "Decide",
+            "Review return patterns before extending the trial."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover and scenario",
+      "Challenge",
+      "Proposed scope",
+      "Pilot evidence",
+      "Operating process",
+      "Schedule",
+      "Risk and limits",
+      "Approval"
+    ]
+  },
+  {
+    "slug": "buyer-win-loss-sales-report",
+    "shortName": "Buyer Win–Loss Sales Report",
+    "category": "Sales Report",
+    "categorySlug": "sales-report",
+    "accent": "334BC2",
+    "dark": "23233C",
+    "soft": "DDE1FA",
+    "paper": "F7F6FF",
+    "description": "Turn buyer interviews into a win–loss sales report with matched comparisons, evidence labels, and follow-up experiments.",
+    "longDescription": "This free buyer win–loss sales report PowerPoint template is for teams that want to connect deal outcomes with what buyers said during a debrief. Compare closed deals from a matched segment, show interview coverage and disagreement, and turn a recurring objection into a sales experiment. The evidence columns and decision table use editable PowerPoint shapes.",
+    "tags": [
+      "Win–loss analysis",
+      "Buyer interviews",
+      "Sales report"
+    ],
+    "bestFor": [
+      "Revenue operations teams",
+      "Sales enablement reviews",
+      "Buyer research debriefs",
+      "Quarterly deal retrospectives"
+    ],
+    "cover": [
+      "BUYER INTERVIEW REPORT",
+      "What changed the buyer’s decision?",
+      "A fictional win–loss review built around direct buyer feedback."
+    ],
+    "name": "Free Buyer Win–Loss Sales Report PowerPoint Template",
+    "story": [
+      {
+        "eyebrow": "Review scope",
+        "title": "Compare deals with a similar buying context",
+        "body": "Choose a segment and use the same definition of a closed decision for both groups.",
+        "points": [
+          [
+            "Buyer group",
+            "Select comparable buyer roles and deal sizes."
+          ],
+          [
+            "Window",
+            "Use the same closing period for all outcomes."
+          ],
+          [
+            "Outcome",
+            "Keep deferred decisions visible in the review."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Reason coding",
+        "title": "Separate buyer reasons from CRM labels",
+        "body": "Keep the debrief note and the internal code independently visible.",
+        "points": [
+          [
+            "Buyer cue",
+            "Capture the factor the buyer emphasized."
+          ],
+          [
+            "Sales code",
+            "Keep the code entered at close."
+          ],
+          [
+            "Agreement",
+            "Flag cases where the signals differ."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Sample evidence",
+        "title": "Report coverage before comparing reasons",
+        "body": "Show the interview denominator and flag inaccessible deals.",
+        "points": [
+          [
+            "8* wins",
+            "Illustrative wins with a completed interview."
+          ],
+          [
+            "6* losses",
+            "Illustrative losses with a completed interview."
+          ],
+          [
+            "4* no replies",
+            "Illustrative eligible deals without interviews."
+          ]
+        ],
+        "stat": "14* interviews"
+      },
+      {
+        "eyebrow": "Review method",
+        "title": "Look for reasons tied to a decision moment",
+        "body": "Ask when a concern mattered and what the buyer did next.",
+        "points": [
+          [
+            "Prompt",
+            "Ask which stage changed their confidence."
+          ],
+          [
+            "Verify",
+            "Compare the note with the recorded timeline."
+          ],
+          [
+            "Code",
+            "Keep an uncertain label when evidence is incomplete."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Action plan",
+        "title": "Turn a repeated objection into a test",
+        "body": "Assign a change the team can trace back to a later deal review.",
+        "points": [
+          [
+            "Hypothesis",
+            "Clarify implementation scope earlier in the cycle."
+          ],
+          [
+            "Test",
+            "Pilot a short scope brief in comparable deals."
+          ],
+          [
+            "Measure",
+            "Ask whether buyers still cite scope uncertainty."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Limits",
+        "title": "Keep response bias visible",
+        "body": "Some buyers are easier to reach, and one explanation may fit several outcomes.",
+        "points": [
+          [
+            "Coverage",
+            "Show which segments were easy to reach."
+          ],
+          [
+            "Frequency",
+            "Keep rare but specific reasons available."
+          ],
+          [
+            "Uncertainty",
+            "Distinguish a theme from a causal conclusion."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Leadership decision",
+        "title": "Choose the next sales experiment",
+        "body": "Decide which team should act and how to judge the result.",
+        "points": [
+          [
+            "Commit",
+            "Select the scope brief test owner."
+          ],
+          [
+            "Enable",
+            "Give pilot sellers the same starting materials."
+          ],
+          [
+            "Review",
+            "Bring matched debrief notes to the next review."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover and scenario",
+      "Review scope",
+      "Reason coding",
+      "Sample evidence",
+      "Review method",
+      "Action plan",
+      "Limits",
+      "Leadership decision"
+    ]
+  },
+  {
+    "slug": "heat-transfer-investigation-lesson",
+    "shortName": "Heat Transfer Investigation Lesson",
+    "category": "Lesson Plan",
+    "categorySlug": "education",
+    "accent": "B73526",
+    "dark": "252740",
+    "soft": "F8D9BD",
+    "paper": "FFF8EE",
+    "description": "Teach conduction, convection, and radiation with an editable comparison, observation sketch, and heat transfer exit ticket.",
+    "longDescription": "Use this free heat transfer lesson PowerPoint template to guide students from a prediction to an evidence-based explanation. The editable diagrams compare direct contact, fluid motion, and energy transfer by radiation. Adapt the sample readings, observation table, peer discussion and exit ticket to your classroom.",
+    "tags": [
+      "Heat transfer lesson",
+      "Science investigation",
+      "Conduction and convection"
+    ],
+    "bestFor": [
+      "Secondary science teachers",
+      "Energy transfer lessons",
+      "Classroom investigations",
+      "Review and assessment"
+    ],
+    "cover": [
+      "ENERGY TRANSFER LESSON",
+      "Trace how energy moves",
+      "A classroom investigation with editable diagrams, evidence prompts and an exit ticket."
+    ],
+    "name": "Free Heat Transfer Investigation Lesson PowerPoint Template",
+    "story": [
+      {
+        "eyebrow": "Opening question",
+        "title": "Why can two surfaces feel different?",
+        "body": "Ask students to predict what happens when warm and cool materials meet.",
+        "points": [
+          [
+            "Notice",
+            "Describe the sensation without explaining it yet."
+          ],
+          [
+            "Predict",
+            "Sketch where energy is likely to move."
+          ],
+          [
+            "Test idea",
+            "Name something that could be observed."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Core model",
+        "title": "Compare three paths for energy transfer",
+        "body": "Use an editable sketch to connect the mechanism with the evidence.",
+        "points": [
+          [
+            "Conduction",
+            "Energy passes between material in contact."
+          ],
+          [
+            "Convection",
+            "Moving fluid carries energy from place to place."
+          ],
+          [
+            "Radiation",
+            "Energy travels as electromagnetic waves."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Observation evidence",
+        "title": "Use a change in temperature as a clue",
+        "body": "Read the sample evidence before choosing a mechanism to explain.",
+        "points": [
+          [
+            "22 °C*",
+            "Illustrative reading at the start."
+          ],
+          [
+            "27 °C*",
+            "Illustrative reading later at the same location."
+          ],
+          [
+            "Keep constant",
+            "Use the same sensor placement across readings."
+          ]
+        ],
+        "stat": "+5 °C*"
+      },
+      {
+        "eyebrow": "Investigation method",
+        "title": "Draw a model before collecting observations",
+        "body": "Have students connect each note to a location and an expected change.",
+        "points": [
+          [
+            "Sketch",
+            "Label the warmer and cooler parts."
+          ],
+          [
+            "Observe",
+            "Record the direction of the change you can see."
+          ],
+          [
+            "Explain",
+            "Match the observation to a mechanism."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Group plan",
+        "title": "Compare models across groups",
+        "body": "Have students revise the arrows in their sketch as they compare evidence.",
+        "points": [
+          [
+            "Predict",
+            "Mark a first direction on your model."
+          ],
+          [
+            "Compare",
+            "Share the observation that changed your mind."
+          ],
+          [
+            "Revise",
+            "Show which arrow is now better supported."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Reasoning check",
+        "title": "Ask what the evidence actually shows",
+        "body": "A temperature change alone may fit more than one energy transfer mechanism.",
+        "points": [
+          [
+            "Contact",
+            "Look for materials touching each other."
+          ],
+          [
+            "Motion",
+            "Ask whether a liquid or gas moved."
+          ],
+          [
+            "Distance",
+            "Consider whether there is a path without contact."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Exit ticket",
+        "title": "Defend a heat transfer explanation",
+        "body": "Choose a familiar scene and connect your model with an observable clue.",
+        "points": [
+          [
+            "Name",
+            "Identify the main mechanism in your sketch."
+          ],
+          [
+            "Draw",
+            "Label the warmer and cooler locations."
+          ],
+          [
+            "Explain",
+            "Give a clue that supports the arrow direction."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover and scenario",
+      "Opening question",
+      "Core model",
+      "Observation evidence",
+      "Investigation method",
+      "Group plan",
+      "Reasoning check",
+      "Exit ticket"
+    ]
+  },
+  {
+    "slug": "document-intake-routing-ai-brief",
+    "shortName": "Document Intake Routing AI Brief",
+    "category": "AI & Technology",
+    "categorySlug": "artificial-intelligence",
+    "accent": "25695A",
+    "dark": "142D2C",
+    "soft": "CBEADC",
+    "paper": "EEF7EF",
+    "description": "Present an AI document routing pilot with an editable intake pipeline, manual review path, error analysis, and acceptance gates.",
+    "longDescription": "This free AI document intake routing PowerPoint template clarifies how an operations team would sort incoming documents. Explain supported formats, compare routing results with human labels, keep uncertain predictions in a review queue, and specify pilot acceptance criteria. Editable branching diagrams depict the routing logic.",
+    "tags": [
+      "AI document processing",
+      "Intake classification",
+      "Human review"
+    ],
+    "bestFor": [
+      "Document operations teams",
+      "Applied AI pilots",
+      "Automation reviews",
+      "Workflow design workshops"
+    ],
+    "cover": [
+      "DOCUMENT OPERATIONS PILOT",
+      "Send each document to the right queue",
+      "A fictional routing pilot with a review path for uncertain documents."
+    ],
+    "name": "Free Document Intake Routing AI Brief PowerPoint Template",
+    "story": [
+      {
+        "eyebrow": "Current workflow",
+        "title": "Find where intake waits for a decision",
+        "body": "Map how documents reach a queue and who resolves ambiguous items.",
+        "points": [
+          [
+            "Inputs",
+            "List the supported document types and sources."
+          ],
+          [
+            "Queues",
+            "Describe what each receiving team handles."
+          ],
+          [
+            "Exceptions",
+            "Identify items reviewers often send back."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Routing design",
+        "title": "Route uncertain documents to review",
+        "body": "Show the decision that separates a direct route from a manual review.",
+        "points": [
+          [
+            "Read",
+            "Extract text while recording missing pages."
+          ],
+          [
+            "Suggest",
+            "Choose a likely queue using permitted fields."
+          ],
+          [
+            "Route or review",
+            "Send uncertain items to a human queue."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Evidence",
+        "title": "Inspect errors by destination",
+        "body": "Use reviewer labels to see which queues receive the wrong documents.",
+        "points": [
+          [
+            "80* documents",
+            "Illustrative labeled sample from an intake set."
+          ],
+          [
+            "12* sent to review",
+            "Illustrative uncertain routes held for review."
+          ],
+          [
+            "3* misroutes",
+            "Illustrative incorrect direct decisions."
+          ]
+        ],
+        "stat": "3* misroutes"
+      },
+      {
+        "eyebrow": "Evaluation method",
+        "title": "Use a held-out set that reflects real intake",
+        "body": "Keep reviewers focused on routing criteria they can apply consistently.",
+        "points": [
+          [
+            "Sample",
+            "Cover common formats and unusual scans."
+          ],
+          [
+            "Label",
+            "Record the intended destination and reason."
+          ],
+          [
+            "Compare",
+            "Review disagreement before changing the rules."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Pilot plan",
+        "title": "Observe decisions before routing live work",
+        "body": "Let operators compare suggested routes with the existing intake flow.",
+        "points": [
+          [
+            "Shadow",
+            "Record suggestions without moving documents."
+          ],
+          [
+            "Check",
+            "Review uncertain items and direct mistakes."
+          ],
+          [
+            "Enable",
+            "Start with approved destinations after sign-off."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Risk and safeguards",
+        "title": "Keep document handling predictable",
+        "body": "Specify retention, access and what happens when a format is unsupported.",
+        "points": [
+          [
+            "Access",
+            "Limit document viewing to assigned roles."
+          ],
+          [
+            "Retention",
+            "Confirm the agreed retention period."
+          ],
+          [
+            "Fallback",
+            "Send unsupported formats to manual intake."
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Readiness decision",
+        "title": "Agree what evidence earns pilot expansion",
+        "body": "Keep the release decision tied to error review and operator capacity.",
+        "points": [
+          [
+            "Validate",
+            "Confirm the errors and exception workload."
+          ],
+          [
+            "Assign",
+            "Name who owns the review queue."
+          ],
+          [
+            "Approve",
+            "Record the destinations allowed next."
+          ]
+        ]
+      }
+    ],
+    "included": [
+      "Cover and scenario",
+      "Current workflow",
+      "Routing design",
+      "Evidence",
+      "Evaluation method",
+      "Pilot plan",
+      "Risk and safeguards",
+      "Readiness decision"
+    ]
+  }
+]

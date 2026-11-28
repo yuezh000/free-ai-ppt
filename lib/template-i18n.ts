@@ -1304,8 +1304,74 @@ const localized20261127Names: Partial<Record<Locale, Record<string, [string, str
   },
 };
 
+const localized20261128Names: Partial<Record<Locale, Record<string, [string, string]>>> = {
+  "zh-CN": {
+    "coffee-roastery-business-plan": ["免费咖啡烘焙工坊商业计划 PowerPoint 模板", "咖啡烘焙工坊商业计划"],
+    "music-practice-app-pitch-deck": ["免费音乐练习应用融资路演 PowerPoint 模板", "音乐练习应用融资路演"],
+    "volunteer-referral-marketing-plan": ["免费志愿者推荐招募营销计划 PowerPoint 模板", "志愿者推荐招募营销计划"],
+    "reusable-packaging-pilot-proposal": ["免费可重复使用包装试点提案 PowerPoint 模板", "可重复使用包装试点提案"],
+    "buyer-win-loss-sales-report": ["免费买家访谈赢单与丢单分析报告 PowerPoint 模板", "买家访谈赢单与丢单分析报告"],
+    "heat-transfer-investigation-lesson": ["免费热传递探究课 PowerPoint 模板", "热传递探究课"],
+    "document-intake-routing-ai-brief": ["免费AI 文档分流方案 PowerPoint 模板", "AI 文档分流方案"],
+  },
+  "zh-TW": {
+    "coffee-roastery-business-plan": ["免費咖啡烘焙工坊商業計畫 PowerPoint 範本", "咖啡烘焙工坊商業計畫"],
+    "music-practice-app-pitch-deck": ["免費音樂練習應用程式募資簡報 PowerPoint 範本", "音樂練習應用程式募資簡報"],
+    "volunteer-referral-marketing-plan": ["免費志工推薦招募行銷計畫 PowerPoint 範本", "志工推薦招募行銷計畫"],
+    "reusable-packaging-pilot-proposal": ["免費可重複使用包裝試辦提案 PowerPoint 範本", "可重複使用包裝試辦提案"],
+    "buyer-win-loss-sales-report": ["免費買家訪談成交與失單分析報告 PowerPoint 範本", "買家訪談成交與失單分析報告"],
+    "heat-transfer-investigation-lesson": ["免費熱傳遞探究課 PowerPoint 範本", "熱傳遞探究課"],
+    "document-intake-routing-ai-brief": ["免費AI 文件分流方案 PowerPoint 範本", "AI 文件分流方案"],
+  },
+  "ja": {
+    "coffee-roastery-business-plan": ["無料のコーヒー焙煎所の事業計画 PowerPoint テンプレート", "コーヒー焙煎所の事業計画"],
+    "music-practice-app-pitch-deck": ["無料の音楽練習アプリの資金調達ピッチ PowerPoint テンプレート", "音楽練習アプリの資金調達ピッチ"],
+    "volunteer-referral-marketing-plan": ["無料のボランティア紹介キャンペーン計画 PowerPoint テンプレート", "ボランティア紹介キャンペーン計画"],
+    "reusable-packaging-pilot-proposal": ["無料の再使用可能な容器の実証提案 PowerPoint テンプレート", "再使用可能な容器の実証提案"],
+    "buyer-win-loss-sales-report": ["無料の買い手インタビューによる受注・失注分析 PowerPoint テンプレート", "買い手インタビューによる受注・失注分析"],
+    "heat-transfer-investigation-lesson": ["無料の熱移動の探究授業 PowerPoint テンプレート", "熱移動の探究授業"],
+    "document-intake-routing-ai-brief": ["無料のAIによる受信文書の振り分け計画 PowerPoint テンプレート", "AIによる受信文書の振り分け計画"],
+  },
+  "ko": {
+    "coffee-roastery-business-plan": ["무료 커피 로스터리 사업 계획 PowerPoint 템플릿", "커피 로스터리 사업 계획"],
+    "music-practice-app-pitch-deck": ["무료 음악 연습 앱 투자 제안서 PowerPoint 템플릿", "음악 연습 앱 투자 제안서"],
+    "volunteer-referral-marketing-plan": ["무료 자원봉사자 추천 모집 마케팅 계획 PowerPoint 템플릿", "자원봉사자 추천 모집 마케팅 계획"],
+    "reusable-packaging-pilot-proposal": ["무료 다회용 포장재 시범사업 제안서 PowerPoint 템플릿", "다회용 포장재 시범사업 제안서"],
+    "buyer-win-loss-sales-report": ["무료 구매자 인터뷰 기반 수주·실주 분석 보고서 PowerPoint 템플릿", "구매자 인터뷰 기반 수주·실주 분석 보고서"],
+    "heat-transfer-investigation-lesson": ["무료 열전달 탐구 수업 PowerPoint 템플릿", "열전달 탐구 수업"],
+    "document-intake-routing-ai-brief": ["무료 AI 문서 분류 및 배정 계획 PowerPoint 템플릿", "AI 문서 분류 및 배정 계획"],
+  },
+  "fr": {
+    "coffee-roastery-business-plan": ["Modèle PowerPoint gratuit – Plan d’affaires d’un atelier de torréfaction", "Plan d’affaires d’un atelier de torréfaction"],
+    "music-practice-app-pitch-deck": ["Modèle PowerPoint gratuit – Pitch d’une application de pratique musicale", "Pitch d’une application de pratique musicale"],
+    "volunteer-referral-marketing-plan": ["Modèle PowerPoint gratuit – Plan de recrutement de bénévoles par recommandation", "Plan de recrutement de bénévoles par recommandation"],
+    "reusable-packaging-pilot-proposal": ["Modèle PowerPoint gratuit – Proposition de pilote d’emballages réutilisables", "Proposition de pilote d’emballages réutilisables"],
+    "buyer-win-loss-sales-report": ["Modèle PowerPoint gratuit – Rapport des ventes gagnées et perdues selon les acheteurs", "Rapport des ventes gagnées et perdues selon les acheteurs"],
+    "heat-transfer-investigation-lesson": ["Modèle PowerPoint gratuit – Séance d’investigation sur les transferts thermiques", "Séance d’investigation sur les transferts thermiques"],
+    "document-intake-routing-ai-brief": ["Modèle PowerPoint gratuit – Projet de routage des documents entrants par IA", "Projet de routage des documents entrants par IA"],
+  },
+  "es": {
+    "coffee-roastery-business-plan": ["Plantilla PowerPoint gratis – Plan de negocio de una tostadora de café", "Plan de negocio de una tostadora de café"],
+    "music-practice-app-pitch-deck": ["Plantilla PowerPoint gratis – Pitch de una aplicación de práctica musical", "Pitch de una aplicación de práctica musical"],
+    "volunteer-referral-marketing-plan": ["Plantilla PowerPoint gratis – Plan de captación de voluntariado por recomendación", "Plan de captación de voluntariado por recomendación"],
+    "reusable-packaging-pilot-proposal": ["Plantilla PowerPoint gratis – Propuesta de piloto de envases reutilizables", "Propuesta de piloto de envases reutilizables"],
+    "buyer-win-loss-sales-report": ["Plantilla PowerPoint gratis – Informe de ventas ganadas y perdidas según los compradores", "Informe de ventas ganadas y perdidas según los compradores"],
+    "heat-transfer-investigation-lesson": ["Plantilla PowerPoint gratis – Lección de investigación sobre la transferencia de calor", "Lección de investigación sobre la transferencia de calor"],
+    "document-intake-routing-ai-brief": ["Plantilla PowerPoint gratis – Proyecto de clasificación y derivación de documentos con IA", "Proyecto de clasificación y derivación de documentos con IA"],
+  },
+  "ru": {
+    "coffee-roastery-business-plan": ["Бесплатный шаблон PowerPoint – Бизнес-план кофейной обжарочной", "Бизнес-план кофейной обжарочной"],
+    "music-practice-app-pitch-deck": ["Бесплатный шаблон PowerPoint – Презентация приложения для музыкальных занятий", "Презентация приложения для музыкальных занятий"],
+    "volunteer-referral-marketing-plan": ["Бесплатный шаблон PowerPoint – План привлечения волонтёров по рекомендациям", "План привлечения волонтёров по рекомендациям"],
+    "reusable-packaging-pilot-proposal": ["Бесплатный шаблон PowerPoint – Предложение по пилоту многоразовой упаковки", "Предложение по пилоту многоразовой упаковки"],
+    "buyer-win-loss-sales-report": ["Бесплатный шаблон PowerPoint – Отчёт о выигранных и проигранных сделках по интервью с покупателями", "Отчёт о выигранных и проигранных сделках по интервью с покупателями"],
+    "heat-transfer-investigation-lesson": ["Бесплатный шаблон PowerPoint – Исследовательский урок о теплопередаче", "Исследовательский урок о теплопередаче"],
+    "document-intake-routing-ai-brief": ["Бесплатный шаблон PowerPoint – Проект маршрутизации входящих документов с помощью ИИ", "Проект маршрутизации входящих документов с помощью ИИ"],
+  },
+};
+
 export function localizedTemplateName(template: PptTemplate, locale: Locale) {
-  const names = localized20261127Names[locale]?.[template.slug] ?? localized20261113Names[locale]?.[template.slug] ?? localized20261112Names[locale]?.[template.slug] ?? localized20261110Names[locale]?.[template.slug] ?? localized20261021Names[locale]?.[template.slug] ?? localized20261020Names[locale]?.[template.slug] ?? localized20261019Round2Names[locale]?.[template.slug] ?? localized20260911Round2Names[locale]?.[template.slug] ?? localized20260911Names[locale]?.[template.slug] ?? localized20260910Round2Names[locale]?.[template.slug] ?? localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
+  const names = localized20261128Names[locale]?.[template.slug] ?? localized20261127Names[locale]?.[template.slug] ?? localized20261113Names[locale]?.[template.slug] ?? localized20261112Names[locale]?.[template.slug] ?? localized20261110Names[locale]?.[template.slug] ?? localized20261021Names[locale]?.[template.slug] ?? localized20261020Names[locale]?.[template.slug] ?? localized20261019Round2Names[locale]?.[template.slug] ?? localized20260911Round2Names[locale]?.[template.slug] ?? localized20260911Names[locale]?.[template.slug] ?? localized20260910Round2Names[locale]?.[template.slug] ?? localized20260910Names[locale]?.[template.slug] ?? localizedDailyNames[locale]?.[template.slug] ?? localizedNames[locale]?.[template.slug];
   return { name: names?.[0] ?? template.name, shortName: names?.[1] ?? template.shortName };
 }
 

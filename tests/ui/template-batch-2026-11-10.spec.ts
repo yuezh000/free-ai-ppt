@@ -1,11 +1,13 @@
 import { expect, test } from "@playwright/test";
 
+import { expectedCategoryCounts } from "./template-category-counts";
+
 const slug = "forecast-sensitivity-sales-report";
 const name = "Free Sales Forecast Sensitivity Report PowerPoint Template";
 
 test("forecast sensitivity report appears in the catalog and exposes editable download and SEO data", async ({ page, request }) => {
   await page.goto("/templates/sales-report");
-  await expect(page.locator(".template-card")).toHaveCount(11);
+  await expect(page.locator(".template-card")).toHaveCount(expectedCategoryCounts["sales-report"]);
   await page.getByRole("heading", { level: 3, name, exact: true }).getByRole("link").click();
   await expect(page).toHaveURL(new RegExp(`/templates/${slug}/?$`));
   await expect(page.getByRole("heading", { level: 1, name, exact: true })).toBeVisible();

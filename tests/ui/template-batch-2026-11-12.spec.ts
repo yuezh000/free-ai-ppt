@@ -1,11 +1,13 @@
 import { expect, test } from "@playwright/test";
 
+import { expectedCategoryCounts } from "./template-category-counts";
+
 const slug = "source-check-studio-lesson";
 const name = "Free Source Check Studio Lesson PowerPoint Template";
 
 test("source check lesson opens from its category with editable download and SEO data", async ({ page, request }) => {
   await page.goto("/templates/education");
-  await expect(page.locator(".template-card")).toHaveCount(14);
+  await expect(page.locator(".template-card")).toHaveCount(expectedCategoryCounts.education);
   await page.getByRole("heading", { level: 3, name, exact: true }).getByRole("link").click();
   await expect(page).toHaveURL(new RegExp(`/templates/${slug}/?$`));
   await expect(page.getByRole("heading", { level: 1, name, exact: true })).toBeVisible();
